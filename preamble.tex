@@ -1,0 +1,45 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\usepackage[usenames]{color}
+\usepackage{hyperref}
+\hypersetup{pdfborder={0 0 0}}
+
+% окружение теорем
+\theoremstyle{plain}
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{lemma}{Лемма}
+\newtheorem*{corollary}{Следствие}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Определение}
+\newtheorem*{example}{Пример}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Замечание}
+
+%\newcommand{\anonsection}[1]{
+%	\section*{#1}
+%	\addcontentsline{toc}{section}{#1}
+%}
+%\newcommand{\anonsubsection}[1]{
+%	\subsection*{#1}
+%	\addcontentsline{toc}{subsection}{#1}
+%	\addtocounter{subsection}{1}
+%	\setcounter{theorem}{0}
+%	\setcounter{lemma}{0}
+%	\setcounter{corollary}{0}
+%	\setcounter{definition}{0}
+%	\setcounter{remark}{0}
+%	\setcounter{example}{0}
+%}
+
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}.}

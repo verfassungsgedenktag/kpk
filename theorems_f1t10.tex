@@ -1,0 +1,383 @@
+\section{Теоремы}
+
+\subsection{Теорема о свойствах неопределённого интеграла}
+
+% теорема о свойствах первообразной
+\begin{theorem}
+	Пусть $F$ --- первообразная $f$ на $\langle a, b \rangle$. Тогда:
+	\begin{enumerate}
+		\item $\forall C \in \mathbb{R} \quad F + C$ --- тоже первообразная,
+		\item Если $G$ --- ещё одна первообразная $f$ на $\langle a, b \rangle$, то $G - F = C \in \mathbb{R}$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Тривиально:
+	\begin{enumerate}
+		\item $(F + C)' = F' = f$,
+		\item $(G - F)' = 0 \Rightarrow G - F = C \in \mathbb{R}$ (так как $G - F$ возрастает и убывает одновременно).
+	\end{enumerate}
+\end{proof}
+
+% теорема о свойствах неопределённого интеграла
+\begin{theorem}
+	Пусть $f$ и $g$ имеют первообразные на $\langle a, b \rangle$. Тогда:
+	\begin{enumerate}
+		\item \[
+			\int (f + g) = \int f + \int g, \qquad \forall \alpha \in \mathbb{R} \quad \int (\alpha f) = \alpha \int f,
+		\]
+		\item Пусть $\varphi \colon \langle c, d \rangle \to \langle a, b \rangle$ дифференцируема. Тогда \[
+			\int f(\varphi(t)) \varphi'(t) dt = \int f(x) dx \bigg|_{x = \varphi(t)} = F(\varphi(t)) + C,
+		\]
+		\item \[
+			\forall \alpha, \beta \in \mathbb{R}, \ \alpha \neq 0 \quad \int f(\alpha x + \beta) = \frac1\alpha F(\alpha x + \beta) + C,
+		\]
+		\item Пусть $f, g$ дифференцируемы на $\langle a, b \rangle$ и пусть $f'g$ имеет первообразную на $\langle a, b \rangle$.
+		Тогда $fg'$ тоже имеет первообразную, и \[
+			\int fg' = fg - \int f'g.
+		\]
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+		Для доказательства первых трёх свойств возьмём производную от обеих частей и увидим, что получилось одно и то же.
+		Доказательство четвёртого свойства: \[
+		\left( fg - \int f'g \right)' = f'g + fg' - f'g = fg'.
+		\]
+\end{proof}
+
+\begin{remark}[ко второму свойству]
+	Пусть $x = \varphi(t)$ обратима, $t = \varphi^{-1}(x)$. Тогда \[
+		F(x) = \int f(x) dx = \left( \int f(\varphi(t)) \varphi'(t) dt \right) \bigg|_{t := \varphi^{-1}(x)}.
+	\]
+\end{remark}
+
+\subsection{Лемма об ускоренной сходимости}
+
+\hypertarget{shodimost'}{}
+\begin{lemma}
+	Пусть $f, g \colon D \subset X \to \mathbb{R}$, $a$ --- предельная точка $D$.
+	Пусть также $\exists U(a) \mid \forall x \in \dot{U}(a) ~ f(x) \neq 0, ~ g(x) \neq 0$
+	и \[
+		\lim_{x \to a} f(x) = 0, ~\lim_{x \to a} g(x) = 0. \eqno{(*)}
+	\]
+	Тогда \[
+		\forall (x_n) \mid \parbox[t]{1,5cm}{$x_n \to a, \\ x_n \in D, \\ x_n \neq a$}
+		~\exists (y_n) \mid \parbox[t]{1,5cm}{$y_n \to a, \\ y_n \in D, \\ y_n \neq a$}
+		~\text{такая, что}
+		~\lim_{n \to +\infty} \frac{g(y_n)}{g(x_n)}, ~\lim_{n \to +\infty} \frac{f(y_n)}{g(x_n)}.
+	\]
+\end{lemma}
+\begin{proof}
+	Будем искать $(y_n)$ как подпоследовательность $(x_n)$: зафиксируем $n$ и выберем в качестве $y_n$ такое $x_k$, что \[
+		\left| \frac{g(x_k)}{g(x_n)} < \frac1n \right|, \ \left| \frac{f(x_k)}{g(x_n)} < \frac1n \right|.
+	\]
+	В силу условия~(\textasteriskcentered) такое $x_k$ найдётся для всех $n$.
+\end{proof}
+
+\begin{remark}
+	Если условие~(\textasteriskcentered) заменить на \[
+		\lim_{x \to a} f(x) = +\infty, ~\lim_{x \to a} g(x) = +\infty,
+	\]
+	лемма останется верна.
+\end{remark}
+\begin{proof}[Доказательство (авторское)]
+	Члены \((y_n)\) опять будем искать в \((x_n)\): зафиксируем \(n\) и положим \(y_n = x_n\). Будем искать такое \(x_{n + p}\), что \[
+	\left| \frac{g(x_n)}{g(x_{n + p})} < \frac1n \right|, \ \left| \frac{f(x_n)}{g(x_{n + p})} < \frac1n \right|.
+	\]
+	После этого положим \(y_{n + p} = y_{n + p - 1} = \ldots = y_n = x_n\) и проделаем то же самое с \(y_{n + 1}\).
+\end{proof}
+
+\subsection{Правило Лопиталя}
+
+% правило Лопиталя
+\begin{theorem}
+	Пусть $f, g \colon (a, b) \to \mathbb{R}$, $f, g$ дифференцируемы на $(a, b)$, где $a \in \overline{\mathbb{R}}$, и $g' \neq 0$ на $(a, b)$.
+	Пусть также \[
+		\lim_{x \to a} \frac{f(x)}{g(x)} = \left[ \frac00, \frac{\infty}{\infty} \right],
+		~\lim_{x \to a} \frac{f'(x)}{g'(x)} = L \in \mathbb{R}.
+	\]
+	Тогда $\lim\limits_{x \to a} \dfrac{f(x)}{g(x)}$ существует и равен $L$.
+\end{theorem}
+
+\begin{proof}
+	$g' \neq 0 \Rightarrow g' \text{ постоянного знака} \Rightarrow g \text{ монотонна}$. \\
+	Рассмотрим $(x_n) \mid x_n \to a, ~x_n \in (a, b)$ и проверим, что $\lim\limits_{n \to \infty} \dfrac{f(x_n)}{g(x_n)} = L$.
+	Для $(x_n)$ построим $(y_n)$ из \hyperlink{shodimost'}{леммы об ускоренной сходимости}. По теореме Коши
+	$\exists c_n \in (x_n, y_n)$ такое, что \[
+		\frac{f(x_n) - f(y_n)}{g(x_n) - g(y_n)} = \frac{f'(c_n)}{g'(c_n)}.
+	\]
+	Выразим отсюда $\dfrac{f(x_n)}{g(x_n)}$: \[
+		\frac{f(x_n)}{g(x_n)} = \frac{f(y_n)}{g(x_n)} + \frac{f'(c_n)}{g'(c_n)} \left( 1 - \frac{g(y_n)}{g(x_n)} \right).
+	\]
+	В силу \hyperlink{shodimost'}{леммы об ускоренной сходимости}
+	\hbox{$\dfrac{f(y_n)}{g(x_n)} \xrightarrow[n \to \infty]{} 0$}, \hbox{$\dfrac{g(y_n)}{g(x_n)} \xrightarrow[n \to \infty]{} 0$}.
+	Тогда $\dfrac{f(x_n)}{g(x_n)} \xrightarrow[n \to \infty]{} L$.
+\end{proof}
+
+\subsection{<<Теорема Гаусса>>}
+
+% "теорема Гаусса"
+\begin{theorem}
+	Справедливо следующее равенство: \[
+		1 + 2 + \ldots + n = \frac{n (n + 1)}{2}.
+	\]
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+									    		f(x) &= 1 + x + x^2 + \ldots + x^n = \frac{x^{n + 1} - 1}{x - 1}		\\
+		 		  \left( x \frac{d}{dx} \right) f(x) &= x + 2 x + 3 x^2 + \ldots + n x^n								\\
+				\left( x \frac{d}{dx} \right)^2 f(x) &= x + 2^2 x + 3^2 x^2 + \ldots + n^2 x^n							\\
+													 &\cdots															\\
+		g(x) := \left( x \frac{d}{dx} \right)^k f(x) &= 1^k x + 2^k x + 3^k x^2 + \ldots + n^k x^n						\\
+	\end{align*}
+	
+	ДОДЕЛАТЬ
+\end{proof}
+
+\subsection{Пример неаналитической функции}
+
+% пример неаналитической функции
+\begin{example}
+	Пусть \[
+		f(x) = \begin{cases} e^{-\frac1x}, \quad &x < 0 \\ 0, \quad &x \ge 0 \end{cases}
+	\]
+	Тогда $\forall k \in \mathbb{N} \quad f^{(k)}(0) = 0$.
+\end{example}
+
+\begin{proof}
+	ДОДЕЛАТЬ
+\end{proof}
+
+\subsection{Теорема Штольца}
+
+% теорема Штольца
+\begin{theorem}
+	Пусть $(x_n), (y_n)$ --- вещественные последовательности, \mbox{$x_n \to 0$}, \mbox{$y_n \to 0$}, причём $y_n$ стремится монотонно.
+	Пусть \[
+		\lim_{n \to \infty} \frac{x_n - x_{n - 1}}{y_n - y_{n - 1}} = a \in \overline{\mathbb{R}}
+		\footnote{Если $a = 0$, требуем, чтобы $x_n$ тоже стремилось к нулю монотонно.}.
+	\]
+	Тогда $\lim\limits_{n \to \infty} \dfrac{x_n}{y_n} = a$.
+\end{theorem}
+
+\hypertarget{funny}{}
+\begin{lemma}[о смешной сумме]
+	Пусть $a, b, c, d, m, M > 0$, пусть также
+		\begin{align*}
+			m &< \frac{a}{b} < M, \\
+			m &< \frac{c}{d} < M.
+		\end{align*}
+		Тогда $m < \dfrac{a + c}{b + d} < M$.
+
+\end{lemma}
+
+\begin{proof}[Доказательство леммы]
+	Имеем \[
+		\begin{cases}
+			mb < a < Mb \\
+			md < c < Md.	
+		\end{cases}
+	\]
+	Cложим неравенства, разделим все части на $b + d$ и получим, что требовалось.
+\end{proof}
+
+\begin{proof}[Доказательство теоремы]
+	Рассмотрим различные значения $a$:
+	\begin{enumerate}
+		\item \label{first} Пусть $0 < a < +\infty$ и, НУО\footnote{
+		Так как $\frac{x_n - x_{n - 1}}{y_n - y_{n - 1}} \to a > 0$,
+		по теореме о стабилизации знака $\exists K \ \forall N > K \ldots \\ \ldots \frac{x_n - x_{n - 1}}{y_n - y_{n - 1}} > 0$.
+		В силу монотонности $(y_n)$, $(x_n)$ тоже монотонна, причём одинаково с $y_n$.
+		А так как последовательности стремятся к нулю, с какого-то момента они имеют одинаковый знак.
+		Если $x_n < 0$ и $y_n < 0$, сменим у обеих знак --- их предела это не изменит.
+		},
+		\hbox{$x_n, \ y_n > 0$}. Имеем \[
+		\textcolor{magenta}{\hbox{$\forall \varepsilon > 0$}} \text{ (можно считать, что $\varepsilon < a$)}
+		\quad \textcolor{magenta}{\hbox{$\exists N_\varepsilon$}}
+		\quad \textcolor{magenta}{\hbox{$\forall N > N_\varepsilon$}}
+		\quad \forall n > N \ldots
+		\]
+		\begin{align*}
+			\ldots a - \varepsilon &< \frac{x_{N + 1} - x_N}{y_{N + 1} - y_N} < a + \varepsilon,			    \\
+				   a - \varepsilon &< \frac{x_{N + 2} - x_{N + 1}}{y_{N + 2} - y_{N + 1}} < a + \varepsilon,	\\
+					   		  	   &\cdots      															    \\
+				   a - \varepsilon &< \frac{x_n - x_{n - 1}}{y_n - y_{n - 1}} < a + \varepsilon.			    \\
+		\end{align*}
+		\hyperlink{funny}{Смешно сложим} дроби и заметим, что сумма выходит телескопической. Получившееся неравенство будет иметь такой вид: \[
+			a - \varepsilon < \frac{x_n - x_N}{y_n - y_N} < a + \varepsilon.
+		\]
+		Выполним предельный переход при $n \to \infty$.
+		По условию \mbox{$x_n \to 0$}, \mbox{$y_n \to 0$}, значит, имеем \[
+			  \textcolor{magenta}{\hbox{$a - \varepsilon < \dfrac{x_N}{y_N} < a + \varepsilon$}}.
+		\]
+		Читаем \textcolor{magenta}{цветной} текст и видим определение предела.
+		\item Пусть теперь $-\infty < a < 0$.
+		Это значит, что, НСНМ, либо \mbox{$x_n > 0$} и \mbox{$y_n < 0$}, либо \mbox{$x_n < 0$} и \mbox{$y_n > 0$}.
+		Cменим знак отрицательной последовательности --- она по-прежнему будет стремиться к нулю,
+		а дробь~$\dfrac{x_n - x_{n - 1}}{y_n - y_{n - 1}}$ свой знак сменит (соответственно, $a$ тоже).
+		Таким образом, мы переходим к случаю \ref{first}.
+		\item \label{third} Случай $a = +\infty$ аналогичен первому. Действительно, имеем \[
+			\forall E > 0 \quad \exists N_E \quad \forall N > N_E \quad \forall n > N \ldots
+		\]
+		\begin{align*}
+			\ldots E &< \frac{x_{N + 1} - x_N}{y_{N + 1} - y_N},			    \\
+				   E &< \frac{x_{N + 2} - x_{N + 1}}{y_{N + 2} - y_{N + 1}},	\\
+					 &\cdots      										        \\
+				   E &< \frac{x_n - x_{n - 1}}{y_n - y_{n - 1}}.			    \\
+		\end{align*}
+		Опять смешно складываем дроби, выполняем предельный переход и получаем определение предела.
+		\item \label{fourth} Случай $a = -\infty$ аналогичен третьему.
+		\item Пусть теперь $a = 0$. Так как в первой сноске мы дополнительно потребовали монотонность $(x_n)$,
+		можем говорить, что $\dfrac{x_n - x_{n - 1}}{y_n - y_{n - 1}}$ стремится к нулю слева или справа.
+		<<Перевернём>> её, поменяв числитель и знаменатель местами, и попадём либо в случай \ref{third}, либо в случай \ref{fourth}.
+	\end{enumerate}
+	Итак, теорема доказана для всех значений $a$ из $\overline{\mathbb{R}}$.
+\end{proof}
+
+\subsection{\itshape Интегрирование неравенств, теорема о среднем}
+
+% интегрирование неравенств
+\begin{theorem}
+	Пусть $f, g$ непрерывны на $[a, b]$. Тогда если $f \le g$, то \[
+		\int\limits_a^b f \le \int\limits_a^b g.
+	\]
+\end{theorem}
+
+\begin{proof}
+	По определению
+	\begin{align*}
+		\int_a^b f &= \delta (\hbox{ПГ}(f^+, [a, b])) - \delta (\hbox{ПГ}(f^-, [a, b])), \\
+		\int_a^b g &= \delta (\hbox{ПГ}(g^+, [a, b])) - \delta (\hbox{ПГ}(g^-, [a, b])).
+	\end{align*}
+	Поскольку $f \ge g$, то $\hbox{ПГ}(f^+, [a, b]) \subseteq \hbox{ПГ}(g^+, [a, b])$. А значит, \\
+	$\delta (\hbox{ПГ}(f^+, [a, b])) \le \delta (\hbox{ПГ}(g^+, [a, b]))$. С отрицательной срезкой наоборот, 
+	но в силу того, что её ослабленная площадь $\delta$ вычитается, неравенство остаётся справедливым.
+\end{proof}
+
+\hypertarget{sredneye}{} % теорема о среднем
+\begin{theorem}
+	Пусть $f$ непрерывны на $[a, b]$. Тогда \[
+		\min (f) \cdot (b - a) \le \int\limits_a^b \le \max (f) \cdot (b - a).\footnote{В данной теореме обсуждаются минимум и максимум \(f\) на промежутке \([a, b]\).}
+	\]
+\end{theorem}
+
+\begin{proof}
+	Заметим, что, так как $\min (f)$ --- константа, \[
+		\int\limits_a^b \min (f) = \min (f) \cdot (b - a).
+	\]
+	Аналогично для $\max (f)$. Тогда проинтегрируем неравенство \\ \hbox{$\min (f) \le f \le \max (f)$} по $[a, b]$:
+	\begin{align*}
+		\int_a^b \min (f) &\le \int_a^b f \le \int_a^b \max (f) \\
+		\min (f) \cdot (b - a) &\le \int_a^b f \le \max (f) \cdot (b - a).
+	\end{align*} 
+\end{proof}
+
+\subsection{Теорема Барроу}
+
+\hypertarget{Barrow}{}
+\begin{theorem}
+	Пусть $f$ непрерывна на $[a, b]$. Введём на $[a, b]$ функцию $\Phi$\footnote{
+		Функция $\Phi$ называется \textit{интегралом с переменным верхним пределом.}
+		}: \[
+		\Phi (x) = \int\limits_a^x f.
+	\]
+	Тогда $\Phi$ дифференцируема на $[a, b]$ и $\forall x \in [a, b] \ \Phi'(x) = f(x)$.
+\end{theorem}
+
+\begin{proof}[Доказательство (полуавторское)]
+	Если $x \neq b$, вычислим $\Phi_+'$: \[
+		\Phi_+' = \lim_{y \to x + 0} \frac{\Phi(y) - \Phi(x)}{y - x} = \lim_{y \to x + 0} \frac{1}{y - x} \cdot \int_x^y f.
+	\]
+	По \hyperlink{sredneye}{теореме о среднем} имеем: \[
+		\min_{[x, y]} (f) \le \frac{1}{y - x} \cdot \int_x^y f \le \max_{[x, y]} (f).
+	\]
+	Теперь перейдём к пределу: \[
+		\lim\limits_{y \to x + 0} \min\limits_{[x, y]} (f) = f(x) \le \lim_{y \to x + 0} \frac{1}{y - x} \cdot \int_x^y f \le \lim\limits_{y \to x + 0} \max\limits_{[x, y]} (f) = f(x).
+	\]
+	Выходит, \(\Phi'_+ = f\). Аналогично для левой производной при \(x \neq a\).
+\end{proof}
+
+\subsection{\itshape Формула Ньютона -- Лейбница}
+
+\hypertarget{Newton}{}
+\begin{theorem}
+	Пусть $f$ непрерывна на $[a, b]$, $F$ --- первообразная $f$ на $[a, b]$. Тогда \[
+		\int\limits_a^b = F(b) - F(a).
+	\]
+\end{theorem}
+
+\begin{proof}
+	Введём интеграл с переменным верхним пределом $\Phi$. По \hyperlink{Barrow}{теореме Барроу} $\Phi'(x) = f(x)$ для любого $x$ из $[a, b]$.
+	Заметим, что $\Phi(x) = F(x) + C$, где $C \in \mathbb{R}$, а также что $\Phi(a) = 0$. Тогда имеем: \[
+		\int\limits_a^b f = \Phi(b) = \Phi(b) - \Phi(a) = (F(b) + C) - (F(a) + C) = F(b) - F(a). 
+	\]
+\end{proof}
+
+\begin{remark}
+	Выходит, что определённый интеграл не зависит от выбора ослабленной площади $\delta$.
+\end{remark}
+
+\begin{remark}
+	Приращение $F(b) - F(a)$ первообразной обычно записывают в виде $F(x) \bigg|_{x = a}^{x = b}$ или в краткой форме $F(x) \bigg|_a^b$.
+\end{remark}
+
+\subsection{Свойства определённого интеграла}
+
+% свойства определённого интеграла
+\begin{theorem}
+	Пусть $f, g$ непрерывны на $[a, b]$, $\alpha, \beta \in \mathbb{R}$. Тогда:
+	\begin{enumerate}
+		\item \[
+			\int_a^b \alpha f + \beta g = \alpha \int_a^b f + \beta \int_a^b g,
+		\]
+		\item Если к тому же $f, g$ дифференцируемы на $[a, b]$, то \[
+			\int_a^b fg' = fg \bigg|_a^b - \int_a^b f'g,
+		\]
+		\item Пусть $\varphi: \langle \alpha, \beta \rangle \to \langle a, b \rangle$ дифференцируема на $\langle \alpha, \beta \rangle$,
+		пусть также $[p, q] \subset \langle \alpha, \beta \rangle$. Тогда \[
+			\int\limits_p^q f(\varphi(t))\varphi'(t) dt = \int\limits_{\varphi(p)}^{\varphi(q)} f(x) dx.
+		\]
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Докажем свойства по отдельности:
+	\begin{enumerate}
+		\item Следует из того, что если $F, G$ --- первообразные $f, g$ соответственно,
+		то $\alpha F + \beta G$ --- первообразная $\alpha f + \beta g$.
+		\item Имеем:
+		\begin{align*}
+			\int_a^b fg' &= fg \bigg|_a^b - \int_a^b f'g \\
+			\int_a^b fg' + \int_a^b f'g &= fg \bigg|_a^b \\
+			\int_a^b (fg' + f'g) &= fg \bigg|_a^b		   \\
+		\end{align*}
+		Последнее равенство очевидно.
+		\item Пусть $F$ --- первообразная функции $f$ на $[a, b]$. Так как \\ 
+		\hbox{$(F(\varphi(t)))' = F'(\varphi(t)) \varphi(t) = f(\varphi(t)) \varphi(t)$}, то
+		$F(\varphi(t))$ --- первообразная $f(\varphi(t)) \varphi(t)$ на $\langle \alpha, \beta \rangle$.
+		Дважды использую \hyperlink{Newton}{формулу Ньютона -- Лейбница}, получим нужное равенство:
+		\begin{align*}
+	 		\int_p^q f(\varphi(t))\varphi'(t) dt = F(\varphi(t)) \bigg|_p^q = F(\varphi(q)) - F(\varphi(t)) = \ldots \\
+			\ldots = F(x) \bigg|_{\varphi(p)}^{\varphi(q)} = \int_{\varphi(p)}^{\varphi(q)} f(x) dx.
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

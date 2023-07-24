@@ -1,0 +1,201 @@
+\section{Определения и формулировки}
+
+\subsection{\itshape Первообразная, неопределённый интеграл}
+ 
+ % первообразная
+\begin{definition}
+	Пусть $F, f \colon \langle a, b \rangle \to \mathbb{R}$.
+	Функция $F$ называется \textit{первообразной} $f$ на $\langle a, b \rangle$, если
+	\[
+		\forall x \in \langle a, b \rangle \quad F'(x) = f(x).
+	\]
+\end{definition}
+
+% неопределённый интеграл
+\begin{definition}
+	Пусть $f \colon \langle a, b \rangle \to \mathbb{R}$.
+	\textit{Неопределённым интегралом} функции $f$ на $\langle a, b \rangle$
+	(обозначается как $\int f$ или $\int f(x) dx$) называется множество её первообразных,
+	то есть 
+	\[
+		\int f = \{ F + C \mid C \in \mathbb{R} \},
+	\]
+	где $F$ --- первообразная $f$ на $\langle a, b \rangle$.
+\end{definition}
+
+\subsection{Теорема о существовании первообразной}
+
+% теорема о существовании первообразной
+\begin{theorem}
+	Всякая непрерывная на промежутке функция имеет на нём первообразную.
+\end{theorem}
+
+\subsection{\itshape Таблица первообразных}
+
+% таблица первообразных
+ДОДЕЛАТЬ
+
+\subsection{Площадь, аддитивность площади, ослабленная аддитивность}
+
+% площадь
+\begin{definition}
+	Назовём \textit{фигурой} ограниченное подмножество в $\mathbb{R}^2$.
+	Пусть $\varepsilon$ --- множество всех фигур. Функция $\delta \colon \varepsilon \to [0; +\infty)$ называется \textit{площадью},
+	если выполнены следующие условия:
+	\begin{enumerate}
+		\item Аддитивность: если $A = A_1 \sqcup A_2$, то $\delta (A) = \delta (A_1) + \delta (A_2)$,
+		\item Нормировка: $\hbox{$\delta ([a, b] \times [c, d])$} = (b - a) (d - c)$.
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Некоторые свойства $\delta$:
+	\begin{enumerate}
+		\item $\delta$ монотонна: $A \subset B \Rightarrow \delta (A) \le \delta (B)$,
+		\item $A$ --- вертикальный отрезок $\Rightarrow \delta (A) = 0$.
+	\end{enumerate}
+\end{remark}
+
+\begin{proof}
+	Докажем свойства по отдельности:
+	\begin{enumerate}
+		\item Поскольку \hbox{$B = A \sqcup (B \setminus A)$}, то \hbox{$\delta (B) = \delta (A) + \delta (B \setminus A) \ge \delta (A)$},
+		\item Рассмотрим $A$ как $[a,b] \times [c,d]$, где $\forall \varepsilon > 0 \ (b - a) < \varepsilon$.
+		Значит, $(b - a) = 0 \Rightarrow \delta (A) = 0$.
+	\end{enumerate}  
+\end{proof}
+
+% ослабленная площадь
+\begin{definition}
+	Назовём функцию $\delta \colon \varepsilon \to [0; +\infty)$ \textit{ослабленной площадью}, если выполняются следующие условия:
+	\begin{enumerate}
+		\item Монотонность: если $A \subset B \hbox{, то } \delta (A) \le \delta (B)$,
+		\item Нормировка: $\hbox{$\delta ([a, b] \times [c, d])$} = (b - a) (d - c)$,
+		\item Ослабленная аддитивность. Пусть $A \in \varepsilon$, $l$ --- вертикальный промежуток,
+		$A_{\hbox{л}}$ --- часть $A$ в левой полуплоскости, $A_{\hbox{п}}$ --- часть $A$ в правой полуплоскости
+		(заметим, что $A = A_{\hbox{л}} + A_{\hbox{п}}$ и $A_{\hbox{л}} \cap A_{\hbox{п}} \subset l$).
+		Тогда $\delta (A) = \delta (A_{\hbox{л}}) + \delta (A_{\hbox{п}})$.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Положительная и отрицательная срезки}
+
+% положительная и отрицательная срезки
+\begin{definition}
+	Пусть $f \colon \langle a, b \rangle \to \mathbb{R}$. Назовём функцию $f^+ = \max (f, 0)$ \textit{положительной срезкой},
+	а функцию $f^- = \max (-f, 0)$ --- \textit{отрицательной срезкой}. Заметим также, что $f = f^+ - f^-$ и $|f| = f^+ + f^-$.
+\end{definition}
+
+\subsection{\itshape Определённый интеграл}
+
+% подграфик
+\begin{definition}
+	Пусть $f \colon [a, b] \to [0, +\infty)$. Назовём \textit{подграфиком} $f$ на $[a, b]$
+	(обозначается как ПГ($f, [a, b]$)) следующее множество: \[
+		\hbox{$\{ (x, y) \mid x \in [a, b], \ 0 \le y \le f(x) \}$}.
+	\]
+\end{definition}
+
+% определённый интеграл
+\begin{definition}
+	Пусть $f \colon [a, b] \to \mathbb{R}$ непрерывна, $\delta$ ---  ослабленная площадь.
+	\textit{Определённым интегралом} $f$ на $[a, b]$ называется \[
+		\delta (\hbox{ПГ}(f^+, [a, b])) - \delta (\hbox{ПГ}(f^-, [a, b])).
+	\]
+	Обозначается как \[
+		\int\limits^a_b f(x) dx \hbox{ или } \int\limits^a_b f.
+	\]
+\end{definition}
+
+\begin{remark}
+	Некоторые свойства и соглашения:
+	\begin{enumerate}
+		\item \[
+			\hbox{Если $f \ge 0$, то } \int_a^b f \ge 0,
+		\]
+		\item \[
+			\hbox{Если $f \equiv c \in \mathbb{R}$, то } \int_a^b f = c \cdot (b - a),
+		\]
+		\item \[
+			\int_a^b (-f) = -\int^a_b f,
+		\]
+		\item \[
+			\hbox{Можно считать, что } \int_a^a f = 0,
+		\]
+		\item \[
+			\forall c \in [a, b] \qquad \int_a^b f = \int_a^c f + \int_c^b f.
+		\]
+	\end{enumerate}
+\end{remark}
+
+\begin{proof}
+	Небольшие пояснения:
+	\begin{enumerate}
+		\item В силу того, что $f^- \equiv 0$,
+		\item Так как подграфик $f$ --- прямоугольник,
+		\item Поскольку $(-f)^+ = f^-$, $(-f)^- = f^+$,
+		\item Потому что подграфик $f$ --- вертикальный отрезок,
+		\item В силу ослабленной аддитивности.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Среднее значение функции на промежутке}
+
+\hypertarget{average}{}
+\begin{definition}
+	Пусть $f$ непрерывна на $[a, b]$. Тогда \[
+		\dfrac1{b - a}\int\limits_a^b f
+	\]
+	называется \textit{средним значением функции $f$ на промежутке $[a, b]$}.
+\end{definition}
+
+\subsection{\itshape Выпуклая функция}
+
+% выпуклая функция
+\begin{definition}
+	Функция \(f \colon \langle a, b \rangle \to \mathbb{R}\) называется:
+	\begin{itemize}
+		\item \textit{выпуклой вниз} на \(\langle a, b \rangle\), если для любых \(x_1, x_2 \in \langle a, b \rangle\) и \(t \in (0, 1)\) выполняется неравенство \[
+		f(t x_1 + (1 - t) x_2) \le t f(x_1) + (1 - t) f(x_2);
+		\]
+		\item \textit{строго выпуклой вниз} на \(\langle a, b \rangle\), если для любых \(x_1, x_2 \in \langle a, b \rangle\) и \(t \in (0, 1)\) выполняется неравенство \[
+		f(t x_1 + (1 - t) x_2) < t f(x_1) + (1 - t) f(x_2).
+		\]
+	\end{itemize}
+	
+	Если выполняются противоположные неравенства, то функция \(f\) называется соответственно \textit{выпуклой вверх} или \textit{сторого выпуклой вверх} на \(\langle a, b \rangle\).
+	
+	Часто функции, которые только что были названы выпулыми вниз, называют просто \textit{выпуклыми}, а те, что были названы выпуклыми вверх, --- \textit{вогнутыми}.
+	
+	Поясним геометрический смысл производной. Пусть\(x_1, x_2 \in \langle a, b \rangle\) и, НУО\footnote{Неравенства в определении не меняются при перемене \(x_1\) и \(x_2\) местами.}, \(x_1 < x_2\). Положим \(x = t x_1 + (1 - t) x_2\). Тогда \[
+		t = \frac{x_2 - x}{x_2 - x_1} \quad \text{и} \quad 1 - t = \frac{x - x_1}{x_2 - x_1}.
+	\]
+	При этом, если \(x \in (x_1, x_2)\), то \(t \in (0, 1)\), и обратно. Неравенство, определяющее выпуклую функцию, переписывается в виде \[
+		f(x) \le \frac{x_2 - x}{x_2 - x_1} f(x_1) + \frac{x - x_1}{x_2 - x_1} f(x_2), \quad x \in (x_1, x_2).
+	\]
+	Правая часть этого неравенства при \(x \in [x_1, x_2]\) задаёт уравнение хорды, соединяющей точки \((x_1, f(x_1))\) и \((x_2, f(x_2))\) на графике \(f\). Таким образом, выпуклость функции вниз означает, что график функции лежит не выше любой хорды, соединяющей две его точки. Строгая выпуклость вниз означает, что график лежит ниже любой хорды, за исключением концевых точек. Выпуклость функции вверх, напротив, означает, что график функции лежит не ниже любой хорды.
+\end{definition}
+
+\subsection{Выпуклое множество}
+
+% выпуклое множество
+\begin{definition}
+	Множество \(A\) в \(\mathbb{R}^m\) называется \textit{выпуклым}, если вместе с любыми точками \(x, y\) ему также принадлежит отрезок \([x, y]\)\footnote{\([x, y] = \{x + t(y - x), \ t \in [0, 1]\}\).}, соединяющий их.
+\end{definition}
+
+\subsection{Надграфик}
+
+% надграфик
+\begin{definition}
+	\textit{Надграфиком} функции \(f\) на \(\langle a, b \rangle\) называется такое множество: \[
+		\{(x, y) \mid x \in \langle a, b \rangle, \ y \ge f(x)\}.
+	\]
+\end{definition}
+
+\begin{remark}
+	Функция \(f\) выпукла на \(\langle a, b \rangle\) \(\Leftrightarrow\) надграфик \(f\) на \(\langle a, b \rangle\) --- выпуклое множество.
+\end{remark}
+
+\begin{proof}
+	Функция \(f\) выпукла на \(\langle a, b \rangle\) \(\Leftrightarrow\) любая хорда принадлежит надграфику \(f\) на \(\langle a, b \rangle\) \(\Leftrightarrow\) надграфик \(f\) --- выпуклое множество (если работает для хорд, сработает и для остальных отрезков, соединяющих две точки надграфика, потому что эти точки <<выше>> точек графика).
+\end{proof}
