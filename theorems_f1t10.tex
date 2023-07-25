@@ -140,7 +140,7 @@
 % пример неаналитической функции
 \begin{example}
 	Пусть \[
-		f(x) = \begin{cases} e^{-\frac1x}, \quad &x < 0 \\ 0, \quad &x \ge 0 \end{cases}
+		f(x) = \begin{cases} e^{-\frac1x}, \quad &x < 0 \\ 0, \quad &x \geqslant 0 \end{cases}
 	\]
 	Тогда $\forall k \in \mathbb{N} \quad f^{(k)}(0) = 0$.
 \end{example}
@@ -239,8 +239,8 @@
 
 % интегрирование неравенств
 \begin{theorem}
-	Пусть $f, g$ непрерывны на $[a, b]$. Тогда если $f \le g$, то \[
-		\int\limits_a^b f \le \int\limits_a^b g.
+	Пусть $f, g$ непрерывны на $[a, b]$. Тогда если $f \leqslant g$, то \[
+		\int\limits_a^b f \leqslant \int\limits_a^b g.
 	\]
 \end{theorem}
 
@@ -250,15 +250,15 @@
 		\int_a^b f &= \delta (\hbox{ПГ}(f^+, [a, b])) - \delta (\hbox{ПГ}(f^-, [a, b])), \\
 		\int_a^b g &= \delta (\hbox{ПГ}(g^+, [a, b])) - \delta (\hbox{ПГ}(g^-, [a, b])).
 	\end{align*}
-	Поскольку $f \ge g$, то $\hbox{ПГ}(f^+, [a, b]) \subseteq \hbox{ПГ}(g^+, [a, b])$. А значит, \\
-	$\delta (\hbox{ПГ}(f^+, [a, b])) \le \delta (\hbox{ПГ}(g^+, [a, b]))$. С отрицательной срезкой наоборот, 
+	Поскольку $f \geqslant g$, то $\hbox{ПГ}(f^+, [a, b]) \subseteq \hbox{ПГ}(g^+, [a, b])$. А значит, \\
+	$\delta (\hbox{ПГ}(f^+, [a, b])) \leqslant \delta (\hbox{ПГ}(g^+, [a, b]))$. С отрицательной срезкой наоборот, 
 	но в силу того, что её ослабленная площадь $\delta$ вычитается, неравенство остаётся справедливым.
 \end{proof}
 
 \hypertarget{sredneye}{} % теорема о среднем
 \begin{theorem}
 	Пусть $f$ непрерывны на $[a, b]$. Тогда \[
-		\min (f) \cdot (b - a) \le \int\limits_a^b \le \max (f) \cdot (b - a).\footnote{В данной теореме обсуждаются минимум и максимум \(f\) на промежутке \([a, b]\).}
+		\min (f) \cdot (b - a) \leqslant \int\limits_a^b \leqslant \max (f) \cdot (b - a).\footnote{В данной теореме обсуждаются минимум и максимум \(f\) на промежутке \([a, b]\).}
 	\]
 \end{theorem}
 
@@ -266,10 +266,10 @@
 	Заметим, что, так как $\min (f)$ --- константа, \[
 		\int\limits_a^b \min (f) = \min (f) \cdot (b - a).
 	\]
-	Аналогично для $\max (f)$. Тогда проинтегрируем неравенство \\ \hbox{$\min (f) \le f \le \max (f)$} по $[a, b]$:
+	Аналогично для $\max (f)$. Тогда проинтегрируем неравенство \\ \hbox{$\min (f) \leqslant f \leqslant \max (f)$} по $[a, b]$:
 	\begin{align*}
-		\int_a^b \min (f) &\le \int_a^b f \le \int_a^b \max (f) \\
-		\min (f) \cdot (b - a) &\le \int_a^b f \le \max (f) \cdot (b - a).
+		\int_a^b \min (f) &\leqslant \int_a^b f \leqslant \int_a^b \max (f) \\
+		\min (f) \cdot (b - a) &\leqslant \int_a^b f \leqslant \max (f) \cdot (b - a).
 	\end{align*} 
 \end{proof}
 
@@ -290,10 +290,10 @@
 		\Phi_+' = \lim_{y \to x + 0} \frac{\Phi(y) - \Phi(x)}{y - x} = \lim_{y \to x + 0} \frac{1}{y - x} \cdot \int_x^y f.
 	\]
 	По \hyperlink{sredneye}{теореме о среднем} имеем: \[
-		\min_{[x, y]} (f) \le \frac{1}{y - x} \cdot \int_x^y f \le \max_{[x, y]} (f).
+		\min_{[x, y]} (f) \leqslant \frac{1}{y - x} \cdot \int_x^y f \leqslant \max_{[x, y]} (f).
 	\]
 	Теперь перейдём к пределу: \[
-		\lim\limits_{y \to x + 0} \min\limits_{[x, y]} (f) = f(x) \le \lim_{y \to x + 0} \frac{1}{y - x} \cdot \int_x^y f \le \lim\limits_{y \to x + 0} \max\limits_{[x, y]} (f) = f(x).
+		\lim\limits_{y \to x + 0} \min\limits_{[x, y]} (f) = f(x) \leqslant \lim_{y \to x + 0} \frac{1}{y - x} \cdot \int_x^y f \leqslant \lim\limits_{y \to x + 0} \max\limits_{[x, y]} (f) = f(x).
 	\]
 	Выходит, \(\Phi'_+ = f\). Аналогично для левой производной при \(x \neq a\).
 \end{proof}

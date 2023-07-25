@@ -1,1 +1,65 @@
 \subsection{Опорная прямая}
+
+\begin{definition}
+	Пусть \(f \colon \langle a, b \rangle \to \mathbb{R}, \ x_0 \in \langle a, b \rangle\). Прямая, задаваемая уравнением \(y = \ell(x)\), называется \textit{опорной} для функции  \(f\) в точке \(x_0\), если \[
+		f(x_0) = \ell(x_0) \quad \text{и} \quad f(x) \geqslant \ell(x) \quad \text{для всех} \ x \in \langle a, b \rangle. 
+	\]
+	Если же \[
+		f(x_0) = \ell(x_0) \quad \text{и} \quad f(x) > \ell(x) \quad \text{для всех} \ x \in \langle a, b \rangle \setminus \{x_0\},
+	\]
+	то прямая называется \textit{строго опорной} для функции \(f\) в точке \(x_0\).
+	
+	Другими словами, прямая называется опорной к \(f\) в точке \(x_0\), если она проходит через точку \((x_0, f(x_0))\) и лежит не выше графика функции. Строго опорная прямая лежит ниже графика функции во всех точках, кроме \((x_0, f(x_0))\).
+\end{definition}
+
+\subsection{Кусочно-непрерывная функция, интеграл от неё}
+
+\begin{definition}
+	Функция \(f \colon [a, b] \to \mathbb{R}\) называется \textit{кусочно-непрерывной}, если она непрерывна всюду, кроме конечного числа точек, в которых имеет разрывы первого рода.
+\end{definition}
+
+\begin{definition}
+	Пусть \(f\) --- кусочно-непрерывная функция, \(\widetilde{f}_k\) --- её сужение на промежуток \([x_{k - 1}, x_k]\), то есть \[
+		\widetilde{f}_k = f \big|_{[x_{k - 1}, x_k]} =
+		\begin{cases}
+			f(x_{k - 1} + 0), & x = x_{k - 1} 		   \\
+			f(x),			  & x \in (x_{k - 1}, x_k) \\
+			f(x_k - 0),		  & x = x_k.
+		\end{cases}
+	\]
+	Тогда \[
+		\int_a^b f = \sum_{k = 1}^n \int_{x_{k - 1}}^{x_k} \widetilde{f}_k
+	\]
+	называется \textit{интегралом кусочно-непрерывной функции} \(f\).
+\end{definition}
+
+\subsection{Почти первообразная}
+
+\begin{definition}
+	Пусть \(F, f \colon [a, b] \to \mathbb{R}\). Функция \(F\) называется \textit{почти первообразной} \(f\) на \([a, b]\), если \(F'(x) = f(x)\) для всех \(x \in [a, b]\), кроме конечного числа.
+\end{definition}
+
+\begin{remark}
+	Если \(f\) --- кусочно-непрерывная функция, у неё существует почти первообразная.
+\end{remark}
+
+\begin{proof}
+	Пусть \(F_k\) --- первообразная \(\widetilde{f}_k\) на \([x_{k - 1}, x_k]\).
+	
+	ДОДЕЛАТЬ
+\end{proof}
+
+\begin{remark}
+	Пусть \(f \colon [a, b] \to \mathbb{R}\) --- кусочно-непрерывная функция, \(F\) --- почти первообразная \(f\) на \([a, b]\). Тогда \[
+		\int\limits_a^b f = F(b) - F(a).
+	\]
+\end{remark}
+
+\begin{proof}
+	Пусть \(a = x_0 < x_1 < \ldots < x_{n - 1} < x_n = b\). Тогда \[
+		\int_a^b = \sum_{k = 1}^n \int_{x_{k - 1}}^{x_k} \widetilde{f}_k = \sum_{k = 1}^n F_k(x_k) - F_k (x_{k - 1}) = \sum_{k = 1}^n F(x_k) - F(x_{k - 1}).
+	\]
+	Получили телескопическую сумму, после приведения подобных равную \(F(a) - F(b)\)
+\end{proof}
+
+\subsection{Функция промежутка, аддитивная функция промежутка}
