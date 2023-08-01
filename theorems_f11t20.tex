@@ -258,7 +258,190 @@
 	\end{enumerate}
 \end{proof}
 
+\subsection{\itshape Теорема о вычислении аддитивной функции промежутка по плотности}
 
+\begin{theorem}
+	Пусть \(\Phi \colon Segm(\langle a, b \rangle) \to \mathbb{R}\) --- аддитивная функция промежутка, \(f \colon \langle a, b \rangle \to \mathbb{R}\) --- плотность \(\Phi\). Тогда \[
+		\forall [p, q] \in Segm(\langle a, b \rangle) \quad \Phi([p, q]) = \int_p^q f.
+	\]
+\end{theorem}
 
+\begin{proof}
+	Зафиксируем \([p, q] \in Segm(\langle a, b \rangle)\). Рассмотрим функцию \(F\): \[
+		F(x) =
+		\begin{cases}
+			\Phi([p, x]), & p < x \leqslant q \\
+			0,			  & x = p.
+		\end{cases}
+	\]
+	
+	Теперь проверим, что \(F\) --- первообразная \(f\) на \([p, q]\). Имеем: \[
+		F'_+(x) = \lim_{h \to +0} \frac{\Phi([p, x + h]) - \Phi([p, x])}{h} = \lim_{h \to +0} \frac{\Phi([x, x + h])}{h}.
+	\]
+	По определению плотности
+	\begin{gather*}
+		h \cdot \inf_{[x, x + h]}(f) \leqslant \Phi([x, x + h]) \leqslant h \cdot \sup_{[x, x + h]}(f) \\
+		\inf_{[x, x + h]}(f) \leqslant \frac{\Phi([x, x + h])}{h} \leqslant \sup_{[x, x + h]}(f).
+	\end{gather*}
+	По теореме Вейерштрасса инфимум и супремум функции на отрезке достигаются, то есть неравенство равносильно \[
+		\min_{[x, x + h]}(f) \leqslant \frac{\Phi([x, x + h])}{h} \leqslant \max_{[x, x + h]}(f).
+	\]
+	Перейдём к пределу при \(h \to +0\): \[
+		f(x) \leqslant \frac{\Phi([x, x + h])}{h} \leqslant f(x).
+	\]
+	
+	Аналогично \(F'_-(x) = f(x)\). Применим \hyperlink{Newton}{формулу Ньютона -- Лейбница} и получим требуемый результат: \[
+		\Phi([p, q]) = F(q) - F(p) = \int_p^q f.
+	\]
+	ДОДЕЛАТЬ ПРО ТЕОРЕМУ О ПРОМЕЖУТОЧНОМ ЗНАЧЕНИИ И КОНЦЫ ПРОМЕЖУТКА
+\end{proof}
 
+\subsection{Свойства верхнего и нижнего пределов}
+
+\begin{theorem}
+	Пусть \((x_n)\) --- вещественная последовательность. Тогда\footnote{Все пределы обсуждаются при \(n \to \infty\).}:
+	\begin{enumerate}
+		\item \(\varliminf\limits_{n \to \infty} x_n \leqslant \varlimsup\limits_{n \to \infty} x_n\),
+		\item Если \((\widetilde{x}_n)\) --- вещественная последовательность, причём для всех \(n\) \(x_n \leqslant \widetilde{x}_n\), то \(\varlimsup\limits_{n \to \infty} x_n \leqslant \varlimsup\limits_{n \to \infty} \widetilde{x}_n\) и \(\varliminf\limits_{n \to \infty} x_n \leqslant \varliminf\limits_{n \to \infty} \widetilde{x}_n\),
+		\item Возьмём \(\lambda \geqslant 0\), тогда \(\varlimsup\limits_{n \to \infty} \lambda x_n = \lambda \varlimsup\limits_{n \to \infty} x_n\) и \(\varliminf\limits_{n \to \infty} \lambda x_n = \lambda \varliminf\limits_{n \to \infty} x_n\),\footnote{Заметим, что при этом выходит, что \(0 \cdot (\pm \infty) = 0\).}
+		\item \(\varlimsup\limits_{n \to \infty} -x_n = -\varliminf\limits_{n \to \infty} x_n\), \(\varliminf\limits_{n \to \infty} -x_n = -\varlimsup\limits_{n \to \infty} x_n\),
+		\item \(\varlimsup\limits_{n \to \infty} x_n + \widetilde{x}_n \leqslant \varlimsup\limits_{n \to \infty} x_n + \varlimsup\limits_{n \to \infty} \widetilde{x}_n\) и \(\varliminf\limits_{n \to \infty} x_n + \widetilde{x}_n \geqslant \varliminf\limits_{n \to \infty} x_n + \varliminf\limits_{n \to \infty} \widetilde{x}_n\), где \((\widetilde{x}_n)\) --- вещественная последовательность,
+		\item Если \((t_n)\) --- вещественная последовательность, стремящаяся к \(l \in \mathbb{R}\), то \(\varlimsup\limits_{n \to \infty} x_n + t_n = \varlimsup\limits_{n \to \infty} x_n + l\),
+		\item Если \((t_n)\) --- вещественная последовательность, стремящаяся к \(l \in (0, +\infty)\), то \(\varlimsup\limits_{n \to \infty} t_n \cdot x_n = l \cdot \varlimsup\limits_{n \to \infty} x_n\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Докажем эти свойства:
+	\begin{enumerate}
+		\item Следует из того, что для всех \(n\) \(z_n \leqslant y_n\),
+		\item В силу того, что для всех \(n\) \(y_n \leqslant \widetilde{y}_n\) и \(z_n \leqslant \widetilde{z}_n\),
+		\item Так как для \((\lambda x_n)\) верхняя огибающая имеет вид \((\lambda y_n)\), а нижняя~--- \((\lambda z_n)\),
+		\item Обозначим как \((y_n^-)\) верхнюю огибающую \((-x_n)\) и как \((z_n^-)\) --- нижнюю. Тогда \[
+			y_n^- = \sup(-x_n, -x_{n + 1}, -x_{n + 2}, \ldots).
+		\]
+		По определению супремума \[
+			\forall k \geqslant n \quad y_n^- \geqslant -x_k, \ \text{то есть} \ -y_n^- \leqslant x_k.
+		\]
+		Получается, что \(-y_n^- = \inf(x_n, x_{n + 1}, x_{n + 2}, \ldots)\), что равносильно \linebreak \(y_n^- = -\inf(x_n, x_{n + 1}, x_{n + 2}, \ldots) = -z_n\). Аналогично \(z_n^- = -y_n\).
+		
+		Перейдём к пределу и получим требуемый результат.
+		\item ДОДЕЛАТЬ
+		\item По условию \(t_n \to l \in \mathbb{R}\), то есть \[
+			\forall \varepsilon > 0 \quad \exists N_0 \quad \forall n > N_0 \quad l - \varepsilon < t_n < l + \varepsilon.
+		\]
+		Прибавим к неравенству \(x_n\): \[
+			\forall \varepsilon > 0 \quad \exists N_0 \quad \forall n > N_0 \quad x_n + l - \varepsilon < x_n + t_n < x_n + l + \varepsilon.
+		\]
+		Перейдём к супремуму в неравенстве (супремумом \(x_n\) является \(y_{N}\), где \(N_0 < N < n\)): \[
+			y_N + l - \varepsilon < \sup(x_n + t_n, x_{n + 1} + t_{n + 1}, x_{n + 2} + t_{n + 2}, \ldots) < y_N + l + \varepsilon.
+		\]
+		Устремим \(N\), а значит, и \(n\) тоже в бесконечность, а \(\varepsilon\) --- к нулю, и получим нужный результат: \[
+			\varlimsup\limits_{n \to \infty} x_n + l \leqslant \varlimsup\limits_{n \to \infty} x_n + t_n \leqslant \varlimsup\limits_{n \to \infty} x_n + l.
+		\]
+		\item Без доказательства.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Техническое описание верхнего предела}
+
+\begin{theorem}
+	Пусть \((x_n)\) --- вещественная последовательность. Тогда:
+	\begin{enumerate}
+		\item \(\varlimsup\limits_{n \to \infty} x_n = +\infty\) \(\Leftrightarrow\) \((x_n)\) не ограничена сверху,
+		\item \(\varlimsup\limits_{n \to \infty} x_n = -\infty\) \(\Leftrightarrow\) \(x_n \to -\infty\),
+		\item \(\varlimsup\limits_{n \to \infty} x_n = l\) тогда и только тогда, когда выполняются условия:
+		\begin{enumerate}
+			\item \[
+				\forall \varepsilon > 0 \quad \exists N_0 \quad \forall n > N_0 \quad x_n < l + \varepsilon,
+			\]
+			\item \[
+				\forall \varepsilon > 0 \quad \exists \textit{бесконечно много} \ n \quad l - \varepsilon < x_n.
+			\]
+		\end{enumerate}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Докажем пункты по отдельности:
+	\begin{enumerate}
+		\item Очевидно: \[
+			\varlimsup_{n \to \infty} x_n = +\infty \Leftrightarrow \lim_{n \to \infty} y_n = +\infty \Leftrightarrow \forall E > 0 \enskip \exists n \enskip E < y_n.
+		\]
+		А так как \(y_n = \sup(x_n, x_{n + 1}, x_{n + 2}, \ldots)\), выражение выше равносильно тому, что \((x_n)\) не ограничена сверху.
+		\item 
+		\begin{enumerate}
+			\item[\(\Rightarrow\)] Тоже очевидно: \[
+			\varlimsup\limits_{n \to \infty} x_n = -\infty \Leftrightarrow \lim_{n \to \infty} y_n = -\infty.
+			\]
+			В силу того, что для всех \(n\) \(x_n \leqslant y_n\), \(x_n \to -\infty\),
+			\item[\(\Leftarrow\)] При \(n \to \infty\) справедливо: \[
+				x_n \to -\infty \Rightarrow \sup(x_n, x_{n + 1}, x_{n + 2}, \ldots) \to -\infty \Leftrightarrow y_n \to -\infty,
+			\]
+			что и означает, что \(\varlimsup\limits_{n \to \infty} x_n\).
+		\end{enumerate}
+		\item
+		\begin{enumerate}
+			\item[\(\Rightarrow\)] Имеем, что \(y_n \to l\) при \(n \to \infty\), то есть \[
+				\forall \varepsilon > 0 \quad  \exists N_0 \quad \forall n > N_0 \quad l - \varepsilon < y_n < l + \varepsilon.
+			\]
+			Так как для всех \(n\) \(x_n \leqslant y_n\), получаем, что \[
+				\forall \varepsilon > 0 \quad  \exists N_0 \quad \forall n > N_0 \quad x_n < l + \varepsilon,
+			\]
+			о чём и говорится в пункте (a). Пункт (b) следует из того, что \(y_n = \sup(x_n, x_{n + 1}, x_{n + 2}, \ldots)\) стремится к \(l\).
+			\item[\(\Leftarrow\)] Передём к супремуму в имеющихся неравенствах (напомним, что супремумом \(x_n\) при \(n \to \infty\) является \(y_N\), где \(N_0 < N < n\)). Получим, что \(l - \varepsilon < y_N < \ + \varepsilon\) для любого \(\varepsilon > 0\) (нижняя граница верна, потому что \(y_N\) --- супремум обсуждаемого в условии бесконечного множества \(x_n\)). Устремим \(N\) в бесконечность и получим требуемый результат.
+		\end{enumerate}
+	\end{enumerate}
+\end{proof}
+
+\subsection{Теорема о существовании предела в терминах верхнего и нижнего пределов}
+
+\begin{theorem}
+	Пусть \((x_n)\) --- вещественная последовательность. Тогда \[
+		\varlimsup_{n \to \infty} x_n = \varliminf_{n \to \infty} x_n \Leftrightarrow \exists \lim_{n \to \infty} x_n.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Докажем необходимость и достаточность по отдельности:
+	\begin{enumerate}
+		\item[\(\Rightarrow\)] Имеем: \[
+			\varlimsup_{n \to \infty} x_n = \lim_{n \to \infty} y_n, \quad
+			\varliminf_{n \to \infty} x_n = \lim_{n \to \infty} z_n, \quad
+			\forall n \quad z_n \leqslant x_n \leqslant y_n.
+		\]
+		Получается, \((x_n)\) <<зажата>> между двумя последовательностями с одинаковым пределом, а значит, по теореме о двух городовых она имеет тот же предел.
+		\item[\(\Leftarrow\)] Пусть \(\lim\limits_{n \to \infty} = l\), то есть \[
+			\forall \varepsilon > 0 \quad \exists N \quad \forall n > N \quad l - \varepsilon < x_n < l + \varepsilon.
+		\]
+		Теперь в неравенстве мы можем перейти к супремуму и получить, что верхний предел равен \(l\), и к инфимуму, получив, что нижний предел равен \(l\). 
+	\end{enumerate} 
+\end{proof}
+
+\subsection{Теорема о характеризации верхнего предела как частичного}
+
+\begin{theorem}
+	Пусть \((x_n)\) --- вещественная последовательность. Тогда \[
+		\varlimsup_{n \to \infty} x_n = l \Rightarrow \exists \lim_{k \to \infty} x_{n_k} = l.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Предъявим подходящую подпоследовательность \((x_{n_k})\). По техническому определению предела имеем:
+	\begin{enumerate}
+		\item \[
+		\forall \varepsilon > 0 \quad \exists N_0 \quad \forall n > N_0 \quad x_n < l + \varepsilon,
+		\]
+		\item \[
+		\forall \varepsilon > 0 \quad \exists \textit{бесконечно много} \ n \quad l - \varepsilon < x_n.
+		\]
+	\end{enumerate}
+	Будем выбирать такие \(x_n\), чтобы для них выполнялись оба условия. Так как таких бесконечно много, мы получим подпоследовательность, стремящуюся к \(l\).
+\end{proof}
+
+\subsection{Площадь криволинейного сектора: в полярных координатах и для параметрической кривой}
+
+\begin{theorem}
+	Пусть функция \(f(\varphi) \colon [0, 2\pi] \to [0, +\infty]\) непрерывна.
+\end{theorem}
 

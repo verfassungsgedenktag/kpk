@@ -63,3 +63,84 @@
 \end{proof}
 
 \subsection{Функция промежутка, аддитивная функция промежутка}
+
+\begin{definition}
+	Пусть \(a, b \in \overline{\mathbb{R}}\), \(a < b\). Обозначим как \(Segm(\langle a, b \rangle)\) множество вида \(\{[p, q] \mid [p, q] \subset \langle a, b \rangle\}\). Тогда:
+	\begin{enumerate}
+		\item Функция \(\Phi \colon Segm(\langle a, b \rangle) \to \mathbb{R}\) называется \textit{функцией промежутка},
+		\item Функция \(\Phi \colon Segm(\langle a, b \rangle) \to \mathbb{R}\), такая, что \[
+			\forall [p, q] \in Segm(\langle a, b \rangle) \quad \forall \in (p, q) \quad \Phi([p, q]) = \Phi([p, c]) + \Phi([c, q]),
+		\]
+		называется \textit{аддитивной функцией промежутка}.
+	\end{enumerate}
+\end{definition}
+
+\begin{example}
+	Если функция \(f\) непрерывна на \(\langle a, b \rangle\), то \(f\) --- плотность функции \(\Phi\), такой, что \[
+		\Phi([p, q]) = \int\limits_a^b f.
+	\]
+	Действительно, по \hyperlink{sredneye}{теореме о среднем} имеем\[
+		\inf_{[p, q]} (f) \cdot (q - p) \leqslant \int\limits_p^q \leqslant \max_{[p, q]} (f) \cdot (q - p).
+	\]
+\end{example}
+
+\subsection{Плотность аддитивной функции промежутка}
+
+\begin{definition}
+	Пусть \(\Phi \colon Segm(\langle a, b \rangle) \to \mathbb{R}\) --- аддитивная функция промежутка, тогда функция \(f: \langle a, b \rangle \to \mathbb{R}\) называется \textit{плотностью} \(\Phi\) на \(\langle a, b \rangle\), если \[
+	\forall \Delta \in Segm(\langle a, b \rangle) \quad |\Delta| \inf_\Delta(f) \leqslant \Phi(\Delta) \leqslant |\Delta| \sup_\Delta(f).
+	\]
+	
+\end{definition}
+
+\subsection{\itshape Верхний и нижний пределы последовательности}
+
+\begin{definition}
+	Пусть \((x_n)\) --- вещественная последовательность. Тогда последовательность \((y_n)\), где \(y_n = \sup (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), называется \textit{верхней огибающей} \((x_n)\), а \((z_n)\), где \(z_n = \inf (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), --- \textit{нижней огибающей} \((x_n)\).
+\end{definition}
+
+\begin{remark}
+	Некоторые свойства огибающих:
+	\begin{enumerate}
+		\item Для всех \(n\) \(z_n \leqslant x_n \leqslant y_n\),
+		\item Так как \(y_n \geqslant y_{n + 1} \geqslant y_{n + 2} \geqslant \ldots\) и \(z_n \leqslant z_{n + 1} \leqslant z_{n + 2} \leqslant \ldots\), то для всех~\(n\) \(z_1 \leqslant y_n\) и \(z_n \leqslant y_1\).
+	\end{enumerate}
+\end{remark}
+
+\begin{definition}
+	Пусть \((x_n)\) --- вещественная последовательность, \((y_n)\) --- её верхняя огибающая, а \((z_n)\) --- нижняя. Тогда \[
+	\varlimsup_{n \to \infty} x_n = \lim_{n \to \infty} y_n \in \overline{\mathbb{R}}
+	\]
+	называется \textit{верхним пределом} \((x_n)\), а \[
+	\varliminf\limits_{n \to \infty} x_n = \lim\limits_{n \to \infty} z_n \in \overline{\mathbb{R}} \ \textit{---}
+	\]
+	\textit{нижним пределом}.
+\end{definition}
+
+\begin{example}
+	Если \(x_n = (-1)^n\), то \(y_n \equiv 1\), \(z_n \equiv -1\), то есть \(\varlimsup\limits_{n \to \infty} = 1\), \(\varliminf\limits_{n \to \infty} = -1\).
+\end{example}
+
+\subsection{Частичный предел}
+
+\begin{definition}
+	Пусть \((x_n)\) --- последовательность в (метрическом пространстве) \(X\). Тогда \(l \in X\) называется \textit{частичным пределом} \((x_n)\), если существует строго возрастающая последовательность натуральных чисел \((n_k)\), такая, что \(x_{n_k} \to l\) при \(k \to \infty\).
+\end{definition}
+
+\begin{example}
+	Если \(x_n = (-1)^n\), то \(1\) и \(-1\) --- частичные пределы \((x_n)\).
+\end{example}
+
+\subsection{Дробление отрезка, ранг дробления, оснащение}
+
+\begin{definition}
+	\textit{Дроблением} отрезка \([a, b]\) называется возрастающий набор \(x_i\), принадлежащих отрезку \([a, b]\). Пусть для определённости \linebreak \(a = x_0 \leqslant x_1 \leqslant \ldots \leqslant x_{n - 1} \leqslant x_n = b\). Тогда эти \(x_i\) разбивают \([a, b]\) на \(n\) соприкасающихся подотрезков \([x_i, x_{i + 1}]\).
+\end{definition}
+
+\begin{definition}
+	\textit{Рангом} дробления называется длина наибольшего подотрезка \([x_i, x_{i + 1}]\), то есть \(\max (x_{i + 1} - x_i)\), где \(i \in 1 : n\).
+\end{definition}
+
+\begin{definition}
+	\textit{Оснащением} называется набор точек \(\xi_i\), принадлежащих отрезку \([a, b]\), где \(i \in 1 : n\) и каждая \(\xi_i\) принадлежит уникальному подотрезку дробления.
+\end{definition}
