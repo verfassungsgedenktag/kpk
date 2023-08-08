@@ -89,7 +89,7 @@
 
 \subsection{Правило Лопиталя}
 
-% правило Лопиталя
+\hypertarget{lope}{}
 \begin{theorem}
 	Пусть $f, g \colon (a, b) \to \mathbb{R}$, $f, g$ дифференцируемы на $(a, b)$, где $a \in \overline{\mathbb{R}}$, и $g' \neq 0$ на $(a, b)$.
 	Пусть также \[
@@ -247,12 +247,12 @@
 \begin{proof}
 	По определению
 	\begin{align*}
-		\int_a^b f &= \delta (\hbox{ПГ}(f^+, [a, b])) - \delta (\hbox{ПГ}(f^-, [a, b])), \\
-		\int_a^b g &= \delta (\hbox{ПГ}(g^+, [a, b])) - \delta (\hbox{ПГ}(g^-, [a, b])).
+		\int_a^b f &= \sigma (\hbox{ПГ}(f^+, [a, b])) - \sigma (\hbox{ПГ}(f^-, [a, b])), \\
+		\int_a^b g &= \sigma (\hbox{ПГ}(g^+, [a, b])) - \sigma (\hbox{ПГ}(g^-, [a, b])).
 	\end{align*}
 	Поскольку $f \geqslant g$, то $\hbox{ПГ}(f^+, [a, b]) \subseteq \hbox{ПГ}(g^+, [a, b])$. А значит, \\
-	$\delta (\hbox{ПГ}(f^+, [a, b])) \leqslant \delta (\hbox{ПГ}(g^+, [a, b]))$. С отрицательной срезкой наоборот, 
-	но в силу того, что её ослабленная площадь $\delta$ вычитается, неравенство остаётся справедливым.
+	$\sigma (\hbox{ПГ}(f^+, [a, b])) \leqslant \sigma (\hbox{ПГ}(g^+, [a, b]))$. С отрицательной срезкой наоборот, 
+	но в силу того, что её ослабленная площадь $\sigma$ вычитается, неравенство остаётся справедливым.
 \end{proof}
 
 \hypertarget{sredneye}{} % теорема о среднем
@@ -315,7 +315,7 @@
 \end{proof}
 
 \begin{remark}
-	Выходит, что определённый интеграл не зависит от выбора ослабленной площади $\delta$.
+	Выходит, что определённый интеграл не зависит от выбора ослабленной площади $\sigma$.
 \end{remark}
 
 \begin{remark}

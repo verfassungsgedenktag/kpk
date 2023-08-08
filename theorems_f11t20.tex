@@ -2,7 +2,9 @@
 
 % неравенство Чебышёва
 \begin{theorem}
-	Пусть \(f, g\) непрерывны на \([a, b]\) и монотонны, причём одинаково монотонны. Пусть \(I_f\) --- \hyperlink{average}{среднее значение} функции \(f\). Тогда \(I_f \cdot I_g \leqslant I_{fg}\).
+	Пусть \(f, g\) непрерывны на \([a, b]\) и монотонны, причём одинаково монотонны. Пусть \(I_f\) --- \hyperlink{average}{среднее значение} функции \(f\). Тогда \[
+		I_f \cdot I_g \leqslant I_{fg}.
+	\]
 \end{theorem}
 
 \begin{proof}
@@ -179,7 +181,7 @@
 	Следовательно, \(g\) ограничена на \(\langle a, x)\) сверху, а на \((x, b \rangle\) --- снизу. По теореме о пределе монотонной функции существуют конечные пределы \(g(x-)\) и \(g(x+)\), которые по определению являются односторонними производными \(f'_-(x)\) и \(f'_+(x)\). Устремляя \(\xi\) к \(x\) слева, а \(\eta\) к \(x\) справа, получаем, что \(f'_-(x) \leqslant f'_+(x)\). 
 \end{proof}
 
-ВОЗМОЖНО, ПЕРЕПИСАТЬ ПО КОНСПЕКТУ ЛЕКЦИЙ
+ВОЗМОЖНО, ПЕРЕПИСАТЬ (ДОДЕЛАТЬ) ПО КОНСПЕКТУ ЛЕКЦИЙ
 
 \subsection{Описание выпуклости с помощью касательных}
 
@@ -260,14 +262,15 @@
 
 \subsection{\itshape Теорема о вычислении аддитивной функции промежутка по плотности}
 
+\hypertarget{afp}{}
 \begin{theorem}
-	Пусть \(\Phi \colon Segm(\langle a, b \rangle) \to \mathbb{R}\) --- аддитивная функция промежутка, \(f \colon \langle a, b \rangle \to \mathbb{R}\) --- плотность \(\Phi\). Тогда \[
-		\forall [p, q] \in Segm(\langle a, b \rangle) \quad \Phi([p, q]) = \int_p^q f.
+	Пусть \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) --- аддитивная функция промежутка, \(f \colon \langle a, b \rangle \to \mathbb{R}\) --- плотность \(\Phi\). Тогда \[
+		\forall [p, q] \in Segm \langle a, b \rangle \quad \Phi([p, q]) = \int_p^q f.
 	\]
 \end{theorem}
 
 \begin{proof}
-	Зафиксируем \([p, q] \in Segm(\langle a, b \rangle)\). Рассмотрим функцию \(F\): \[
+	Зафиксируем \([p, q] \in Segm \langle a, b \rangle\). Рассмотрим функцию \(F\): \[
 		F(x) =
 		\begin{cases}
 			\Phi([p, x]), & p < x \leqslant q \\
@@ -393,55 +396,3 @@
 		\end{enumerate}
 	\end{enumerate}
 \end{proof}
-
-\subsection{Теорема о существовании предела в терминах верхнего и нижнего пределов}
-
-\begin{theorem}
-	Пусть \((x_n)\) --- вещественная последовательность. Тогда \[
-		\varlimsup_{n \to \infty} x_n = \varliminf_{n \to \infty} x_n \Leftrightarrow \exists \lim_{n \to \infty} x_n.
-	\]
-\end{theorem}
-
-\begin{proof}
-	Докажем необходимость и достаточность по отдельности:
-	\begin{enumerate}
-		\item[\(\Rightarrow\)] Имеем: \[
-			\varlimsup_{n \to \infty} x_n = \lim_{n \to \infty} y_n, \quad
-			\varliminf_{n \to \infty} x_n = \lim_{n \to \infty} z_n, \quad
-			\forall n \quad z_n \leqslant x_n \leqslant y_n.
-		\]
-		Получается, \((x_n)\) <<зажата>> между двумя последовательностями с одинаковым пределом, а значит, по теореме о двух городовых она имеет тот же предел.
-		\item[\(\Leftarrow\)] Пусть \(\lim\limits_{n \to \infty} = l\), то есть \[
-			\forall \varepsilon > 0 \quad \exists N \quad \forall n > N \quad l - \varepsilon < x_n < l + \varepsilon.
-		\]
-		Теперь в неравенстве мы можем перейти к супремуму и получить, что верхний предел равен \(l\), и к инфимуму, получив, что нижний предел равен \(l\). 
-	\end{enumerate} 
-\end{proof}
-
-\subsection{Теорема о характеризации верхнего предела как частичного}
-
-\begin{theorem}
-	Пусть \((x_n)\) --- вещественная последовательность. Тогда \[
-		\varlimsup_{n \to \infty} x_n = l \Rightarrow \exists \lim_{k \to \infty} x_{n_k} = l.
-	\]
-\end{theorem}
-
-\begin{proof}
-	Предъявим подходящую подпоследовательность \((x_{n_k})\). По техническому определению предела имеем:
-	\begin{enumerate}
-		\item \[
-		\forall \varepsilon > 0 \quad \exists N_0 \quad \forall n > N_0 \quad x_n < l + \varepsilon,
-		\]
-		\item \[
-		\forall \varepsilon > 0 \quad \exists \textit{бесконечно много} \ n \quad l - \varepsilon < x_n.
-		\]
-	\end{enumerate}
-	Будем выбирать такие \(x_n\), чтобы для них выполнялись оба условия. Так как таких бесконечно много, мы получим подпоследовательность, стремящуюся к \(l\).
-\end{proof}
-
-\subsection{Площадь криволинейного сектора: в полярных координатах и для параметрической кривой}
-
-\begin{theorem}
-	Пусть функция \(f(\varphi) \colon [0, 2\pi] \to [0, +\infty]\) непрерывна.
-\end{theorem}
-

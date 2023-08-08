@@ -38,41 +38,41 @@
 % площадь
 \begin{definition}
 	Назовём \textit{фигурой} ограниченное подмножество в $\mathbb{R}^2$.
-	Пусть $\varepsilon$ --- множество всех фигур. Функция $\delta \colon \varepsilon \to [0; +\infty)$ называется \textit{площадью},
+	Пусть $\varepsilon$ --- множество всех фигур. Функция $\sigma \colon \varepsilon \to [0; +\infty)$ называется \textit{площадью},
 	если выполнены следующие условия:
 	\begin{enumerate}
-		\item Аддитивность: если $A = A_1 \sqcup A_2$, то $\delta (A) = \delta (A_1) + \delta (A_2)$,
-		\item Нормировка: $\hbox{$\delta ([a, b] \times [c, d])$} = (b - a) (d - c)$.
+		\item Аддитивность: если $A = A_1 \sqcup A_2$, то $\sigma (A) = \sigma (A_1) + \sigma (A_2)$,
+		\item Нормировка: $\hbox{$\sigma ([a, b] \times [c, d])$} = (b - a) (d - c)$.
 	\end{enumerate}
 \end{definition}
 
 \begin{remark}
-	Некоторые свойства $\delta$:
+	Некоторые свойства $\sigma$:
 	\begin{enumerate}
-		\item $\delta$ монотонна: $A \subset B \Rightarrow \delta (A) \leqslant \delta (B)$,
-		\item $A$ --- вертикальный отрезок $\Rightarrow \delta (A) = 0$.
+		\item $\sigma$ монотонна: $A \subset B \Rightarrow \sigma (A) \leqslant \sigma (B)$,
+		\item $A$ --- вертикальный отрезок $\Rightarrow \sigma (A) = 0$.
 	\end{enumerate}
 \end{remark}
 
 \begin{proof}
 	Докажем свойства по отдельности:
 	\begin{enumerate}
-		\item Поскольку \hbox{$B = A \sqcup (B \setminus A)$}, то \hbox{$\delta (B) = \delta (A) + \delta (B \setminus A) \geqslant \delta (A)$},
+		\item Поскольку \hbox{$B = A \sqcup (B \setminus A)$}, то \hbox{$\sigma (B) = \sigma (A) + \sigma (B \setminus A) \geqslant \sigma (A)$},
 		\item Рассмотрим $A$ как $[a,b] \times [c,d]$, где $\forall \varepsilon > 0 \ (b - a) < \varepsilon$.
-		Значит, $(b - a) = 0 \Rightarrow \delta (A) = 0$.
+		Значит, $(b - a) = 0 \Rightarrow \sigma (A) = 0$.
 	\end{enumerate}  
 \end{proof}
 
 % ослабленная площадь
 \begin{definition}
-	Назовём функцию $\delta \colon \varepsilon \to [0; +\infty)$ \textit{ослабленной площадью}, если выполняются следующие условия:
+	Назовём функцию $\sigma \colon \varepsilon \to [0; +\infty)$ \textit{ослабленной площадью}, если выполняются следующие условия:
 	\begin{enumerate}
-		\item Монотонность: если $A \subset B \hbox{, то } \delta (A) \leqslant \delta (B)$,
-		\item Нормировка: $\hbox{$\delta ([a, b] \times [c, d])$} = (b - a) (d - c)$,
+		\item Монотонность: если $A \subset B \hbox{, то } \sigma (A) \leqslant \sigma (B)$,
+		\item Нормировка: $\hbox{$\sigma ([a, b] \times [c, d])$} = (b - a) (d - c)$,
 		\item Ослабленная аддитивность. Пусть $A \in \varepsilon$, $l$ --- вертикальный промежуток,
 		$A_{\hbox{л}}$ --- часть $A$ в левой полуплоскости, $A_{\hbox{п}}$ --- часть $A$ в правой полуплоскости
 		(заметим, что $A = A_{\hbox{л}} + A_{\hbox{п}}$ и $A_{\hbox{л}} \cap A_{\hbox{п}} \subset l$).
-		Тогда $\delta (A) = \delta (A_{\hbox{л}}) + \delta (A_{\hbox{п}})$.
+		Тогда $\sigma (A) = \sigma (A_{\hbox{л}}) + \sigma (A_{\hbox{п}})$.
 	\end{enumerate}
 \end{definition}
 
@@ -96,9 +96,9 @@
 
 % определённый интеграл
 \begin{definition}
-	Пусть $f \colon [a, b] \to \mathbb{R}$ непрерывна, $\delta$ ---  ослабленная площадь.
+	Пусть $f \colon [a, b] \to \mathbb{R}$ непрерывна, $\sigma$ ---  ослабленная площадь.
 	\textit{Определённым интегралом} $f$ на $[a, b]$ называется \[
-		\delta (\hbox{ПГ}(f^+, [a, b])) - \delta (\hbox{ПГ}(f^-, [a, b])).
+		\sigma (\hbox{ПГ}(f^+, [a, b])) - \sigma (\hbox{ПГ}(f^-, [a, b])).
 	\]
 	Обозначается как \[
 		\int\limits^a_b f(x) dx \hbox{ или } \int\limits^a_b f.
