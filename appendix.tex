@@ -1,0 +1,58 @@
+\section{Приложение}
+
+\subsection{Эталонные интегралы}
+
+\begin{lemma}
+	Справедливы утверждения:
+	\begin{enumerate}
+		\item Интеграл \(\displaystyle \int_a^{+\infty} \frac{1}{x^p}\) сходится при \(p > 1\) и расходится в противном случае,
+		\item Интеграл \(\displaystyle \int_{\to 0}^a \frac{1}{x^p}\) сходится при \(p < 1\) и расходится в противном случае.
+		\item Интеграл \(\displaystyle \int_a^{+\infty} e^{-p x}\) сходится при \(p > 0\) и расходится в противном случае.
+	\end{enumerate}
+	
+\end{lemma}
+\begin{proof}
+	По пунктам:
+	\begin{enumerate}
+		\item Имеем \[
+		\int_a^{+\infty} \frac{1}{x^p} = \lim_{A \to +\infty} \int_a^A \frac{1}{x^p} = \lim_{A 	\to \infty} \left(
+		\begin{cases}
+			\dfrac{1}{1 - p} \cdot \dfrac{1}{x^{p - 1}}, &\text{если} \ p \neq 1, \\
+			\ln x, 									   &\text{если} \ p = 1
+		\end{cases}
+		\right) \bigg|_a^A.
+		\]
+		Отсюда ясно, что при \(p - 1 > 0\) конечный предел существует, а в противном случае предел равен бесконечности.
+		\item Имеем \[
+		\int_{\to 0}^a \frac{1}{x^p} = \lim_{A \to 0} \int_A^a \frac{1}{x^p} = \lim_{A 	\to 0} \left(
+		\begin{cases}
+			\dfrac{1}{1 - p} \cdot \dfrac{1}{x^{p - 1}}, &\text{если} \ p \neq 1, \\
+			\ln x, 									   &\text{если} \ p = 1
+		\end{cases}
+		\right) \bigg|_A^a.
+		\]
+		Отсюда ясно, что при \(p - 1 < 0\) конечный предел существует, а в противном случае предел равен бесконечности.
+		\item Очевидно, если посмотреть на первообразную.
+	\end{enumerate}
+\end{proof}
+
+\begin{remark}
+	Назовём вышеописанные интегралы \textit{эталонными}.
+\end{remark}
+
+\subsection{Эталонные ряды}
+
+\begin{lemma}
+	Справедливы утверждения:
+	\begin{enumerate}
+		\item Ряд  \(\sum \dfrac{1}{n^p}\) сходится при \(p > 1\) и расходится в противном случае,
+		\item Ряд \(\sum q^n\) сходится при \(p > 1\) и расходится в противном случае.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	ДОДЕЛАТЬ
+\end{proof}
+
+\begin{remark}
+	Назовём вышеописанные ряды \textit{эталонными}.
+\end{remark}

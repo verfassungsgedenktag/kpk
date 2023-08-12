@@ -4,26 +4,27 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english, russian]{babel}
 
+% ams
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+% остальное
 \usepackage{extarrows}
-
 \usepackage[dvips]{graphicx}
+\usepackage[usenames]{color}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
+% настройка
 \graphicspath{{noiseimages/}}
 \graphicspath{{Pictures/}}
-
-\usepackage[usenames]{color}
-\usepackage{hyperref}
-\hypersetup{pdfborder={0 0 0}}
 
 \frenchspacing
 \binoppenalty=10000
 \relpenalty=10000
 
-% окружение теорем
+% окружения
 \theoremstyle{plain}
 \newtheorem*{theorem}{Теорема}
 \newtheorem*{lemma}{Лемма}
@@ -34,9 +35,11 @@
 \newtheorem*{example}{Пример}
 
 \theoremstyle{remark}
-\newtheorem*{remark}{Замечание}
+\newtheorem{remark}{Замечание}[subsection]
 
-%\newcommand{\anonsection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
+% (ре)ньюкомманд
+\newcommand{\anonsection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
 
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\arabic{subsection}.}
+\renewcommand{\theremark}{\arabic{remark}}

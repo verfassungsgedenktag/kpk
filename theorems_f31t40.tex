@@ -235,6 +235,7 @@
 
 \subsection{Простейшие свойства несобственного интеграла}
 
+\hypertarget{svva}{}
 \begin{theorem}
 	Пусть функция \(f \colon [a, b) \to \mathbb{R}\) допустима. Тогда:
 	\begin{enumerate}
@@ -349,46 +350,6 @@
 
 \subsection{Изучение сходимости интеграла $\int_{10}^\infty \frac{dx}{x^\alpha (\ln x)^\beta}$}
 
-\begin{lemma}[её сюда вставил автор, чтобы ввести понятие эталонного интеграла]
-	Справедливы утверждения:
-	\begin{enumerate}
-		\item Интеграл \(\displaystyle \int_a^{+\infty} \frac{1}{x^p}\) сходится при \(p > 1\) и расходится в противном случае,
-		\item Интеграл \(\displaystyle \int_{\to 0}^a \frac{1}{x^p}\) сходится при \(p < 1\) и расходится в противном случае.
-		\item Интеграл \(\displaystyle \int_a^{+\infty} e^{-p x}\) сходится при \(p > 0\) и расходится в противном случае.
-	\end{enumerate}
-	
-\end{lemma}
-
-\begin{proof}
-	По пунктам:
-	\begin{enumerate}
-		\item Имеем \[
-			\int_a^{+\infty} \frac{1}{x^p} = \lim_{A \to +\infty} \int_a^A \frac{1}{x^p} = \lim_{A 	\to \infty} \left(
-			\begin{cases}
-				\dfrac{1}{1 - p} \cdot \dfrac{1}{x^{p - 1}}, &\text{если} \ p \neq 1, \\
-				\ln x, 									   &\text{если} \ p = 1
-			\end{cases}
-			\right) \bigg|_a^A.
-		\]
-		Отсюда ясно, что при \(p - 1 > 0\) конечный предел существует, а в противном случае предел равен бесконечности.
-		\item Имеем \[
-			\int_{\to 0}^a \frac{1}{x^p} = \lim_{A \to 0} \int_A^a \frac{1}{x^p} = \lim_{A 	\to 0} \left(
-			\begin{cases}
-				\dfrac{1}{1 - p} \cdot \dfrac{1}{x^{p - 1}}, &\text{если} \ p \neq 1, \\
-				\ln x, 									   &\text{если} \ p = 1
-			\end{cases}
-			\right) \bigg|_A^a.
-		\]
-		Отсюда ясно, что при \(p - 1 < 0\) конечный предел существует, а в противном случае предел равен бесконечности.
-		\item Очевидно, если посмотреть на первообразную.
-	\end{enumerate}
-	
-\end{proof}
-
-\begin{remark}
-	Назовём вышеописанные интегралы \textit{эталонными}.
-\end{remark}
-
 \begin{example}
 	Исследуем интеграл $\displaystyle \int_{10}^{+\infty} \frac{dx}{x^\alpha (\ln x)^\beta}$ на сходимость.
 	
@@ -397,7 +358,7 @@
 		\item Пусть \(\alpha > 1\). Запишем \(\alpha = 1 + 2a\), где \(a > 0\). Тогда \[
 			\frac{1}{x^\alpha (\ln x)^\beta} = \frac{1}{x^{1+a}} \cdot \frac{1}{x^a (\ln x)^\beta}.
 		\]
-		Ясно, что \(\dfrac{1}{x^a (\ln x)^\beta} \to 0\) при \(x \to \infty\). Почему? При положительном \(a\) выражение \(x^a \to \infty\) при \(x \to \infty\), а логарифм не сможет этому помешать: при \(\beta \geqslant 0\) он тоже стремится к бесконечности, а при \(\beta < 0\) логарифм просто недостаточно быстро растёт --- проверить это можно, вычислив по \hyperlink{lope}{правилу Лопиталя} \(\lim\limits_{x \to \infty} \dfrac{(\ln x)^{-\beta}}{x^a} = \lim\limits_{x \to \infty} \left(\dfrac{\ln x}{x^{-\frac{a}{\beta}}} \right)^{-\beta}\).
+		Ясно, что \(\dfrac{1}{x^a (\ln x)^\beta} \to 0\) при \(x \to \infty\). Почему? При положительном \(a\) выражение \(x^a \to \infty\) при \(x \to \infty\), а логарифм не сможет этому помешать: при \(\beta \geqslant 0\) он тоже стремится к бесконечности, а при \(\beta < 0\) логарифм просто недостаточно быстро растёт --- проверить это можно, вычислив по \hyperlink{t3}{правилу Лопиталя} \(\lim\limits_{x \to \infty} \dfrac{(\ln x)^{-\beta}}{x^a} = \lim\limits_{x \to \infty} \left(\dfrac{\ln x}{x^{-\frac{a}{\beta}}} \right)^{-\beta}\).
 		Тогда, НСНМ, \[
 			\frac{1}{x^{1 + a} (\ln x)^\beta} \cdot \frac{1}{x^a (\ln x)^\beta} \leqslant 	\frac{1}{x^{1 + a}}.
 		\]
@@ -422,6 +383,7 @@
 
 \subsection{Интеграл Эйлера -- Пуассона}
 
+\hypertarget{puas}{}
 \begin{theorem}
 	\[
 		\int_0^{+\infty} e^{-x^2} \, dx = \frac{\sqrt{\pi}}{2}.
