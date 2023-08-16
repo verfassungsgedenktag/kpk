@@ -1,17 +1,15 @@
 \section{Определения и формулировки}
 
 \subsection{\itshape Первообразная, неопределённый интеграл}
- 
- % первообразная
-\begin{definition}
+
+\begin{ndefinition}
 	Пусть $F, f \colon \langle a, b \rangle \to \mathbb{R}$.
 	Функция $F$ называется \textit{первообразной} $f$ на $\langle a, b \rangle$, если \[
 		\forall x \in \langle a, b \rangle \quad F'(x) = f(x).
 	\]
-\end{definition}
+\end{ndefinition}
 
-% неопределённый интеграл
-\begin{definition}
+\begin{ndefinition}
 	Пусть $f \colon \langle a, b \rangle \to \mathbb{R}$.
 	\textit{Неопределённым интегралом} функции $f$ на $\langle a, b \rangle$
 	(обозначается как $\int f$ или $\int f(x) dx$) называется множество её первообразных,
@@ -19,24 +17,36 @@
 		\int f = \{ F + C \mid C \in \mathbb{R} \},
 	\]
 	где $F$ --- первообразная $f$ на $\langle a, b \rangle$.
-\end{definition}
+\end{ndefinition}
 
 \subsection{Теорема о существовании первообразной}
 
-% теорема о существовании первообразной
 \begin{theorem}
 	Всякая непрерывная на промежутке функция имеет на нём первообразную.
 \end{theorem}
 
 \subsection{\itshape Таблица первообразных}
 
-% таблица первообразных
-ДОДЕЛАТЬ
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item \(\displaystyle \int x^a = \frac{x^{\alpha+1}}{\alpha + 1}\),
+		\item \(\displaystyle \int \frac{1}{x} = \ln |x|\),
+		\item \(\displaystyle \int e^x = e^x\),
+		\item \(\displaystyle \int a^x = \frac{a^x}{\ln a}\),
+		\item \(\displaystyle \int \sin x = -\cos x\),
+		\item \(\displaystyle \int \cos x = \sin x\),
+		\item \(\displaystyle \int \frac{1}{\cos^2 x} = \tg x\),
+		\item \(\displaystyle \int \frac{1}{\sin^2 x} = -\ctg x\),
+		\item \(\displaystyle \int \frac{1}{1 + x^2} = \arctg x\),
+		\item \(\displaystyle \int \frac{1}{1 - x^2} = \frac{1}{2} \ln \left|\frac{1 + x}{1 - x} \right|\),
+		\item \(\displaystyle \int \frac{1}{\sqrt{1 + x^2}} = \ln \left(x + \sqrt{1 + x^2} \right)\),
+		\item \(\displaystyle \int \frac{1}{\sqrt{1 - x^2}} = \arcsin x\).
+	\end{enumerate}
+\end{multicols}
 
 \subsection{Площадь, аддитивность площади, ослабленная аддитивность}
 
-% площадь
-\begin{definition}
+\begin{ndefinition}
 	Назовём \textit{фигурой} ограниченное подмножество в $\mathbb{R}^2$.
 	Пусть $\varepsilon$ --- множество всех фигур. Функция $\sigma \colon \varepsilon \to [0; +\infty)$ называется \textit{площадью},
 	если выполнены следующие условия:
@@ -44,7 +54,7 @@
 		\item Аддитивность: если $A = A_1 \sqcup A_2$, то $\sigma (A) = \sigma (A_1) + \sigma (A_2)$,
 		\item Нормировка: $\hbox{$\sigma ([a, b] \times [c, d])$} = (b - a) (d - c)$.
 	\end{enumerate}
-\end{definition}
+\end{ndefinition}
 
 \begin{remark}
 	Некоторые свойства $\sigma$:
@@ -53,7 +63,6 @@
 		\item $A$ --- вертикальный отрезок $\Rightarrow \sigma (A) = 0$.
 	\end{enumerate}
 \end{remark}
-
 \begin{proof}
 	Докажем свойства по отдельности:
 	\begin{enumerate}
@@ -63,8 +72,7 @@
 	\end{enumerate}  
 \end{proof}
 
-% ослабленная площадь
-\begin{definition}
+\begin{ndefinition}
 	Назовём функцию $\sigma \colon \varepsilon \to [0; +\infty)$ \textit{ослабленной площадью}, если выполняются следующие условия:
 	\begin{enumerate}
 		\item Монотонность: если $A \subset B \hbox{, то } \sigma (A) \leqslant \sigma (B)$,
@@ -74,57 +82,40 @@
 		(заметим, что $A = A_{\hbox{л}} + A_{\hbox{п}}$ и $A_{\hbox{л}} \cap A_{\hbox{п}} \subset l$).
 		Тогда $\sigma (A) = \sigma (A_{\hbox{л}}) + \sigma (A_{\hbox{п}})$.
 	\end{enumerate}
-\end{definition}
+\end{ndefinition}
 
 \subsection{Положительная и отрицательная срезки}
 
-% положительная и отрицательная срезки
 \begin{definition}
 	Пусть $f \colon \langle a, b \rangle \to \mathbb{R}$. Назовём функцию $f^+ = \max (f, 0)$ \textit{положительной срезкой}, а функцию $f^- = \max (-f, 0)$ --- \textit{отрицательной срезкой}. Заметим также, что $f = f^+ - f^-$ и $|f| = f^+ + f^-$.
 \end{definition}
 
 \subsection{\itshape Определённый интеграл}
 
-% подграфик
-\begin{definition}
+\begin{ndefinition}
 	Пусть $f \colon [a, b] \to [0, +\infty)$. Назовём \textit{подграфиком} $f$ на $[a, b]$
 	(обозначается как ПГ($f, [a, b]$)) следующее множество: \[
 		\hbox{$\{ (x, y) \mid x \in [a, b], \ 0 \leqslant y \leqslant f(x) \}$}.
 	\]
-\end{definition}
+\end{ndefinition}
 
-% определённый интеграл
-\begin{definition}
+\begin{ndefinition}
 	Пусть $f \colon [a, b] \to \mathbb{R}$ непрерывна, $\sigma$ ---  ослабленная площадь.
-	\textit{Определённым интегралом} $f$ на $[a, b]$ называется \[
+	\textit{Определённым интегралом} $f$ на $[a, b]$ (обозначается как \(\int^a_b f(x) \, dx\) или \(\int^a_b f\)) называется \[
 		\sigma (\hbox{ПГ}(f^+, [a, b])) - \sigma (\hbox{ПГ}(f^-, [a, b])).
 	\]
-	Обозначается как \[
-		\int\limits^a_b f(x) dx \hbox{ или } \int\limits^a_b f.
-	\]
-\end{definition}
+\end{ndefinition}
 
 \begin{remark}
 	Некоторые свойства и соглашения:
 	\begin{enumerate}
-		\item \[
-			\hbox{Если $f \geqslant 0$, то } \int_a^b f \geqslant 0,
-		\]
-		\item \[
-			\hbox{Если $f \equiv c \in \mathbb{R}$, то } \int_a^b f = c \cdot (b - a),
-		\]
-		\item \[
-			\int_a^b (-f) = -\int^a_b f,
-		\]
-		\item \[
-			\hbox{Можно считать, что } \int_a^a f = 0,
-		\]
-		\item \[
-			\forall c \in [a, b] \qquad \int_a^b f = \int_a^c f + \int_c^b f.
-		\]
+		\item Если $f \geqslant 0$, то \(\displaystyle \int_a^b f \geqslant 0\),
+		\item Если $f \equiv c \in \mathbb{R}$, то \(\displaystyle \int_a^b f = c \cdot (b - a)\),
+		\item \(\displaystyle \int_a^b (-f) = -\int^a_b f\),
+		\item Можно считать, что \(\displaystyle \int_a^a f = 0\),
+		\item Для всех \(c\) из \([a, b]\) \(\displaystyle \int_a^b f = \int_a^c f + \int_c^b f\).
 	\end{enumerate}
 \end{remark}
-
 \begin{proof}
 	Небольшие пояснения:
 	\begin{enumerate}
@@ -143,7 +134,7 @@
 	Пусть $f$ непрерывна на $[a, b]$. Тогда \[
 		\dfrac1{b - a}\int\limits_a^b f
 	\]
-	называется \textit{средним значением функции $f$ на промежутке $[a, b]$}.
+	называется \textit{средним значением} функции $f$ на промежутке $[a, b]$.
 \end{definition}
 
 \subsection{\itshape Выпуклая функция}
@@ -192,7 +183,6 @@
 \begin{remark}
 	Функция \(f\) выпукла на \(\langle a, b \rangle\) \(\Leftrightarrow\) надграфик \(f\) на \(\langle a, b \rangle\) --- выпуклое множество.
 \end{remark}
-
 \begin{proof}
 	Функция \(f\) выпукла на \(\langle a, b \rangle\) \(\Leftrightarrow\) любая хорда принадлежит надграфику \(f\) на \(\langle a, b \rangle\) \(\Leftrightarrow\) надграфик \(f\) --- выпуклое множество (если работает для хорд, сработает и для остальных отрезков, соединяющих две точки надграфика, потому что эти точки <<выше>> точек графика).
 \end{proof}

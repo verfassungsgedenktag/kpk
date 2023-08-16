@@ -38,15 +38,15 @@
 
 \subsection{Эпсилон-сеть, сверхограниченное множество}
 
-\begin{definition}
-	Множество \(E \subset X\) называется \textit{\(\varepsilon\)-сетью} для \(D\), если \[
+\begin{ndefinition}
+	Множество \(E \subset X\)  \textit{\(\varepsilon\)-сетью} для \(D\), если \[
 		\forall x \in D \quad \exists y \in E \quad \rho(x, y) < \varepsilon.
 	\]
-\end{definition}
+\end{ndefinition}
 
-\begin{definition}
+\begin{ndefinition}
 	Множество \(D\) называется \textit{сверхограниченным} в \(X\), если для любого положительного \(\varepsilon\) существует конечная \(\varepsilon\)-сеть.
-\end{definition}
+\end{ndefinition}
 
 \subsection{\itshape Несобственный интеграл, сходимость, расходимость}
 
@@ -73,15 +73,21 @@
 
 \subsection{\itshape Абсолютно сходящиеся интеграл, ряд}
 
-\begin{definition}
+\begin{ndefinition}
 	Пусть функция \(f\) допустима на \([a, b)\). Интеграл \(\int_{a}^{\to b} f\) называется \textit{абсолютно сходящимся}, если выполяются следующие условия:
 	\begin{enumerate}
 		\item \(\int_{a}^{\to b} f\) сходится,
 		\item \(\int_{a}^{\to b} |f|\) тоже сходится.
 	\end{enumerate}
-\end{definition}
+\end{ndefinition}
 
-ДОДЕЛАТЬ ПРО РЯДЫ
+\begin{ndefinition}
+	Аналогично ряд \(\sum a_k\) называется \textit{абсолютно сходящимся}, если:
+	\begin{enumerate}
+		\item Ряд \(\sum a_k\) сходится,
+		\item Ряд \(\sum |a_k|\) тоже сходится.
+	\end{enumerate}
+\end{ndefinition}
 
 \subsection{\itshape Числовой ряд, сумма ряда, сходимость, расходимость}
 
@@ -95,13 +101,13 @@
 	\end{description}
 \end{definition}
 
-\begin{remark}
+\begin{nremark}
 	Начинать нумерацию можно не с единицы, а с любого целого числа \(A\). Тогда переопределим \textit{частичную сумму} как \(S_N = \sum\limits_{k=A}^{N} a_k\).
-\end{remark}
+\end{nremark}
 
-\begin{remark}
+\begin{nremark}
 	Очевидно, что \(S_N - S_{N-1} = a_N\). Это значит, что подбирать слагаемые, чтобы получить ряд с нужной частичной суммой, очень просто!
-\end{remark}
+\end{nremark}
 
 \subsection{\(N\)-й остаток ряда}
 

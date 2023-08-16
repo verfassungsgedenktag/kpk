@@ -11,6 +11,7 @@
 \usepackage{amssymb}
 
 % остальное
+\usepackage{multicol}
 \usepackage{extarrows}
 \usepackage[dvips]{graphicx}
 \usepackage[usenames]{color}
@@ -32,14 +33,17 @@
 
 \theoremstyle{definition}
 \newtheorem*{definition}{Определение}
+\newtheorem{ndefinition}{Определение}[subsection]
 \newtheorem*{example}{Пример}
 
 \theoremstyle{remark}
-\newtheorem{remark}{Замечание}[subsection]
+\newtheorem*{remark}{Замечание}
+\newtheorem{nremark}{Замечание}[subsection]
 
 % (ре)ньюкомманд
 \newcommand{\anonsection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
 
 \renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\arabic{subsection}.}
-\renewcommand{\theremark}{\arabic{remark}}
+\renewcommand{\thenremark}{\arabic{nremark}}
+\renewcommand{\thendefinition}{\arabic{ndefinition}}
