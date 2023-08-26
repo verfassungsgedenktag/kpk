@@ -1,9 +1,107 @@
 \subsection{Произведение рядов, отсортированное произведение}
 
-ДОДЕЛАТЬ
+\begin{definition}
+	Возьмём биекцию \(\gamma \colon \mathbb{N} \to \mathbb{N} \times \mathbb{N}\), которая переводит \(x\) в \((\varphi(x), \psi(x))\). \textit{Произведением} рядов \(\sum a_k\), \(\sum b_k\) называется ряд вида \(\sum_{k=1}^{+\infty} a_{\varphi(k)} b_{\psi(k)}\).
+	
+	ДОДЕЛАТЬ
+\end{definition}
 
 \subsection{Перестановка ряда}
 
 \begin{definition}
 	Рассмотрим биекцию \(\omega \colon \mathbb{N} \to \mathbb{N}\). Ряд \(\sum b_k\) называется \textit{перестановкой} ряда \(\sum a_k\), если для всех \(k\) \(b_k = a_{\omega(k)}\). 
 \end{definition}
+
+\subsection{Бесконечное произведение}
+
+ДОДЕЛАТЬ
+
+\subsection{Скалярное произведение, евклидова норма и метрика в \(\mathbb{R}^m\)}
+
+\begin{definition}
+	Напомним, что \(\mathbb{R}^m\) --- линейное пространтсво вида \linebreak \(\{(x_1, \ldots, x_m) \mid x_i \in \mathbb{R}\}\). Также напомним некоторые понятия:
+	\begin{description}
+		\item[Скалярным произведением] \(\langle x, y \rangle\) векторов \(x, y \in \mathbb{R}^m\) называется выражение вида \( \sum\limits_{i=1}^n x_i y_i\).
+		\item[Евклидовой нормой] \(||x||\) вектора \(x \in \mathbb{R}^m\) называется выражение вида \linebreak \(\sqrt{\langle x, x \rangle} = \sqrt{x_1^2 + \ldots + x_m^2}\).
+		\item[Метрикой] \(\rho\) в \(\mathbb{R}^m\) будем называть отображение вида \(\rho(x, y) = || x - y||\). 
+	\end{description}
+\end{definition}
+
+\begin{remark}[принцип экономии палочек]
+	Далее норму вектора \(x\) будем обозначать как  \(|x|\), а не \(||x||\).
+\end{remark}
+
+\subsection{Окрестность точки в \(\mathbb{R}^m\), открытое множество}
+
+\begin{definition}
+	Введём следующие понятия:
+	\begin{description}
+		\item[Шаром] \(B_r (a)\) с центром в точке \(a\) и радиусом \(r\) называется множество вида \(\{x \mid \rho(x, a) < r\}\).
+		\item[Эпсилон-окрестностью] \(U(a)\) точки \(a\)называется шар \(B_\varepsilon (a)\).
+		\item[Открытым множеством] назовём множество, каждая точка которого является \textit{внутренней}, то есть входит в него с некоторой окрестностью.
+	\end{description}
+\end{definition}
+
+\subsection{\itshape Сходимость последовательности в \(\mathbb{R}^m\), покоординатная сходимость}
+
+\begin{definition}
+	Последовательность  \((x^{(n)})\) (нижний индекс зарезервируем для номера координаты) \textit{сходится} к \(a\), если \[
+		\forall \varepsilon > 0 \quad \exists N \quad \forall n > N \quad \rho(x^{(n)}, a) < \varepsilon.
+	\]
+	
+	Это, очевидно, равносильно \textit{покоординатной сходимости \(x^{(n)}\) к \(a\)}, то есть тому, что для любого \(k \in 1 : m \enskip x_k^{(n)} \to a_k\).
+\end{definition}
+
+\subsection{\itshape Предельная точка, замкнутое множество, замыкание}
+
+\begin{definition}
+	Точка  \(a\) называется \textit{предельной точкой множества} \(F\), если \[
+		\forall \varepsilon > 0 \quad \dot B_\varepsilon (a) \cap F \neq \varnothing.
+	\]
+	
+	Множество называется \textit{закрытым}, если оно содержит все свои предельные точки.
+	
+	\textit{Замыканием} множества \(G\) называется минимальное по включению закрытое множество, содержащее \(G\).
+\end{definition}
+
+\subsection{Координатная функция}
+
+\begin{definition}
+	Рассмотрим функцию \(f \colon \mathbb{R}^m \to \mathbb{R}^m\) следующего вида: \(f(x) = (f_1 (x), \ldots, f_m (x))\). Функции \(f_1 (x), \ldots, f_m (x)\) называются \textit{координатными}.
+\end{definition}
+
+\begin{remark}
+	\textit{Сходимость} и \textit{покоординатная сходимость} функции \(f\) определяются привычным образом.
+\end{remark}
+
+\subsection{Двойной предел, повторный предел}
+
+\begin{definition}
+	Пусть \(D_1, D_2 \subset \mathbb{R}\), \(a_1\) --- предельная точка \(D_1\), \(a_2\) --- предельная точка \(D_2\). Обозначим \(D \supset (D_1 \setminus \{a_1\}) \times (D_2 \setminus \{a_2\})\).
+	
+	Теперь рассмотрим функцию \(f \colon D \to \mathbb{R}\). Тогда:
+	\begin{enumerate}
+		\item Если \[
+			\forall x_1 \in D_1 \setminus \{a_1\} \quad \exists \varphi(x_1) := \lim_{x_2 \to a_2} f (x_1, x_2) \in \mathbb{R},
+		\]
+		то \(\lim\limits_{x_1 \to a_1} \varphi(x_1)\) называется \textit{повторным пределом}.
+		\item Аналогично если \[
+		\forall x_2 \in D_2 \setminus \{a_2\} \quad \exists \psi(x_2) := \lim_{x_1 \to a_1} f (x_1, x_2) \in \mathbb{R},
+		\]
+		то \(\lim\limits_{x_2 \to a_2} \psi(x_2)\) также называется \textit{повторным пределом}.
+		\item Если \[
+			\forall U(L) \quad \exists V_1 (a_1), V_2 (a_2) \quad \forall \parbox[t]{3cm}{\(x_1 \in \dot V_1 (a_1) \cap D_1\), \\ \(x_2 \in \dot V_2 (a_2) \cap D_2\)} \quad f(x_1, x_2) \in U(L),
+		\]
+		то \(L\) называется \textit{двойным пределом}.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Предел по направлению, предел вдоль пути}
+
+\begin{ndefinition}
+	Рассмотрим функцию \(f \colon \mathbb{R}^2 \to \mathbb{R}\) и \(v = (v_1, v_2) \in \mathbb{R}^2\). Предел \(\lim\limits_{t \to +0} f(a_1 + t v_1, a_2 + t v_2) = \lim\limits_{x \to a} f(x) |_L\), где \(L\) --- луч с началом в точке \(a\) и вектором \(v\), называется \textit{пределом \(f\) по направлению}.
+\end{ndefinition}
+
+\begin{ndefinition}
+	Рассмотрим функцию \(f \colon \mathbb{R}^2 \to \mathbb{R}\) и гладкий путь \(\gamma\), причём для любого \(t\) \(\gamma(t) \neq 0\). Предел \(\lim\limits_{x \to a} f(x) |_{C_\gamma}\), где \(C_\gamma\) --- носитель пути \(\gamma\), называется \textit{пределом \(f\) вдоль пути}.
+\end{ndefinition}
