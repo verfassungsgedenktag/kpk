@@ -90,7 +90,7 @@
 		I_n = \int_0^{\frac{\pi}{2}} \sin^n x \, dx = \int_0^{\frac{\pi}{2}} \sin^{n - 1} x \, d(-\cos x) = -\sin^{n - 1} x \, \cos x \bigg|_0^{\frac{\pi}{2}} + \\ 
 		+ (n - 1) \int_0^\frac{\pi}{2} \sin^{n - 2} x \, \cos^2 x \, dx.
 	\end{multline*}
-	Учтём, что двойная подстановка обнуляется, и применим формулу \(\cos^2 x = 1 - \sin^2 x\)):
+	Учтём, что двойная подстановка обнуляется, и применим формулу \linebreak \(\cos^2 x = 1 - \sin^2 x\)):
 	\begin{multline*}
 		I_n = (n - 1) \left(\int_0^\frac{\pi}{2} \sin^{n - 2} x \, dx - \int_0^\frac{\pi}{2} \sin^n x \, dx \right) = (n - 1) (I_{n - 2} - I_n).
 	\end{multline*}
@@ -106,9 +106,8 @@
 	\pi = \lim_{n \to \infty} \frac{1}{n} \left(\frac{(2n)!!}{(2n - 1)!!} \right)^2.
 	\]
 \end{theorem}
-
 \begin{proof}
-	При всех \(x \in \left(0, \dfrac{\pi}{2} \right)\) выполняется неравенство \(0 < \sin x < 1\), поэтому для любого \(n \in \mathbb{N}\) \[
+	При всех \(x \in \left(0, \dfrac{\pi}{2} \right)\) выполняется неравенство \linebreak \(0 < \sin x < 1\), поэтому для любого \(n \in \mathbb{N}\) \[
 	\sin^{2n + 1} < \sin^{2n} < \sin^{2n - 1} x,
 	\]
 	а тогда и \[

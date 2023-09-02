@@ -53,28 +53,25 @@
 \begin{lemma} \hypertarget{t2}{}
 	Пусть $f, g \colon D \subset X \to \mathbb{R}$, $a$ --- предельная точка $D$.
 	Пусть также $\exists U(a) \mid \forall x \in \dot{U}(a) ~ f(x) \neq 0, ~ g(x) \neq 0$
-	и \[
-		\lim_{x \to a} f(x) = 0, ~\lim_{x \to a} g(x) = 0. \eqno{(*)}
-	\]
-	Тогда \[
-		\forall (x_n) \mid \parbox[t]{1,5cm}{$x_n \to a, \\ x_n \in D, \\ x_n \neq a$}
-		~\exists (y_n) \mid \parbox[t]{1,5cm}{$y_n \to a, \\ y_n \in D, \\ y_n \neq a$}
-		~\text{такая, что}
-		~\lim_{n \to +\infty} \frac{g(y_n)}{g(x_n)} = 0, ~\lim_{n \to +\infty} \frac{f(y_n)}{g(x_n)} = 0.
-	\]
-	
-	ДОДЕЛАТЬ
+	и
+	\begin{equation} \label{uskor}
+		\lim_{x \to a} f(x) = 0, ~\lim_{x \to a} g(x) = 0.
+	\end{equation}
+	Тогда
+	\begin{multline*}
+		\forall (x_n) : \parbox[t]{1,5cm}{$x_n \to a, \\ x_n \in D, \\ x_n \neq a$} \quad \exists (y_n) : \parbox[t]{1,5cm}{$y_n \to a, \\ y_n \in D, \\ y_n \neq a$} \quad \\ \text{такая, что} \ \lim_{n \to +\infty} \frac{g(y_n)}{g(x_n)} = 0, \ \lim_{n \to +\infty} \frac{f(y_n)}{g(x_n)} = 0.
+	\end{multline*}
 \end{lemma}
 \begin{proof}
 	Будем искать $(y_n)$ как подпоследовательность $(x_n)$: зафиксируем $n$ и выберем в качестве $y_n$ такое $x_k$, что \[
 		\left| \frac{g(x_k)}{g(x_n)} < \frac1n \right|, \ \left| \frac{f(x_k)}{g(x_n)} < \frac1n \right|.
 	\]
-	В силу условия~(\textasteriskcentered) такое $x_k$ найдётся для всех $n$.
+	В силу условия~\eqref{uskor} такое $x_k$ найдётся для всех $n$.
 \end{proof}
 
 \begin{remark}
-	Если условие~(\textasteriskcentered) заменить на \[
-		\lim_{x \to a} f(x) = +\infty, ~\lim_{x \to a} g(x) = +\infty,
+	Если условие~\eqref{uskor} заменить на \[
+		\lim_{x \to a} f(x) = +\infty, \ \lim_{x \to a} g(x) = +\infty,
 	\]
 	лемма останется верна.
 \end{remark}
@@ -98,32 +95,30 @@
 \begin{proof}
 	$g' \neq 0 \Rightarrow g' \text{ постоянного знака} \Rightarrow g \text{ монотонна}$. \\
 	Рассмотрим $(x_n) \mid x_n \to a, ~x_n \in (a, b)$ и проверим, что $\lim\limits_{n \to \infty} \dfrac{f(x_n)}{g(x_n)} = L$.
-	Для $(x_n)$ построим $(y_n)$ из \hyperlink{t2}{леммы об ускоренной сходимости}. По теореме Коши
+	Для $(x_n)$ построим $(y_n)$ из \hyperlink{t2}{\bfseries леммы об ускоренной сходимости}. По теореме Коши
 	$\exists c_n \in (x_n, y_n)$ такое, что \[
 		\frac{f(x_n) - f(y_n)}{g(x_n) - g(y_n)} = \frac{f'(c_n)}{g'(c_n)}.
 	\]
 	Выразим отсюда $\dfrac{f(x_n)}{g(x_n)}$: \[
 		\frac{f(x_n)}{g(x_n)} = \frac{f(y_n)}{g(x_n)} + \frac{f'(c_n)}{g'(c_n)} \left( 1 - \frac{g(y_n)}{g(x_n)} \right).
 	\]
-	В силу \hyperlink{t2}{\bfseries леммы об ускоренной сходимости}
-	\hbox{$\dfrac{f(y_n)}{g(x_n)} \xrightarrow[n \to \infty]{} 0$}, \hbox{$\dfrac{g(y_n)}{g(x_n)} \xrightarrow[n \to \infty]{} 0$}.
-	Тогда $\dfrac{f(x_n)}{g(x_n)} \xrightarrow[n \to \infty]{} L$.
+	В силу леммы об ускоренной сходимости $\dfrac{f(y_n)}{g(x_n)} \to 0$, $\dfrac{g(y_n)}{g(x_n)} \to 0$ при \(n \to \infty\). Тогда $\dfrac{f(x_n)}{g(x_n)} \xrightarrow[n \to \infty]{} L$.
 \end{proof}
 
 \subsection{<<Теорема Гаусса>>}
 
 \begin{theorem} \hypertarget{t4}{}
-	Справедливо следующее равенство: \[
+	\[
 		1 + 2 + \ldots + n = \frac{n (n + 1)}{2}.
 	\]
 \end{theorem}
 \begin{proof}
+	Рассмотрим \(f(x) = 1 + x + x^2 + \ldots + x^n = \dfrac{x^{n + 1} - 1}{x - 1}\). Запишем следующие выражения:
 	\begin{align*}
-									    		f(x) &= 1 + x + x^2 + \ldots + x^n = \frac{x^{n + 1} - 1}{x - 1}		\\
-		 		  \left( x \frac{d}{dx} \right) f(x) &= x + 2 x + 3 x^2 + \ldots + n x^n								\\
-				\left( x \frac{d}{dx} \right)^2 f(x) &= x + 2^2 x + 3^2 x^2 + \ldots + n^2 x^n							\\
-													 &\cdots															\\
-		g(x) := \left( x \frac{d}{dx} \right)^k f(x) &= 1^k x + 2^k x + 3^k x^2 + \ldots + n^k x^n						\\
+		 		  \left( x \frac{d}{dx} \right) f(x) &= x + 2 x + 3 x^2 + \ldots + n x^n, \\
+				\left( x \frac{d}{dx} \right)^2 f(x) &= x + 2^2 x + 3^2 x^2 + \ldots + n^2 x^n, \\
+													 &\enskip \vdots \\
+		g(x) := \left( x \frac{d}{dx} \right)^k f(x) &= 1^k x + 2^k x + 3^k x^2 + \ldots + n^k x^n.	\\
 	\end{align*}
 	
 	ДОДЕЛАТЬ
@@ -133,12 +128,29 @@
 
 \begin{example} \hypertarget{t5}{}
 	Пусть \[
-		f(x) = \begin{cases} e^{-\frac1x}, \quad &x < 0 \\ 0, \quad &x \geqslant 0 \end{cases}
+		f(x) = 
+		\begin{cases}
+			e^{-\frac1x}, \quad &x > 0, \\
+					   0, \quad &x \leqslant 0.
+		\end{cases}
 	\]
-	Тогда $\forall k \in \mathbb{N} \quad f^{(k)}(0) = 0$.
+	Тогда $f^{(k)}(0) = 0$ для любого $k \in \mathbb{N}$.
 \end{example}
 \begin{proof}
-	ДОДЕЛАТЬ
+	Сначала рассмотрим \(k = 1\) и проверим, существует ли производная в точке \(0\). Вычислим правую производную:
+	\begin{multline*}
+		f'_+ (0) = \lim_{x \to 0+0} \frac{1}{x^2} \, e^{-\frac{1}{x}} = \lim_{x \to 0+0} \frac{1/x^2}{e^{\frac{1}{x}}} \xlongequal[\text{правило Лопиталя}]{} \lim_{x \to 0+0} \frac{-2/x^3}{e^{\frac{1}{x}} \cdot (-1/x^2)} = \\
+		= \lim_{x \to 0+0} \frac{2/x}{e^{\frac{1}{x}}} \xlongequal[\text{опять правило Лопиталя}]{} \lim_{x \to 0+0} \frac{-2/x^2}{e^{\frac{1}{x}} \cdot (-1/x^2)} = \lim_{x \to 0+0} \frac{2}{e^{\frac{1}{x}}} = 0.
+	\end{multline*}
+	Аналогично \(f'_- (0) = 0\). Теперь проверим, что для всех \(k \in \mathbb{N}\) \(f^{(k)}_+ (0) = 0\) (равенство левой производной нулю проверяется аналогичным образом).
+	
+	Легко видеть, что при \(x > 0\) \(f^{(k)} = P \left(\frac{1}{x} \right) \cdot e^{-\frac{1}{x}}\), где \(P\) --- многочлен от \(\frac{1}{x}\). Тогда достаточно проверить, что каждое слагаемое итогового выражения равно нулю: \[
+		\lim_{x \to 0+0} \frac{1}{x^n} \, e^{-\frac{1}{x}} = \left(\lim_{x \to 0+0} \frac{1}{x} \, e^{-\frac{1}{nx}} \right)^n.
+	\]
+	Тогда рассмотрим предел \[
+		\lim_{x \to 0+0} \frac{1/x}{e^{\frac{1}{nx}}} \xlongequal[\text{снова правило Лопиталя}]{} \lim_{x \to 0+0} \frac{1/x^2}{e^{\frac{1}{nx}} \cdot (-1/nx^2)} = 0.
+	\]
+	И всё\dots
 \end{proof}
 
 \subsection{Теорема Штольца}
@@ -235,7 +247,7 @@
 		\int_a^b f &= \sigma (\hbox{ПГ}(f^+, [a, b])) - \sigma (\hbox{ПГ}(f^-, [a, b])), \\
 		\int_a^b g &= \sigma (\hbox{ПГ}(g^+, [a, b])) - \sigma (\hbox{ПГ}(g^-, [a, b])).
 	\end{align*}
-	Поскольку $f \geqslant g$, то $\hbox{ПГ}(f^+, [a, b]) \subseteq \hbox{ПГ}(g^+, [a, b])$. А значит, \\
+	Поскольку $f \leqslant g$, то $\hbox{ПГ}(f^+, [a, b]) \subseteq \hbox{ПГ}(g^+, [a, b])$. А значит, \\
 	$\sigma (\hbox{ПГ}(f^+, [a, b])) \leqslant \sigma (\hbox{ПГ}(g^+, [a, b]))$. С отрицательной срезкой наоборот, 
 	но в силу того, что её ослабленная площадь $\sigma$ вычитается, неравенство остаётся справедливым.
 \end{proof}

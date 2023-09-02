@@ -1,10 +1,12 @@
 \subsection{Произведение рядов, отсортированное произведение}
 
-\begin{definition}
+\begin{ndefinition}
 	Возьмём биекцию \(\gamma \colon \mathbb{N} \to \mathbb{N} \times \mathbb{N}\), которая переводит \(x\) в \((\varphi(x), \psi(x))\). \textit{Произведением} рядов \(\sum a_k\), \(\sum b_k\) называется ряд вида \(\sum_{k=1}^{+\infty} a_{\varphi(k)} b_{\psi(k)}\).
-	
-	ДОДЕЛАТЬ
-\end{definition}
+\end{ndefinition}
+
+\begin{ndefinition}
+	Пусть \(\sum a_k \cdot \sum b_k = \sum c_k\), где \(c_k = a_0 b_k + a_1 b_{k-1} + \ldots + a_k b_0\). Тогда ряд \(\sum c_k\) называется \textit{отсортированным произведением}.
+\end{ndefinition}
 
 \subsection{Перестановка ряда}
 
@@ -14,7 +16,34 @@
 
 \subsection{Бесконечное произведение}
 
-ДОДЕЛАТЬ
+\begin{definition}
+	Выражение \(\prod\limits_{k=1}^{+\infty} a_k\) называется \textit{бесконечным произведением}. Обозначим \(P_n = \prod\limits_{k=1}^{n} a_k\). Если существует конечный предел \(\lim\limits_{n \to \infty} P_n\), то говорят, что произведение \textit{сходится}; если \(\lim\limits_{n \to \infty} P_n = 0\), говорят, что ряд расходится к нулю. Во всех остальных случаях (предел равен бесконечности или не существует) говорят, что ряд расходится.
+\end{definition}
+
+\begin{remark} \hypertarget{besk}{}
+	Пусть для всех \(k\) \(a_k \neq 0\). Обозначим \(\Pi_n = \prod\limits_{k=n}^{+\infty} a_k\) и отметим некоторые свойства бесконечного произведения:
+	\begin{enumerate}
+		\item \(\prod\limits_{k=1}^{+\infty} a_k = \prod\limits_{k=1}^{n-1} a_k \cdot \Pi_n\), и сходимость левой части равносильна сходимости правой для всех \(n\),
+		\item \(\prod a_k\) сходится \(\Rightarrow\) \(\Pi_n \xrightarrow[n \to \infty]{} 1\),
+		\item \(\prod a_k\) сходится \(\Rightarrow\) \(a_k \to 1\),
+		\item Сходимость \(\prod a_k\) возможна только если, НСНМ, \(a_k > 0\),
+		\item Пусть \(a_k > 0\). Тогда \(\prod a_k\) сходится \(\Leftrightarrow\) ряд \(\sum \ln a_k\) сходится. Причём если \(\sum \ln a_k = S\), то \(\prod a_k = e^S\).
+	\end{enumerate}
+\end{remark}
+\begin{proof}
+	Докажем, но не очень подробно:
+	\begin{enumerate}
+		\item Просто перейдём к пределу при \(n \to \infty\). Если предел слева существует, то и справа тоже, и наоборот,
+		\item Следует из того, что \(\Pi_n = \frac{\prod a_k}{P_{n-1}} \xrightarrow[n \to \infty]{} 1\),
+		\item Так как \(a_k = \frac{P_k}{P_{k-1}} \xrightarrow[k \to \infty]{} 1\),
+		\item По теореме о стабилизации знака,
+		\item Очевидно из того, что 
+		\begin{gather*}
+			P_n = a_1 \cdot a_2 \cdot \ldots \cdot a_n \xrightarrow[n \to \infty]{} P, \\
+			\ln a_1 + \ln a_2 + \ldots + \ln a_n \xrightarrow[n \to \infty]{} \ln P.
+		\end{gather*}
+	\end{enumerate}
+\end{proof}
 
 \subsection{Скалярное произведение, евклидова норма и метрика в \(\mathbb{R}^m\)}
 
