@@ -59,7 +59,7 @@
 \end{nremark}
 \begin{proof}
 	Пусть \(a = x_0 < x_1 < \ldots < x_{n - 1} < x_n = b\). Тогда \[
-		\int_a^b = \sum_{k = 1}^n \int_{x_{k - 1}}^{x_k} \widetilde{f}_k = \sum_{k = 1}^n F_k(x_k) - F_k (x_{k - 1}) = \sum_{k = 1}^n F(x_k) - F(x_{k - 1}).
+		\int_a^b f = \sum_{k = 1}^n \int_{x_{k - 1}}^{x_k} \widetilde{f}_k = \sum_{k = 1}^n F_k(x_k) - F_k (x_{k - 1}) = \sum_{k = 1}^n F(x_k) - F(x_{k - 1}).
 	\]
 	Получили телескопическую сумму, после приведения подобных равную \(F(a) - F(b)\).
 \end{proof}
@@ -70,30 +70,29 @@
 	Пусть \(a, b \in \overline{\mathbb{R}}\), \(a < b\). Обозначим как \(Segm \langle a, b \rangle\) множество вида \(\{[p, q] \mid [p, q] \subset \langle a, b \rangle\}\). Тогда:
 	\begin{enumerate}
 		\item Функция \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) называется \textit{функцией промежутка},
-		\item Функция \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\), такая, что \[
+		\item Функция \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) такая, что \[
 			\forall [p, q] \in Segm \langle a, b \rangle \quad \forall \in (p, q) \quad \Phi([p, q]) = \Phi([p, c]) + \Phi([c, q]),
 		\]
 		называется \textit{аддитивной функцией промежутка}.
 	\end{enumerate}
 \end{definition}
 
-\begin{example}
-	Если функция \(f\) непрерывна на \(\langle a, b \rangle\), то \(f\) --- плотность функции \(\Phi\), такой, что \[
-		\Phi([p, q]) = \int\limits_a^b f.
-	\]
-	Действительно, по \hyperlink{sredneye}{теореме о среднем} имеем\[
-		\inf_{[p, q]} (f) \cdot (q - p) \leqslant \int\limits_p^q f \leqslant \max_{[p, q]} (f) \cdot (q - p).
-	\]
-\end{example}
-
 \subsection{Плотность аддитивной функции промежутка}
 
 \begin{definition}
 	Пусть \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) --- аддитивная функция промежутка, тогда функция \(f: \langle a, b \rangle \to \mathbb{R}\) называется \textit{плотностью} \(\Phi\) на \(\langle a, b \rangle\), если \[
-	\forall \Delta \in Segm \langle a, b \rangle \quad |\Delta| \inf_\Delta(f) \leqslant \Phi(\Delta) \leqslant |\Delta| \sup_\Delta(f).
+	\forall \Delta \in Segm \langle a, b \rangle \quad |\Delta| \cdot \inf_\Delta(f) \leqslant \Phi(\Delta) \leqslant |\Delta| \cdot \sup_\Delta(f).
 	\]
-	
 \end{definition}
+
+\begin{example}
+	Если функция \(f\) непрерывна на \(\langle a, b \rangle\), то \(f\) --- плотность функции \(\Phi\), такой, что \[
+	\Phi([p, q]) = \int\limits_a^b f.
+	\]
+	Действительно, по \hyperlink{sredneye}{теореме о среднем} имеем\[
+	\inf_{[p, q]} (f) \cdot (q - p) \leqslant \int\limits_p^q f \leqslant \max_{[p, q]} (f) \cdot (q - p).
+	\]
+\end{example}
 
 \subsection{\itshape Верхний и нижний пределы последовательности}
 
@@ -139,7 +138,7 @@
 	Введём следующие понятия:
 	\begin{description}
 		\item[Дроблением] отрезка \([a, b]\) называется возрастающий набор \(x_i\), принадлежащих отрезку \([a, b]\). Пусть для определённости \linebreak \(a = x_0 \leqslant x_1 \leqslant \ldots \leqslant x_{n - 1} \leqslant x_n = b\). Тогда эти \(x_i\) разбивают \([a, b]\) на \(n\) соприкасающихся подотрезков \([x_i, x_{i + 1}]\).
-		\item[Рангом] дробления называется длина наибольшего подотрезка \([x_i, x_{i + 1}]\), то есть \(\max (x_{i + 1} - x_i)\), где \(i \in 1 : n\).
+		\item[Рангом] дробления называется длина наибольшего подотрезка \([x_i, x_{i + 1}]\), то есть \(\max (x_{i + 1} - x_i)\), где \(i \in 0 : n\).
 		\item[Оснащением] называется набор точек \(\xi_i\), принадлежащих отрезку \([a, b]\), где \(i \in 1 : n\) и каждая \(\xi_i\) принадлежит уникальному подотрезку дробления.
 	\end{description}
 \end{definition}
@@ -155,7 +154,7 @@
 \begin{definition}
 	Введём следующие понятия:
 	\begin{description}
-		\item[Гладким путём] называется путь\footnote{Напомним, что \textit{путём} из \(A\) в \(B\), где \(A\) и \(B\) \(\in \mathbb{R}^m\), называется непрерывная функция \(\gamma \colon [a, b] \to \mathbb{R}^m\), такая, что \(\gamma(a) = A\), \(\gamma(b) = B\).} \(\gamma \colon [a, b] \to \mathbb{R}^m\), каждая из координатных функций \(\gamma_i\) которого непрерывно дифференцируема.
+		\item[Гладким путём] называется путь\footnote{Напомним, что \textit{путём} из \(A\) в \(B\), где \(A\) и \(B\) \(\in \mathbb{R}^m\), называется непрерывная функция \(\gamma \colon [a, b] \to \mathbb{R}^m\) такая, что \(\gamma(a) = A\), \(\gamma(b) = B\).} \(\gamma \colon [a, b] \to \mathbb{R}^m\), каждая из координатных функций \(\gamma_i\) которого непрерывно дифференцируема.
 		\item[Вектором скорости] называется производная функция пути.
 		\item[Носителем пути] \(C_\gamma\) называется образ пути \(\gamma\).
 	\end{description}

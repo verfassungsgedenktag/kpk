@@ -40,20 +40,20 @@
 	\]
 	Справедливость нижней границы очевидна, так как мы рассматриваем положительные \(x\), а справедливость верхней следует из того, что максимум функции \(\{x\} (1 - \{x\})\) достигается в точке \(x = \dfrac{1}{2}\), так как это, как говорилось выше, лишь частный случай функции \(\psi(x) = (x_i - x) (x - x_{i - 1})\), где \(x_i\) и \(x_{i - 1}\) --- соседние целые числа.
 	
-	Понятно, что при при \(p > 1\) правая часть превращается в \(O(n^{p - 1})\), а при \(-1 < p < 1\) --- в \(O(1)\), то наш интеграл --- \(O(\max(1, n^{p - 1}))\). Отметим, что при \(p = 1\), рассуждения заканчиваются в самом начале, так как  \(\dfrac{p (p - 1)}{2} = 0\). Закинем под \(O\) все имеющиеся константы и получим, что нужно.
+	Понятно, что при при \(p > 1\) правая часть превращается в \(O(n^{p - 1})\), а при \(-1 < p < 1\) --- в \(O(1)\), тогда наш интеграл --- \(O(\max(1, n^{p - 1}))\). Отметим, что при \(p = 1\), рассуждения заканчиваются в самом начале, так как  \(\dfrac{p (p - 1)}{2} = 0\). Закинем под \(O\) все имеющиеся константы и получим, что нужно.
 \end{proof}
 
 \subsection{Асимптотика частичных сумм гармонического ряда}
 
 \begin{example}
 	\[
-	1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{n} = \ln n + \gamma + o(1) \enskip \text{при} \ \gamma \in \left[\frac{4}{8}, \frac{5}{8}\right].
+	1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} = \ln n + \gamma + o(1) \enskip \text{при} \ \gamma \in \left[\frac{4}{8}, \frac{5}{8}\right].
 	\]
 \end{example}
 
 \begin{proof}
 	Рассмотрим \(f(x) = \dfrac{1}{x}\). По \hyperlink{eumak}{формуле Эйлера -- Маклорена} \[
-	1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{n} = \int_1^n \frac{1}{x} dx + \frac{1}{2} + \frac{1}{2n} + \int_1^n \frac{1}{x^3} \{x\} (1 - \{x\}) dx.
+	1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} = \int_1^n \frac{1}{x} dx + \frac{1}{2} + \frac{1}{2n} + \int_1^n \frac{1}{x^3} \{x\} (1 - \{x\}) dx.
 	\] 
 	Как и в прошлый раз, возьмём интеграл \(\dfrac{1}{x}\): \[
 	\int_1^n \frac{1}{x} dx = \ln n.
@@ -62,7 +62,7 @@
 	0 \leqslant \int_1^n \frac{1}{x^3} \{x\} (1 - \{x\}) dx \leqslant \frac{1}{4} \left(-\frac{1}{2n^2} + \frac{1}{2} \right) = \frac{1}{8} \left(1 - \frac{1}{n^2} \right) \leqslant \frac{1}{8}.
 	\]
 	Так как имеющаяся у нас $\dfrac{1}{2n}$ стремится к нулю при \(n \to \infty\), получаем: \[
-	1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{n} = \ln n + \gamma + o(1).
+	1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} = \ln n + \gamma + o(1).
 	\]
 	В константу \(\gamma\) мы записали \(\dfrac{1}{2}\) и значение интеграла, то есть \(\gamma \in \left[\dfrac{4}{8}, \dfrac{5}{8}\right]\), а \(o(1)\) --- это \(\dfrac{1}{2n}\), стремящаяся к нулю при \(n \to \infty\).
 \end{proof}
@@ -108,7 +108,7 @@
 \end{theorem}
 \begin{proof}
 	При всех \(x \in \left(0, \dfrac{\pi}{2} \right)\) выполняется неравенство \linebreak \(0 < \sin x < 1\), поэтому для любого \(n \in \mathbb{N}\) \[
-	\sin^{2n + 1} < \sin^{2n} < \sin^{2n - 1} x,
+	\sin^{2n + 1} x < \sin^{2n} x < \sin^{2n - 1} x,
 	\]
 	а тогда и \[
 	I_{2n + 1} < I_{2n} < I_{2n - 1}.
@@ -152,7 +152,7 @@
 	\sqrt{\pi} = \lim_{n \to \infty} \frac{1}{\sqrt{n}} \cdot \frac{(2n)!!}{(2n - 1)!!}.
 	\]
 	Преобразуем эту формулу: \[
-	\frac{1}{\sqrt{n}} \cdot \frac{(2n)!!}{(2n - 1)!!} = \frac{1}{\sqrt{n}} \cdot \frac{2^n \cdot n!}{(2n - 1)!!} = \frac{1}{\sqrt{n}} \cdot \frac{2^n \cdot n! \cdot (2n)!!}{(2n)!} = \frac{(2^n \cdot n!)^2}{\sqrt{n} \cdot (2n)!}
+	\frac{1}{\sqrt{n}} \cdot \frac{(2n)!!}{(2n - 1)!!} = \frac{1}{\sqrt{n}} \cdot \frac{2^n \cdot n!}{(2n - 1)!!} = \frac{1}{\sqrt{n}} \cdot \frac{2^n \cdot n! \cdot (2n)!!}{(2n)!} = \frac{(2^n \cdot n!)^2}{\sqrt{n} \cdot (2n)!}.
 	\]
 	Теперь можем воспользоваться нашими наработками: \[
 	\frac{(2^n \cdot n!)^2}{\sqrt{n} \cdot (2n)!} = \frac{(2^n \cdot n^n e^{-n} \sqrt{n} \, C')^2}{\sqrt{n} \cdot (2n)^{2n} e^{-2n} \sqrt{2n} \, C'} = \frac{C'}{\sqrt{2}}.
@@ -359,9 +359,9 @@
 		\]
 		Ясно, что \(\dfrac{1}{x^a (\ln x)^\beta} \to 0\) при \(x \to \infty\). Почему? При положительном \(a\) выражение \(x^a \to \infty\) при \(x \to \infty\), а логарифм не сможет этому помешать: при \(\beta \geqslant 0\) он тоже стремится к бесконечности, а при \(\beta < 0\) логарифм просто недостаточно быстро растёт --- проверить это можно, вычислив по \hyperlink{t3}{правилу Лопиталя} \(\lim\limits_{x \to \infty} \dfrac{(\ln x)^{-\beta}}{x^a} = \lim\limits_{x \to \infty} \left(\dfrac{\ln x}{x^{-\frac{a}{\beta}}} \right)^{-\beta}\).
 		Тогда, НСНМ, \[
-			\frac{1}{x^{1 + a} (\ln x)^\beta} \cdot \frac{1}{x^a (\ln x)^\beta} \leqslant 	\frac{1}{x^{1 + a}}.
+			\frac{1}{x^{1 + a}} \cdot \frac{1}{x^a (\ln x)^\beta} \leqslant 	\frac{1}{x^{1 + a}}.
 		\]
-		Интеграл \(\displaystyle \int_{10}^{+\infty} \frac{1}{x^{1 + a}}\) сходится как эталонный, а значит и рассматриваемый интеграл тоже сходится.
+		Интеграл \(\displaystyle \int_{10}^{+\infty} \frac{1}{x^{1 + a}}\) сходится как \hyperlink{etint}{\bfseries эталонный}, а значит и рассматриваемый интеграл тоже сходится.
 		\item Пусть теперь \(\alpha < 1\). Запишем \(\alpha = 1 - 2b\), где \(b > 0\). Тогда \[
 			\frac{1}{x^\alpha (\ln x)^\beta} = \frac{1}{x^{1 - b}} \cdot \frac{x^b}{(\ln x)^\beta}.
 		\]
