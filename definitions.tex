@@ -1,0 +1,612 @@
+\section{Определения и формулировки}
+
+\subsection{\itshape Первообразная, неопределённый интеграл}
+
+\begin{ndefinition}
+	Пусть $F, f \colon \langle a, b \rangle \to \mathbb{R}$.
+	Функция $F$ называется \textit{первообразной} $f$ на $\langle a, b \rangle$, если \[
+	\forall x \in \langle a, b \rangle \quad F'(x) = f(x).
+	\]
+\end{ndefinition}
+
+\begin{ndefinition}
+	Пусть $f \colon \langle a, b \rangle \to \mathbb{R}$.
+	\textit{Неопределённым интегралом} функции $f$ на $\langle a, b \rangle$
+	(обозначается как $\int f$ или $\int f(x) \, dx$) называется множество её первообразных,
+	то есть \[
+	\int f = \{ \, F + C \mid C \in \mathbb{R} \, \},
+	\]
+	где $F$ --- первообразная $f$ на $\langle a, b \rangle$.
+\end{ndefinition}
+
+\subsection{Теорема о существовании первообразной}
+
+\begin{theorem}
+	Всякая непрерывная на промежутке функция имеет на нём первообразную.
+\end{theorem}
+
+\subsection{\itshape Таблица первообразных}
+
+\begin{multicols}{2}
+	\begin{enumerate}
+		\item \(\displaystyle \int x^a = \frac{x^{\alpha+1}}{\alpha + 1}\),
+		\item \(\displaystyle \int \frac{1}{x} = \ln |x|\),
+		\item \(\displaystyle \int e^x = e^x\),
+		\item \(\displaystyle \int a^x = \frac{a^x}{\ln a}\),
+		\item \(\displaystyle \int \sin x = -\cos x\),
+		\item \(\displaystyle \int \cos x = \sin x\),
+		\item \(\displaystyle \int \frac{1}{\cos^2 x} = \tg x\),
+		\item \(\displaystyle \int \frac{1}{\sin^2 x} = -\ctg x\),
+		\item \(\displaystyle \int \frac{1}{1 + x^2} = \arctg x\),
+		\item \(\displaystyle \int \frac{1}{1 - x^2} = \frac{1}{2} \ln \left|\frac{1 + x}{1 - x} \right|\),
+		\item \(\displaystyle \int \frac{1}{\sqrt{1 + x^2}} = \ln \left(x + \sqrt{1 + x^2} \right)\),
+		\item \(\displaystyle \int \frac{1}{\sqrt{1 - x^2}} = \arcsin x\).
+	\end{enumerate}
+\end{multicols}
+
+\subsection{Площадь, аддитивность площади, ослабленная аддитивность}
+
+\begin{ndefinition}
+	Назовём \textit{фигурой} ограниченное подмножество в $\mathbb{R}^2$.
+	Пусть $\varepsilon$ --- множество всех фигур. Функция $\sigma \colon \varepsilon \to [0; +\infty)$ называется \textit{площадью},
+	если выполнены следующие условия:
+	\begin{enumerate}
+		\item Аддитивность: если $A = A_1 \sqcup A_2$, то $\sigma (A) = \sigma (A_1) + \sigma (A_2)$,
+		\item Нормировка: $\hbox{$\sigma ([a, b] \times [c, d])$} = (b - a) (d - c)$.
+	\end{enumerate}
+\end{ndefinition}
+
+\begin{remark}
+	Некоторые свойства $\sigma$:
+	\begin{enumerate}
+		\item $\sigma$ монотонна: $A \subset B \Rightarrow \sigma (A) \leqslant \sigma (B)$,
+		\item $A$ --- вертикальный отрезок $\Rightarrow \sigma (A) = 0$.
+	\end{enumerate}
+\end{remark}
+\begin{proof}
+	Докажем свойства по отдельности:
+	\begin{enumerate}
+		\item Поскольку \hbox{$B = A \sqcup (B \setminus A)$}, то \hbox{$\sigma (B) = \sigma (A) + \sigma (B \setminus A) \geqslant \sigma (A)$},
+		\item Рассмотрим $A$ как $[a,b] \times [c,d]$, где $\forall \varepsilon > 0 \ (b - a) < \varepsilon$.
+		Значит, $(b - a) = 0 \Rightarrow \sigma (A) = 0$.
+	\end{enumerate}  
+\end{proof}
+
+\begin{ndefinition}
+	Назовём функцию $\sigma \colon \varepsilon \to [0; +\infty)$ \textit{ослабленной площадью}, если выполняются следующие условия:
+	\begin{enumerate}
+		\item Монотонность: если $A \subset B \hbox{, то } \sigma (A) \leqslant \sigma (B)$,
+		\item Нормировка: $\hbox{$\sigma ([a, b] \times [c, d])$} = (b - a) (d - c)$,
+		\item Ослабленная аддитивность. Пусть $A \in \varepsilon$, $l$ --- вертикальный промежуток,
+		$A_{\hbox{л}}$ --- часть $A$ в левой полуплоскости, $A_{\hbox{п}}$ --- часть $A$ в правой полуплоскости
+		(заметим, что $A = A_{\hbox{л}} + A_{\hbox{п}}$ и $A_{\hbox{л}} \cap A_{\hbox{п}} \subset l$).
+		Тогда $\sigma (A) = \sigma (A_{\hbox{л}}) + \sigma (A_{\hbox{п}})$.
+	\end{enumerate}
+\end{ndefinition}
+
+\subsection{Положительная и отрицательная срезки}
+
+\begin{definition}
+	Пусть $f \colon \langle a, b \rangle \to \mathbb{R}$. Назовём функцию $f^+ = \max (f, 0)$ \textit{положительной срезкой}, а функцию $f^- = \max (-f, 0)$ --- \textit{отрицательной срезкой}. Заметим также, что $f = f^+ - f^-$ и $|f| = f^+ + f^-$.
+\end{definition}
+
+\subsection{\itshape Определённый интеграл}
+
+\begin{ndefinition}
+	Пусть $f \colon [a, b] \to [0, +\infty)$. Назовём \textit{подграфиком} $f$ на $[a, b]$
+	(обозначается как ПГ($f, [a, b]$)) следующее множество: \[
+	\hbox{$\{ (x, y) \mid x \in [a, b], \ 0 \leqslant y \leqslant f(x) \}$}.
+	\]
+\end{ndefinition}
+
+\begin{ndefinition}
+	Пусть $f \colon [a, b] \to \mathbb{R}$ непрерывна, $\sigma$ ---  ослабленная площадь.
+	\textit{Определённым интегралом} $f$ на $[a, b]$ (обозначается как \(\int^a_b f(x) \, dx\) или \(\int^a_b f\)) называется \[
+	\sigma (\hbox{ПГ}(f^+, [a, b])) - \sigma (\hbox{ПГ}(f^-, [a, b])).
+	\]
+\end{ndefinition}
+
+\begin{remark}
+	Некоторые свойства и соглашения:
+	\begin{enumerate}
+		\item Если $f \geqslant 0$, то \(\displaystyle \int_a^b f \geqslant 0\),
+		\item Если $f \equiv c \in \mathbb{R}$, то \(\displaystyle \int_a^b f = c \cdot (b - a)\),
+		\item \(\displaystyle \int_a^b (-f) = -\int^a_b f\),
+		\item Можно считать, что \(\displaystyle \int_a^a f = 0\),
+		\item Для всех \(c\) из \([a, b]\) \(\displaystyle \int_a^b f = \int_a^c f + \int_c^b f\).
+	\end{enumerate}
+\end{remark}
+\begin{proof}
+	Небольшие пояснения:
+	\begin{enumerate}
+		\item В силу того, что $f^- \equiv 0$,
+		\item Так как подграфик $f$ --- прямоугольник,
+		\item Поскольку $(-f)^+ = f^-$, $(-f)^- = f^+$,
+		\item Потому что подграфик $f$ --- вертикальный отрезок,
+		\item В силу ослабленной аддитивности.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Среднее значение функции на промежутке}
+
+\hypertarget{average}{}
+\begin{definition}
+	Пусть $f$ непрерывна на $[a, b]$. Тогда \[
+	\dfrac1{b - a}\int\limits_a^b f
+	\]
+	называется \textit{средним значением} функции $f$ на промежутке $[a, b]$.
+\end{definition}
+
+\subsection{\itshape Выпуклая функция}
+
+% выпуклая функция
+\begin{definition}
+	Функция \(f \colon \langle a, b \rangle \to \mathbb{R}\) называется:
+	\begin{itemize}
+		\item \textit{выпуклой вниз} на \(\langle a, b \rangle\), если для любых \(x_1, x_2 \in \langle a, b \rangle\) и \(t \in (0, 1)\) выполняется неравенство \[
+		f(t x_1 + (1 - t) x_2) \leqslant t f(x_1) + (1 - t) f(x_2);
+		\]
+		\item \textit{строго выпуклой вниз} на \(\langle a, b \rangle\), если для любых \(x_1, x_2 \in \langle a, b \rangle\) и \(t \in (0, 1)\) выполняется неравенство \[
+		f(t x_1 + (1 - t) x_2) < t f(x_1) + (1 - t) f(x_2).
+		\]
+	\end{itemize}
+	
+	Если выполняются противоположные неравенства, то функция \(f\) называется соответственно \textit{выпуклой вверх} или \textit{сторого выпуклой вверх} на \(\langle a, b \rangle\).
+	
+	Часто функции, которые только что были названы выпулыми вниз, называют просто \textit{выпуклыми}, а те, что были названы выпуклыми вверх, --- \textit{вогнутыми}.
+	
+	Поясним геометрический смысл производной. Пусть \(x_1, x_2 \in \langle a, b \rangle\) и, НУО\footnote{Неравенства в определении не меняются при перемене \(x_1\) и \(x_2\) местами.}, \(x_1 < x_2\). Положим \(x = t x_1 + (1 - t) x_2\). Тогда \[
+	t = \frac{x_2 - x}{x_2 - x_1} \quad \text{и} \quad 1 - t = \frac{x - x_1}{x_2 - x_1}.
+	\]
+	При этом, если \(x \in (x_1, x_2)\), то \(t \in (0, 1)\), и обратно. Неравенство, определяющее выпуклую функцию, переписывается в виде \[
+	f(x) \leqslant \frac{x_2 - x}{x_2 - x_1} f(x_1) + \frac{x - x_1}{x_2 - x_1} f(x_2), \quad x \in (x_1, x_2).
+	\]
+	Правая часть этого неравенства при \(x \in [x_1, x_2]\) задаёт уравнение хорды, соединяющей точки \((x_1, f(x_1))\) и \((x_2, f(x_2))\) на графике \(f\). Таким образом, выпуклость функции вниз означает, что график функции лежит не выше любой хорды, соединяющей две его точки. Строгая выпуклость вниз означает, что график лежит ниже любой хорды, за исключением концевых точек. Выпуклость функции вверх, напротив, означает, что график функции лежит не ниже любой хорды.
+\end{definition}
+
+\subsection{Выпуклое множество}
+
+% выпуклое множество
+\begin{definition}
+	Множество \(A\) в \(\mathbb{R}^m\) называется \textit{выпуклым}, если вместе с любыми точками \(x, y\) ему также принадлежит отрезок \([x, y]\)\footnote{\([x, y] = \{x + t(y - x), \ t \in [0, 1]\}\).}, соединяющий их.
+\end{definition}
+
+\subsection{Надграфик}
+
+% надграфик
+\begin{definition}
+	\textit{Надграфиком} функции \(f\) на \(\langle a, b \rangle\) называется такое множество: \[
+	\{(x, y) \mid x \in \langle a, b \rangle, \ y \geqslant f(x)\}.
+	\]
+\end{definition}
+
+\begin{remark}
+	Функция \(f\) выпукла на \(\langle a, b \rangle\) \(\Leftrightarrow\) надграфик \(f\) на \(\langle a, b \rangle\) --- выпуклое множество.
+\end{remark}
+\begin{proof}
+	Функция \(f\) выпукла на \(\langle a, b \rangle\) \(\Leftrightarrow\) любая хорда принадлежит надграфику \(f\) на \(\langle a, b \rangle\) \(\Leftrightarrow\) надграфик \(f\) --- выпуклое множество (если работает для хорд, сработает и для остальных отрезков, соединяющих две точки надграфика, потому что эти точки <<выше>> точек графика).
+\end{proof}
+
+\subsection{Опорная прямая}
+
+\begin{definition}
+	Пусть \(f \colon \langle a, b \rangle \to \mathbb{R}, \ x_0 \in \langle a, b \rangle\). Прямая, задаваемая уравнением \(y = \ell(x)\), называется \textit{опорной} для функции  \(f\) в точке \(x_0\), если \[
+	f(x_0) = \ell(x_0) \quad \text{и} \quad f(x) \geqslant \ell(x) \quad \text{для всех} \ x \in \langle a, b \rangle. 
+	\]
+	Если же \[
+	f(x_0) = \ell(x_0) \quad \text{и} \quad f(x) > \ell(x) \quad \text{для всех} \ x \in \langle a, b \rangle \setminus \{x_0\},
+	\]
+	то прямая называется \textit{строго опорной} для функции \(f\) в точке \(x_0\).
+	
+	Другими словами, прямая называется опорной к \(f\) в точке \(x_0\), если она проходит через точку \((x_0, f(x_0))\) и лежит не выше графика функции. Строго опорная прямая лежит ниже графика функции во всех точках, кроме \((x_0, f(x_0))\).
+\end{definition}
+
+\begin{remark}
+	Далее мы также будем называть (строго) опорной прямой такую прямую, для которой выполняются аналогичные неравенства, но с противоположными знаками.
+\end{remark}
+
+\subsection{Кусочно-непрерывная функция, интеграл от неё}
+
+\begin{ndefinition}
+	Функция \(f \colon [a, b] \to \mathbb{R}\) называется \textit{кусочно-непрерывной}, если она непрерывна всюду, кроме конечного числа точек, в которых имеет разрывы первого рода.
+\end{ndefinition}
+
+\begin{ndefinition}
+	Пусть \(f\) --- кусочно-непрерывная функция, \(\widetilde{f}_k\) --- её сужение на промежуток \([x_{k - 1}, x_k]\), то есть \[
+	\widetilde{f}_k = f \big|_{[x_{k - 1}, x_k]} =
+	\begin{cases}
+		f(x_{k - 1} + 0), & x = x_{k - 1} 		   \\
+		f(x),			  & x \in (x_{k - 1}, x_k) \\
+		f(x_k - 0),		  & x = x_k.
+	\end{cases}
+	\]
+	Тогда выражение \[
+	\int_a^b f = \sum_{k = 1}^n \int_{x_{k - 1}}^{x_k} \widetilde{f}_k
+	\]
+	называется \textit{интегралом кусочно-непрерывной функции} \(f\).
+\end{ndefinition}
+
+\subsection{Почти первообразная}
+
+\begin{definition}
+	Пусть \(F, f \colon [a, b] \to \mathbb{R}\). Функция \(F\) называется \textit{почти первообразной} \(f\) на \([a, b]\), если \(F'(x) = f(x)\) для всех \(x \in [a, b]\), кроме конечного числа.
+\end{definition}
+
+\begin{nremark}
+	Если \(f\) --- кусочно-непрерывная функция, у неё существует почти первообразная.
+\end{nremark}
+\begin{proof}
+	Пусть \(F_k\) --- первообразная \(\widetilde{f}_k\) на \([x_{k - 1}, x_k]\).
+	
+	ДОДЕЛАТЬ
+\end{proof}
+
+\begin{nremark}
+	Пусть \(f \colon [a, b] \to \mathbb{R}\) --- кусочно-непрерывная функция, \(F\) --- почти первообразная \(f\) на \([a, b]\). Тогда \[
+	\int\limits_a^b f = F(b) - F(a).
+	\]
+\end{nremark}
+\begin{proof}
+	Пусть \(a = x_0 < x_1 < \ldots < x_{n - 1} < x_n = b\). Тогда \[
+	\int_a^b f = \sum_{k = 1}^n \int_{x_{k - 1}}^{x_k} \widetilde{f}_k = \sum_{k = 1}^n F_k(x_k) - F_k (x_{k - 1}) = \sum_{k = 1}^n F(x_k) - F(x_{k - 1}).
+	\]
+	Получили телескопическую сумму, после приведения подобных равную \(F(a) - F(b)\).
+\end{proof}
+
+\subsection{Функция промежутка, аддитивная функция промежутка}
+
+\begin{definition}
+	Пусть \(a, b \in \overline{\mathbb{R}}\), \(a < b\). Обозначим как \(Segm \langle a, b \rangle\) множество вида \(\{[p, q] \mid [p, q] \subset \langle a, b \rangle\}\). Тогда:
+	\begin{enumerate}
+		\item Функция \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) называется \textit{функцией промежутка},
+		\item Функция \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) такая, что \[
+		\forall [p, q] \in Segm \langle a, b \rangle \quad \forall \in (p, q) \quad \Phi([p, q]) = \Phi([p, c]) + \Phi([c, q]),
+		\]
+		называется \textit{аддитивной функцией промежутка}.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Плотность аддитивной функции промежутка}
+
+\begin{definition}
+	Пусть \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) --- аддитивная функция промежутка, тогда функция \(f: \langle a, b \rangle \to \mathbb{R}\) называется \textit{плотностью} \(\Phi\) на \(\langle a, b \rangle\), если \[
+	\forall \Delta \in Segm \langle a, b \rangle \quad |\Delta| \cdot \inf_\Delta(f) \leqslant \Phi(\Delta) \leqslant |\Delta| \cdot \sup_\Delta(f).
+	\]
+\end{definition}
+
+\begin{example}
+	Если функция \(f\) непрерывна на \(\langle a, b \rangle\), то \(f\) --- плотность функции \(\Phi\), такой, что \[
+	\Phi([p, q]) = \int\limits_a^b f.
+	\]
+	Действительно, по \hyperlink{sredneye}{теореме о среднем} имеем\[
+	\inf_{[p, q]} (f) \cdot (q - p) \leqslant \int\limits_p^q f \leqslant \max_{[p, q]} (f) \cdot (q - p).
+	\]
+\end{example}
+
+\subsection{\itshape Верхний и нижний пределы последовательности}
+
+\begin{ndefinition}
+	Пусть \((x_n)\) --- вещественная последовательность. Тогда последовательность \((y_n)\), где \(y_n = \sup (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), называется \textit{верхней огибающей} \((x_n)\), а \((z_n)\), где \(z_n = \inf (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), --- \textit{нижней огибающей} \((x_n)\).
+\end{ndefinition}
+
+\begin{remark}
+	Некоторые свойства огибающих:
+	\begin{enumerate}
+		\item Для всех \(n\) \(z_n \leqslant x_n \leqslant y_n\),
+		\item Так как \(y_n \geqslant y_{n + 1} \geqslant y_{n + 2} \geqslant \ldots\) и \(z_n \leqslant z_{n + 1} \leqslant z_{n + 2} \leqslant \ldots\), то для всех~\(n\) \(z_1 \leqslant y_n\) и \(z_n \leqslant y_1\).
+	\end{enumerate}
+\end{remark}
+
+\begin{ndefinition}
+	Пусть \((x_n)\) --- вещественная последовательность, \((y_n)\) --- её верхняя огибающая, а \((z_n)\) --- нижняя. Тогда \[
+	\varlimsup_{n \to \infty} x_n = \lim_{n \to \infty} y_n \in \overline{\mathbb{R}}
+	\]
+	называется \textit{верхним пределом} \((x_n)\), а \[
+	\varliminf\limits_{n \to \infty} x_n = \lim\limits_{n \to \infty} z_n \in \overline{\mathbb{R}} \ \textit{---}
+	\]
+	\textit{нижним пределом}.
+\end{ndefinition}
+
+\begin{example}
+	Если \(x_n = (-1)^n\), то \(y_n \equiv 1\), \(z_n \equiv -1\), то есть \(\varlimsup\limits_{n \to \infty} = 1\), \(\varliminf\limits_{n \to \infty} = -1\).
+\end{example}
+
+\subsection{Частичный предел}
+
+\begin{definition}
+	Пусть \((x_n)\) --- последовательность в (метрическом пространстве) \(X\). Тогда \(l \in X\) называется \textit{частичным пределом} \((x_n)\), если существует строго возрастающая последовательность натуральных чисел \((n_k)\), такая, что \(x_{n_k} \to l\) при \(k \to \infty\).
+\end{definition}
+
+\begin{example}
+	Если \(x_n = (-1)^n\), то \(1\) и \(-1\) --- частичные пределы \((x_n)\).
+\end{example}
+
+\subsection{Дробление отрезка, ранг дробления, оснащение}
+
+\begin{definition}
+	Введём следующие понятия:
+	\begin{description}
+		\item[Дроблением] отрезка \([a, b]\) называется возрастающий набор \(x_i\), принадлежащих отрезку \([a, b]\). Пусть для определённости \linebreak \(a = x_0 \leqslant x_1 \leqslant \ldots \leqslant x_{n - 1} \leqslant x_n = b\). Тогда эти \(x_i\) разбивают \([a, b]\) на \(n\) соприкасающихся подотрезков \([x_i, x_{i + 1}]\).
+		\item[Рангом] дробления называется длина наибольшего подотрезка \([x_i, x_{i + 1}]\), то есть \(\max (x_{i + 1} - x_i)\), где \(i \in 0 : n\).
+		\item[Оснащением] называется набор точек \(\xi_i\), принадлежащих отрезку \([a, b]\), где \(i \in 1 : n\) и каждая \(\xi_i\) принадлежит уникальному подотрезку дробления.
+	\end{description}
+\end{definition}
+
+\subsection{Кривая Пеано}
+
+\begin{example}
+	ДОДЕЛАТЬ
+\end{example}
+
+\subsection{Гладкий путь, вектор скорости, носитель пути}
+
+\begin{definition}
+	Введём следующие понятия:
+	\begin{description}
+		\item[Гладким путём] называется путь\footnote{Напомним, что \textit{путём} из \(A\) в \(B\), где \(A\) и \(B\) \(\in \mathbb{R}^m\), называется непрерывная функция \(\gamma \colon [a, b] \to \mathbb{R}^m\) такая, что \(\gamma(a) = A\), \(\gamma(b) = B\).} \(\gamma \colon [a, b] \to \mathbb{R}^m\), каждая из координатных функций \(\gamma_i\) которого непрерывно дифференцируема.
+		\item[Вектором скорости] называется производная функция пути.
+		\item[Носителем пути] \(C_\gamma\) называется образ пути \(\gamma\).
+	\end{description}
+\end{definition}
+
+\subsection{Длина гладкого пути}
+
+\begin{definition}
+	Функция \(l\), заданная на множестве всех гладкий путей, называется \textit{длиной гладкого пути}, если она обладает следуюшими свойствами:
+	\begin{enumerate}
+		\item \(l \geqslant 0\),
+		\item \label{way2} \(l\) --- аддитивна, то есть если мы возьмём произвольный путь \(\gamma \colon [a, b] \to \mathbb{R}^m\) и произвольную точку \(c \in (a, b)\) и рассмотрим функции \(\gamma_1\) --- сужение \(\gamma\) на отрезок \([a, c]\), и \(\gamma_2\) --- сужение \(\gamma\) на отрезок \([c, b]\), то \[
+		l(\gamma) = l(\gamma_1) + l(\gamma_2).
+		\]
+		\item \label{way3}Если носитель \(C_{\widetilde{\gamma}}\) пути \(\widetilde{\gamma}\) является образом сжатия носителя \(C_\gamma\) какого-то пути \(\gamma\), то длина 	\(\widetilde{\gamma}\) не больше длины \(\gamma\), то есть если \[
+		\exists T \colon C_\gamma \xrightarrow[\text{на}]{} C_{\widetilde{\gamma}}, \ \textit{такая, что} \ \forall x, y \in C_\gamma \quad \rho(x, y) \geqslant \rho(T(x), T(y)),
+		\]
+		то \(l(\widetilde{\gamma}) \leqslant l(\gamma)\).
+		\item Нормировка: если \(\gamma \colon [0, 1] \to \mathbb{R}^m\) --- линейный путь из \(A\) в \(B\), то есть \(\gamma(t) = (1 - t)A + tB\), то \(l(\gamma) = \rho(A, B)\).
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	Отметим некоторые свойства длины:
+	\begin{enumerate}
+		\item Из аксиомы~\ref{way3} следует, что длина дуги больше длины хорды,
+		\item При растяжении длина растёт,
+		\item При движении длина пути не меняется.
+	\end{enumerate}
+\end{remark}
+
+\subsection{Вариация функции на промежутке}
+
+\begin{definition}
+	Пусть \(f \colon [a, b] \to \mathbb{R}\). Выберём дробление \(\tau = \{t_i\}_{i = 0}^n\) отрезка \([a, b]\). \textit{Вариацией}  функции \(f\) на отрезке \([a, b]\) называется величина \[
+	\bigvee_a^b f = \sup_\tau \sum_{i = 0}^n |f(t_{i + 1}) - f(t_i)|.
+	\]
+\end{definition}
+
+\begin{remark} \hypertarget{ogrvar}{}
+	Если \(\bigvee\limits_a^b f < +\infty\), то \(f\) называется функцией \textit{ограниченной вариации}.
+\end{remark}
+
+\subsection{Эпсилон-сеть, сверхограниченное множество}
+
+\begin{ndefinition}
+	Множество \(E \subset X\)  \textit{\(\varepsilon\)-сетью} для \(D\), если \[
+	\forall x \in D \quad \exists y \in E \quad \rho(x, y) < \varepsilon.
+	\]
+\end{ndefinition}
+
+\begin{ndefinition}
+	Множество \(D\) называется \textit{сверхограниченным} в \(X\), если для любого положительного \(\varepsilon\) существует конечная \(\varepsilon\)-сеть.
+\end{ndefinition}
+
+\subsection{\itshape Несобственный интеграл, сходимость, расходимость}
+
+\begin{definition}
+	Рассмотрим функцию \(f \colon [a, b) \to \mathbb{R}\), которая является кусочно-непрерывной на отрезке \([a, A]\) для любого \(A \in (a, b)\) (назовём такую функцию \textit{допустимой}). Символ \(\int_a^{\to b} f\) называют \textit{несобственным интегралом}. По определению \[
+	\int_a^{\to b} f = \lim_{A \to b - 0} \int_a^A f,
+	\]
+	если предел существует в \(\overline{\mathbb{R}}\). Если предел принадлежит \(\mathbb{R}\), говорят, что несобственный интеграл \textit{сходится}; в противном случае говорят, что он \textit{расходится}.
+\end{definition}
+
+\subsection{Критерий Больцано -- Коши сходимости несобственного интеграла}
+
+\begin{theorem} \hypertarget{Критерий Больцано -- Коши сходимости несобственного интеграла}{}
+	Пусть функция \(f\) допустима. Интеграл \(\int_a^b f\) сходится тогда и только тогда, когда \[
+	\forall \varepsilon > 0 \quad \exists \delta \in (a, b) \quad \forall A, B \in (\delta, b) \quad \left|\int_A^B f \right| < \varepsilon.
+	\]
+\end{theorem}
+
+\subsection{\itshape Гамма-функция Эйлера}
+
+\begin{definition}
+	Функция \(\displaystyle \Gamma(t) = \int_{0}^{+\infty} x^{t - 1} e^{-x} \, dx\) называется \textit{гамма-функцией Эйлера} (причём интеграл сходится при \(t > 0\)).
+\end{definition}
+
+\subsection{\itshape Абсолютно сходящиеся интеграл, ряд}
+
+\begin{ndefinition}
+	Пусть функция \(f\) допустима на \([a, b)\). Интеграл \(\int_{a}^{\to b} f\) называется \textit{абсолютно сходящимся}, если выполяются следующие условия:
+	\begin{enumerate}
+		\item \(\int_{a}^{\to b} f\) сходится,
+		\item \(\int_{a}^{\to b} |f|\) тоже сходится.
+	\end{enumerate}
+\end{ndefinition}
+
+\begin{ndefinition}
+	Аналогично ряд \(\sum a_k\) называется \textit{абсолютно сходящимся}, если:
+	\begin{enumerate}
+		\item Ряд \(\sum a_k\) сходится,
+		\item Ряд \(\sum |a_k|\) тоже сходится.
+	\end{enumerate}
+\end{ndefinition}
+
+\subsection{\itshape Числовой ряд, сумма ряда, сходимость, расходимость}
+
+\begin{definition}
+	Введём следующие понятия:
+	\begin{description}
+		\item[Числовым рядом] называется выражение вида \(\sum\limits_{k=1}^{+\infty} a_k\) (иногда для краткости будем писать \(\sum a_k\) или даже \((A)\)). Такой объект также называют \textit{формальным рядом}.
+		\item[Частичной суммой ряда] называется выражение вида \(S_N = \sum\limits_{k=1}^{N} a_k\) (иногда, если хотим отметить, каким символом обозначаем слагаемое ряда, будем писать \(S_N^a\)).
+		\item[Сходящимся] называют ряд, для которого существует конечный предел частичных сумм \(\lim\limits_{N \to \infty} S_N = S\) (тогда \(S\) называют \textit{суммой ряда}).
+		\item[Расходящимся] называют ряд, для которого справедливо обратное, то есть предела частичных сумм либо не существует, либо он равен бесконечности.
+	\end{description}
+\end{definition}
+
+\begin{nremark}
+	Начинать нумерацию можно не с единицы, а с любого целого числа \(A\). Тогда переопределим \textit{частичную сумму} как \(S_N = \sum\limits_{k=A}^{N} a_k\).
+\end{nremark}
+
+\begin{nremark}
+	Очевидно, что \(S_N - S_{N-1} = a_N\). Это значит, что подбирать слагаемые, чтобы получить ряд с нужной частичной суммой, очень просто!
+\end{nremark}
+
+\subsection{\(N\)-й остаток ряда}
+
+\begin{definition}
+	Выражение вида \(R_N = \sum\limits_{k=N}^{+\infty} a_k\) называется \textit{\(N\)-м остатком ряда} \(\sum a_k\).
+\end{definition}
+
+\subsection{Критерий Больцано -- Коши сходимости числового ряда}
+
+\begin{theorem}
+	Ряд \(\sum a_k\) сходится тогда и только тогда, когда \[
+	\forall \varepsilon > 0 \quad \exists N \quad \forall n > N \quad \forall p \in \mathbb{N} \quad |a_{n+1} + a_{n+2} + \ldots + a_{n+p}| < \varepsilon.
+	\]
+\end{theorem}
+
+\subsection{Произведение рядов, отсортированное произведение}
+
+\begin{ndefinition}
+	Возьмём биекцию \(\gamma \colon \mathbb{N} \to \mathbb{N} \times \mathbb{N}\), которая переводит \(x\) в \((\varphi(x), \psi(x))\). \textit{Произведением} рядов \(\sum a_k\), \(\sum b_k\) называется ряд вида \(\sum_{k=1}^{+\infty} a_{\varphi(k)} b_{\psi(k)}\).
+\end{ndefinition}
+
+\begin{ndefinition}
+	Пусть \(\sum a_k \cdot \sum b_k = \sum c_k\), где \(c_k = a_0 b_k + a_1 b_{k-1} + \ldots + a_k b_0\). Тогда ряд \(\sum c_k\) называется \textit{отсортированным произведением}.
+\end{ndefinition}
+
+\subsection{Перестановка ряда}
+
+\begin{definition}
+	Рассмотрим биекцию \(\omega \colon \mathbb{N} \to \mathbb{N}\). Ряд \(\sum b_k\) называется \textit{перестановкой} ряда \(\sum a_k\), если для всех \(k\) \(b_k = a_{\omega(k)}\). 
+\end{definition}
+
+\subsection{Бесконечное произведение}
+
+\begin{definition}
+	Выражение \(\prod\limits_{k=1}^{+\infty} a_k\) называется \textit{бесконечным произведением}. Обозначим \(P_n = \prod\limits_{k=1}^{n} a_k\). Если существует конечный предел \(\lim\limits_{n \to \infty} P_n\), то говорят, что произведение \textit{сходится}; если \(\lim\limits_{n \to \infty} P_n = 0\), говорят, что оно расходится к нулю. Во всех остальных случаях (предел равен бесконечности или не существует) говорят, что произведение расходится.
+\end{definition}
+
+\begin{remark} \hypertarget{besk}{}
+	Пусть для всех \(k\) \(a_k \neq 0\). Обозначим \(\Pi_n = \prod\limits_{k=n}^{+\infty} a_k\) и отметим некоторые свойства бесконечного произведения:
+	\begin{enumerate}
+		\item \(\prod\limits_{k=1}^{+\infty} a_k = \prod\limits_{k=1}^{n-1} a_k \cdot \Pi_n\), и сходимость левой части равносильна сходимости правой для всех \(n\),
+		\item \(\prod a_k\) сходится \(\Rightarrow\) \(\Pi_n \xrightarrow[n \to \infty]{} 1\),
+		\item \(\prod a_k\) сходится \(\Rightarrow\) \(a_k \to 1\),
+		\item Сходимость \(\prod a_k\) возможна только если, НСНМ, \(a_k > 0\),
+		\item Пусть \(a_k > 0\). Тогда \(\prod a_k\) сходится \(\Leftrightarrow\) ряд \(\sum \ln a_k\) сходится. Причём если \(\sum \ln a_k = S\), то \(\prod a_k = e^S\).
+	\end{enumerate}
+\end{remark}
+\begin{proof}
+	Докажем, но не очень подробно:
+	\begin{enumerate}
+		\item Просто перейдём к пределу при \(n \to \infty\). Если предел слева существует, то и справа тоже, и наоборот,
+		\item Следует из того, что \(\Pi_n = \frac{\prod a_k}{P_{n-1}} \xrightarrow[n \to \infty]{} 1\),
+		\item Так как \(a_k = \frac{P_k}{P_{k-1}} \xrightarrow[k \to \infty]{} 1\),
+		\item По теореме о стабилизации знака,
+		\item Очевидно из того, что 
+		\begin{gather*}
+			P_n = a_1 \cdot a_2 \cdot \ldots \cdot a_n \xrightarrow[n \to \infty]{} P, \\
+			\ln a_1 + \ln a_2 + \ldots + \ln a_n \xrightarrow[n \to \infty]{} \ln P.
+		\end{gather*}
+	\end{enumerate}
+\end{proof}
+
+\subsection{Скалярное произведение, евклидова норма и метрика в \(\mathbb{R}^m\)}
+
+\begin{definition}
+	Напомним, что \(\mathbb{R}^m\) --- линейное пространтсво вида \linebreak \(\{(x_1, \ldots, x_m) \mid x_i \in \mathbb{R}\}\). Также напомним некоторые понятия:
+	\begin{description}
+		\item[Скалярным произведением] \(\langle x, y \rangle\) векторов \(x, y \in \mathbb{R}^m\) называется выражение вида \( \sum\limits_{i=1}^n x_i y_i\).
+		\item[Евклидовой нормой] \(||x||\) вектора \(x \in \mathbb{R}^m\) называется выражение вида \linebreak \(\sqrt{\langle x, x \rangle} = \sqrt{x_1^2 + \ldots + x_m^2}\).
+		\item[Метрикой] \(\rho\) в \(\mathbb{R}^m\) будем называть отображение вида \(\rho(x, y) = || x - y||\). 
+	\end{description}
+\end{definition}
+
+\begin{remark}[принцип экономии палочек]
+	Далее норму вектора \(x\) будем обозначать как  \(|x|\), а не \(||x||\).
+\end{remark}
+
+\subsection{Окрестность точки в \(\mathbb{R}^m\), открытое множество}
+
+\begin{definition}
+	Введём следующие понятия:
+	\begin{description}
+		\item[Шаром] \(B_r (a)\) с центром в точке \(a\) и радиусом \(r\) называется множество вида \(\{x \mid \rho(x, a) < r\}\).
+		\item[Эпсилон-окрестностью] \(U(a)\) точки \(a\)называется шар \(B_\varepsilon (a)\).
+		\item[Открытым множеством] назовём множество, каждая точка которого является \textit{внутренней}, то есть входит в него с некоторой окрестностью.
+	\end{description}
+\end{definition}
+
+\subsection{\itshape Сходимость последовательности в \(\mathbb{R}^m\), покоординатная сходимость}
+
+\begin{definition}
+	Последовательность  \((x^{(n)})\) (нижний индекс зарезервируем для номера координаты) \textit{сходится} к \(a\), если \[
+	\forall \varepsilon > 0 \quad \exists N \quad \forall n > N \quad \rho(x^{(n)}, a) < \varepsilon.
+	\]
+	
+	Это, очевидно, равносильно \textit{покоординатной сходимости \(x^{(n)}\) к \(a\)}, то есть тому, что для любого \(k \in 1 : m \enskip x_k^{(n)} \to a_k\).
+\end{definition}
+
+\subsection{\itshape Предельная точка, замкнутое множество, замыкание}
+
+\begin{definition}
+	Точка  \(a\) называется \textit{предельной точкой множества} \(F\), если \[
+	\forall \varepsilon > 0 \quad \dot B_\varepsilon (a) \cap F \neq \varnothing.
+	\]
+	
+	Множество называется \textit{замкнутым}, если оно содержит все свои предельные точки.
+	
+	\textit{Замыканием} множества \(G\) называется минимальное по включению закрытое множество, содержащее \(G\).
+\end{definition}
+
+\subsection{Координатная функция}
+
+\begin{definition}
+	Рассмотрим функцию \(f \colon \mathbb{R}^m \to \mathbb{R}^m\) следующего вида: \(f(x) = (f_1 (x), \ldots, f_m (x))\). Функции \(f_1 (x), \ldots, f_m (x)\) называются \textit{координатными}.
+\end{definition}
+
+\begin{remark}
+	\textit{Сходимость} и \textit{покоординатная сходимость} функции \(f\) определяются привычным образом.
+\end{remark}
+
+\subsection{Двойной предел, повторный предел}
+
+\begin{definition}
+	Пусть \(D_1, D_2 \subset \mathbb{R}\), \(a_1\) --- предельная точка \(D_1\), \(a_2\) --- предельная точка \(D_2\). Обозначим \(D \supset (D_1 \setminus \{a_1\}) \times (D_2 \setminus \{a_2\})\).
+	
+	Теперь рассмотрим функцию \(f \colon D \to \mathbb{R}\). Тогда:
+	\begin{enumerate}
+		\item Если \[
+		\forall x_1 \in D_1 \setminus \{a_1\} \quad \exists \varphi(x_1) := \lim_{x_2 \to a_2} f (x_1, x_2) \in \mathbb{R},
+		\]
+		то \(\lim\limits_{x_1 \to a_1} \varphi(x_1)\) называется \textit{повторным пределом}.
+		\item Аналогично если \[
+		\forall x_2 \in D_2 \setminus \{a_2\} \quad \exists \psi(x_2) := \lim_{x_1 \to a_1} f (x_1, x_2) \in \mathbb{R},
+		\]
+		то \(\lim\limits_{x_2 \to a_2} \psi(x_2)\) также называется \textit{повторным пределом}.
+		\item Если \[
+		\forall U(L) \quad \exists V_1 (a_1), V_2 (a_2) \quad \forall \parbox[t]{3cm}{\(x_1 \in \dot V_1 (a_1) \cap D_1\), \\ \(x_2 \in \dot V_2 (a_2) \cap D_2\)} \quad f(x_1, x_2) \in U(L),
+		\]
+		то \(L\) называется \textit{двойным пределом}.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Предел по направлению, предел вдоль пути}
+
+\begin{ndefinition}
+	Рассмотрим функцию \(f \colon \mathbb{R}^2 \to \mathbb{R}\) и \(v = (v_1, v_2) \in \mathbb{R}^2\). Предел \(\lim\limits_{t \to +0} f(a_1 + t v_1, a_2 + t v_2) = \lim\limits_{x \to a} f(x) |_L\), где \(L\) --- луч с началом в точке \(a\) и вектором \(v\), называется \textit{пределом \(f\) по направлению}.
+\end{ndefinition}
+
+\begin{ndefinition}
+	Рассмотрим функцию \(f \colon \mathbb{R}^2 \to \mathbb{R}\) и гладкий путь \(\gamma\), причём для любого \(t\) \(\gamma(t) \neq 0\). Предел \(\lim\limits_{x \to a} f(x) |_{C_\gamma}\), где \(C_\gamma\) --- носитель пути \(\gamma\), называется \textit{пределом \(f\) вдоль пути}.
+\end{ndefinition}

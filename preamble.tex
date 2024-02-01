@@ -1,5 +1,6 @@
 \documentclass[a4paper, 12pt]{article}
 
+% кодировка и языки
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english, russian]{babel}
@@ -10,12 +11,21 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+% hyperref
+\usepackage[]{hyperref}
+\hypersetup{
+	linktocpage=true, 
+	pdfborder={0 0 0},
+	colorlinks=true,
+	linkcolor=blue
+}
 % остальное
 \usepackage{multicol}
 \usepackage{extarrows}
 \usepackage[dvips]{graphicx}
 \usepackage[usenames]{color}
-\usepackage[pdfborder={0 0 0}]{hyperref}
+
+\usepackage{tocloft}
 
 % настройка
 \graphicspath{{noiseimages/}}
@@ -43,8 +53,8 @@
 
 % (ре)ньюкомманд
 \newcommand{\anonsection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
+%\newcommand{\anonchapter}[1]{\chapter*{#1} \addcontentsline{toc}{chapter}{#1}}
 
-\renewcommand{\thesection}{\Roman{section}}
 \renewcommand{\thesubsection}{\arabic{subsection}.}
 \renewcommand{\thenremark}{\arabic{nremark}}
 \renewcommand{\thendefinition}{\arabic{ndefinition}}
