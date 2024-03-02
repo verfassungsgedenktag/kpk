@@ -926,13 +926,7 @@
 
 \subsection{Объём фигур вращения}
 
-\begin{theorem}
-	ДОДЕЛАТЬ
-\end{theorem}
-
-\begin{proof}
-	ДОДЕЛАТЬ
-\end{proof}
+ДОДЕЛАТЬ
 
 \subsection{Вычисление длины гладкого пути}
 
@@ -943,7 +937,7 @@
 \end{theorem}
 
 \begin{proof}
-	Зафиксируем \(\Delta \in Segm [a, b]\) и рассмотрим функцию \(\Phi\), такую, что \(\Phi(\Delta) = l(\gamma |_\Delta)\). Заметим, что согласно аксиоме~\ref{way2} \(\Phi\) --- аддитивная функция промежутка. Тогда если мы докажем, что функция \(||\gamma'||\) --- плотность \(\Phi\), то, применив \hyperlink{plotn}{\bfseries обобщённую теорему о плотности}, мы докажем нашу теорему.
+	Зафиксируем \(\Delta \in Segm [a, b]\) и рассмотрим функцию \(\Phi\), такую, что \(\Phi(\Delta) = l(\gamma |_\Delta)\). Заметим, что согласно аксиоме~\ref{way2} \(\Phi\) --- аддитивная функция промежутка. Тогда если мы докажем, что функция \(||\gamma'||\) --- плотность \(\Phi\), то, применив \hyperlink{plotn}{обобщённую теорему о плотности}, мы докажем нашу теорему.
 	
 	Для этого мы должны проверить три условия из \hyperlink{plotn}{теоремы}. Сделаем это: для начала нужно предъявить слегка заниженный инфимум (минимум) \(m_\Delta\) и слегка завышенный супремум (максимум) \(M_\Delta\). Введём следующие обозначения:
 	\begin{align*}
@@ -983,7 +977,7 @@
 \subsection{Теорема о функциях ограниченной вариации}
 
 \begin{theorem}
-	Пусть \(f\colon [a, b] \to \mathbb{R}\) --- \hyperlink{orgvar}{\bfseries функция ограниченной вариации}. Тогда существуют монотонные функции \(p, q\colon [a, b] \to \mathbb{R}\) такие, что для всех \(x \in [a, b]\) \(f(x) = p(x) - q(x)\).
+	Пусть \(f\colon [a, b] \to \mathbb{R}\) --- \hyperlink{orgvar}{функция ограниченной вариации}. Тогда существуют монотонные функции \(p, q\colon [a, b] \to \mathbb{R}\) такие, что для всех \(x \in [a, b]\) \(f(x) = p(x) - q(x)\).
 \end{theorem}
 \begin{proof}
 	Возьмём такие \(p(x), q(x)\), что
@@ -998,8 +992,8 @@
 	\]
 	Заметим, что функция \(\Phi\), переводящая \([u, v]\) в \(\bigvee_u^v f\), является аддитивной функцией промежутка (ДОДЕЛАТЬ). Тогда
 	\begin{gather*}
-		2 \cdot p(y) - 2 \cdot p(x) = \bigvee_x^y f + f(y) - f(x) \geqslant 0, \quad \text{то есть} \quad p(y) \geqslant p(x), \\
-		2 \cdot q(y) - 2 \cdot q(x) = \bigvee_x^y f + f(x) - f(y) \geqslant 0, \quad \text{то есть} \quad q(y) \geqslant q(x).
+		2p(y) - 2p(x) = \bigvee_x^y f + f(y) - f(x) \geqslant 0, \quad \text{то есть} \quad p(y) \geqslant p(x), \\
+		2q(y) - 2q(x) = \bigvee_x^y f + f(x) - f(y) \geqslant 0, \quad \text{то есть} \quad q(y) \geqslant q(x).
 	\end{gather*}
 	Ну, вот и всё...
 	
@@ -1012,7 +1006,7 @@
 	Пусть функция \(f \colon [a, b] \to \mathbb{R}\) непрерывна. Тогда
 	\begin{gather*}
 		\forall \varepsilon > 0 \quad \exists \delta > 0 \quad \forall \tau = \{x_i\}_{i = 0}^n \mid \text{ранг} \ \tau < \delta \quad \forall \text{оснащения} \ \{\xi_i\}_{i = 1}^n \ldots \\
-		\ldots \left|\sum_{i = 1}^n f(\xi_i) (x_i - x_{i - 1}) - \int\limits_a^b f(x) dx \right| < \varepsilon.
+		\ldots \left|\sum_{i = 1}^n f(\xi_i) (x_i - x_{i - 1}) - \int_a^b f(x) \, dx \right| < \varepsilon.
 	\end{gather*}
 \end{theorem}
 
@@ -1037,47 +1031,38 @@
 
 \hypertarget{trap}{}
 \begin{theorem}
-	Пусть \(f \in C^2 [a, b]\), \(\tau = \{x_i\}_{i = 0}^n\) --- дробление отрезка \([a, b]\) с рангом \(\delta\). Выберем оснащение \(\{\xi_i\}_{i = 1}^n\), где \(\xi_i = \dfrac{x_i + x_{i - 1}}{2}\). Тогда справедливы следующие утверждения:
+	Пусть \(f \in C^2 [a, b]\), \(\tau = \{x_i\}_{i = 0}^n\) --- дробление отрезка \([a, b]\) с рангом \(\delta\). Выберем оснащение \(\{\xi_i\}_{i = 1}^n\), где \(\xi_i = (x_i + x_{i - 1})/2\). Тогда справедливы следующие утверждения:
 	\begin{gather}
 		\label{intsum1}
-		\left|\int\limits_a^b f(x) dx - \sum_{i = 1}^n f(\xi_i) (x_i - x_{i - 1}) \right| \leqslant \frac{\delta^2}{8} \int\limits_a^b |f''(x)| dx, \\
+		\left|\int_a^b f(x) \, dx - \sum_{i = 1}^n f(\xi_i) (x_i - x_{i - 1}) \right| \leqslant \frac{\delta^2}{8} \int_a^b |f''(x)| \, dx, \\
 		\label{intsum2}
-		\left|\int\limits_a^b f(x) dx - \sum_{i = 1}^n \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1})\right| \leqslant \frac{\delta^2}{8} \int\limits_a^b |f''(x)| dx.
+		\left|\int_a^b f(x) \, dx - \sum_{i = 1}^n \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1})\right| \leqslant \frac{\delta^2}{8} \int_a^b |f''(x)| \, dx.
 	\end{gather}
 \end{theorem}
 
 \begin{proof}[Доказательство неравенства~\eqref{intsum2}]
-	Рассмотрим интеграл на отрезке дробления и преобразуем его: \[
-	\int_{x_{i - 1}}^{x_i} f(x) dx = \int_{x_{i - 1}}^{x_i} f(x) d(x - \xi_i) = \ldots
-	\]
-	Проинтегрируем его по частям: \[
-	\ldots = f(x) (x - \xi_i) \bigg|_{x_{i - 1}}^{x_i} - \int_{x_{i - 1}}^{x_i} f'(x) (x - \xi_i) dx = \ldots
-	\]
-	Воспоминаем, что \(\xi_i = \dfrac{x_i + x_{i - 1}}{2}\): \[
-	\ldots = \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \int_{x_{i - 1}}^{x_i} f'(x) (x - \xi_i) dx = \ldots
-	\]
-	Введём функцию \(\psi(x) = (x_i - x) (x - x_{i - 1})\) и рассмотрим её производную \(\psi'(x) = -(x - x_{i - 1}) + (x_i - x) = -2x + x_{i - 1} + x_i\). Заметим, что \(-\dfrac{1}{2} \psi'(x) = x - \xi_i\). Тогда продолжим: \[
-	\ldots = \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) + \frac12 \int_{x_{i - 1}}^{x_i} f'(x) \cdot \psi'(x) dx = \ldots
-	\]
-	Опять проинтегрируем по частям:
-	\begin{gather*}
-		\ldots = \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) + \ldots \\
-		\ldots + \frac{f'(x) \cdot \psi(x)}{2} \bigg|_{x_{i - 1}}^{x_i} - \frac{1}{2}\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) dx = \ldots \\
-		\ldots = \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \frac{1}{2}\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) dx
-	\end{gather*}
-	
+	Рассмотрим интеграл на отрезке дробления и проинтегрируем его по частям:
+	\begin{multline*}
+		\int_{x_{i - 1}}^{x_i} f(x) \, dx = \int_{x_{i - 1}}^{x_i} f(x) \, d(x - \xi_i) = \\
+		= f(x) (x - \xi_i) \bigg|_{x_{i - 1}}^{x_i} - \int_{x_{i - 1}}^{x_i} f'(x) (x - \xi_i) \, dx = \\
+		= \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \int_{x_{i - 1}}^{x_i} f'(x) (x - \xi_i) dx = \ldots
+	\end{multline*}
+	Введём функцию \(\psi(x) = (x_i - x) (x - x_{i - 1})\) и рассмотрим её производную~\(\psi'(x) = -(x - x_{i - 1}) + (x_i - x) = -2x + x_{i - 1} + x_i\). Прежде, чем продолжить, заметим, что \((-1/2) \cdot \psi'(x) = x - \xi_i\). Запишем наше равенство в новых обозначениях и опять проинтегрируем по частям (подстановка занулится из-за \(\psi(x)\), так что её писать не будем):
+	\begin{multline*}
+		\ldots = \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) + \frac{1}{2} \int_{x_{i - 1}}^{x_i} f'(x) \cdot \psi'(x) \, dx = \\
+		= \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \frac{1}{2}\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) \, dx.
+	\end{multline*} 
 	Начнём разбираться с нашим неравенством:
-	\begin{gather*}
-		\left|\int\limits_a^b f - \sum_{i = 1}^n \textit{слагаемое}_i \right| = \left|\sum_{i = 1}^n \int_{x_{i - 1}}^{x_i} f - \sum_{i = 1}^n \textit{слагаемое}_i \right| = \ldots \\
-		\ldots = \left|\sum_{i = 1}^n \int_{x_{i - 1}}^{x_i} f - \textit{слагаемое}_i \right| \leqslant \sum_{i = 1}^n \left|\int_{x_{i - 1}}^{x_i} f - \textit{слагаемое}_i \right|.
-	\end{gather*}
+	\begin{multline*}
+		\left|\int_a^b f - \sum_{i = 1}^n \textit{слагаемое}_i \right| = \left|\sum_{i = 1}^n \int_{x_{i - 1}}^{x_i} f - \sum_{i = 1}^n \textit{слагаемое}_i \right| = \\
+		= \left|\sum_{i = 1}^n \int_{x_{i - 1}}^{x_i} f - \textit{слагаемое}_i \right| \leqslant \sum_{i = 1}^n \left|\int_{x_{i - 1}}^{x_i} f - \textit{слагаемое}_i \right|.
+	\end{multline*}
 	Воспользуемся нашими наработками:
-	\begin{gather*}
-		\sum_{i = 1}^n \left|\frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \frac{1}{2}\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) dx - \textit{слагаемое}_i \right| = \ldots \\
-		\ldots = \frac{1}{2} \sum_{i = 1}^n \left|\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) dx \right| \leqslant \frac{1}{2} \sum_{i = 1}^n \int_{x_{i - 1}}^{x_i} \left|f''(x) \cdot \psi(x) \right| dx = \ldots \\
-		\ldots = \frac{1}{2} \int_a^b \left|f''(x) \cdot \psi(x) \right| dx.
-	\end{gather*}
-	
+	\begin{multline*}
+		\sum_{i = 1}^n \left|\frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \frac{1}{2}\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) \, dx - \textit{слагаемое}_i \right| = \\
+		= \frac{1}{2} \sum_{i = 1}^n \left|\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) \, dx \right| \leqslant \frac{1}{2} \sum_{i = 1}^n \int_{x_{i - 1}}^{x_i} \left|f''(x) \cdot \psi(x) \right| \, dx = \\
+		= \frac{1}{2} \int_a^b \left|f''(x) \cdot \psi(x) \right| \, dx.
+	\end{multline*}
 	Теперь оценим \(\psi(x)\). Рассмотрим \(\psi(\xi_i) = (x_i - \xi_i) (\xi_i - x_{i - 1})\): \[
 	\psi(\xi_i) = \left(x_i - \frac{x_i + x_{i - 1}}{2} \right) \left(\frac{x_i + x_{i - 1}}{2} - x_{i - 1}\right) = \left(\frac{x_i - x_{i - 1}}{2} \right)^2.
 	\]
@@ -1085,7 +1070,7 @@
 	\psi(\xi_i) \leqslant \frac{\delta^2}{4}.
 	\]
 	Тогда \[
-	\frac{1}{2} \int_a^b \left|f''(x) \cdot \psi(x) \right| dx \leqslant \frac{\delta^2}{8} \int_a^b \left|f''(x) \right| dx.
+	\frac{1}{2} \int_a^b \left|f''(x) \cdot \psi(x) \right| \, dx \leqslant \frac{\delta^2}{8} \int_a^b \left|f''(x) \right| \, dx.
 	\]
 \end{proof}
 
@@ -1598,8 +1583,8 @@
 	Докажем переходы:
 	\begin{description}
 		\item[\(1 \Rightarrow 2\):] По определению абсолютно сходящегося интеграла.
-		\item[\(2 \Rightarrow 3\):] Так как по определению \(f^+ = \max (f, 0)\), \(f^- = \max (-f, 0)\), то \(f^+ \leqslant |f|\), \(f^- \leqslant |f|\), по \hyperlink{priz}{\bfseries признаку сравнения} из сходимости \(\int_{a}^{b} |f|\) следует сходимость интегралов от \(f^+, f^-\).
-		\item[\(3 \Rightarrow 1\):] Так как \(f = f^+ - f^-, |f| = f^+ + f^-\), то по \hyperlink{svva}{\bfseries простейшим свойствам несобственного интеграла} из сходимости \(\int_{a}^{b} f^+, \int_{a}^{b} f^-\) следует сходимость интегралов \(\int_{a}^{b} f, \int_{a}^{b} |f|\).
+		\item[\(2 \Rightarrow 3\):] Так как по определению \(f^+ = \max (f, 0)\), \(f^- = \max (-f, 0)\), то \(f^+ \leqslant |f|\), \(f^- \leqslant |f|\), по \hyperlink{priz}{признаку сравнения} из сходимости \(\int_{a}^{b} |f|\) следует сходимость интегралов от \(f^+, f^-\).
+		\item[\(3 \Rightarrow 1\):] Так как \(f = f^+ - f^-, |f| = f^+ + f^-\), то по \hyperlink{svva}{простейшим свойствам несобственного интеграла} из сходимости \(\int_{a}^{b} f^+, \int_{a}^{b} f^-\) следует сходимость интегралов \(\int_{a}^{b} f, \int_{a}^{b} |f|\).
 	\end{description}
 \end{proof}
 
@@ -1610,14 +1595,14 @@
 		\item Ряд \(\sum |a_k|\) сходится,
 		\item Ряды \(\sum a_k^+\) и \(\sum a_k^-\) сходятся
 	\end{enumerate}
-	\big(\(\sum a_k^+\) и \(\sum a_k^-\) определены как в доказательстве \hyperlink{теорема о перестановке слагаемых}{\bfseries теоремы о перестановке слагаемых}\big).
+	\big(\(\sum a_k^+\) и \(\sum a_k^-\) определены как в доказательстве \hyperlink{теорема о перестановке слагаемых}{теоремы о перестановке слагаемых}\big).
 \end{ntheorem}
 \begin{proof}
 	Докажем переходы:
 	\begin{description}
 		\item[\(1 \Rightarrow 2\):] По определению абсолютно сходящегося ряда.
-		\item[\(2 \Rightarrow 3\):] Так как по определению \(a_k^+ = \max (a_k, 0)\), \(a_k^- = \max (-a_k, 0)\), то \(a_k^+ \leqslant |f|\), \(a_k^- \leqslant |f|\), по \hyperlink{признак сравнения рядов}{\bfseries признаку сравнения} из сходимости \(\sum |a_k|\) следует сходимость рядов \(\sum a_k^+, \sum a_k^-\).
-		\item[\(3 \Rightarrow 1\):] Так как \(\sum a_k = \sum a_k^+ - \sum a_k^-, \sum |a_k| = \sum a_k^+ + \sum a_k^-\), то по \hyperlink{свойства рядов}{\bfseries свойствам рядов} из сходимости \(\sum a_k^+, \sum a_k^-\) следует сходимость рядов \(\sum a_k, \sum |a_k|\).
+		\item[\(2 \Rightarrow 3\):] Так как по определению \(a_k^+ = \max (a_k, 0)\), \(a_k^- = \max (-a_k, 0)\), то \(a_k^+ \leqslant |f|\), \(a_k^- \leqslant |f|\), по \hyperlink{признак сравнения рядов}{признаку сравнения} из сходимости \(\sum |a_k|\) следует сходимость рядов \(\sum a_k^+, \sum a_k^-\).
+		\item[\(3 \Rightarrow 1\):] Так как \(\sum a_k = \sum a_k^+ - \sum a_k^-, \sum |a_k| = \sum a_k^+ + \sum a_k^-\), то по \hyperlink{свойства рядов}{свойствам рядов} из сходимости \(\sum a_k^+, \sum a_k^-\) следует сходимость рядов \(\sum a_k, \sum |a_k|\).
 	\end{description}
 \end{proof}
 
@@ -1629,9 +1614,9 @@
 	Сначала о сходимости. Проверим, что при \(p > 0\) интеграл сходится. Проинтегрируем его по частям: \[
 	\int_1^{\infty} \frac{\sin x}{x^p} \, dx = \int_{1}^{\infty} \frac{1}{x^p} \, d(-\cos x) = -\frac{\cos x}{x^p} \bigg|_1^\infty - p \cdot \int_{1}^{\infty} \frac{\cos x}{x^{p+1}} \, dx.
 	\]
-	Двойная подстановка стремится к нулю, а интеграл \(\displaystyle \int_{1}^{\infty} \frac{\cos x}{x^{p+1}} \, dx\) абсолютно сходится: так как \(\left|\dfrac{\cos x}{x^{p+1}} \right| \leqslant \left|\dfrac{1}{x^{p+1}} \right|\), по \hyperlink{priz}{\bfseries признаку сравнения} при \(p > 0\) из сходимости второго следует сходимость первого. Значит, рассматриваемый интеграл сходится, но об абсолютной сходимости говорить нельзя, так как его мы рассматривали не по модулю.
+	Двойная подстановка стремится к нулю, а интеграл \(\displaystyle \int_{1}^{\infty} \frac{\cos x}{x^{p+1}} \, dx\) абсолютно сходится: так как \(\left|\dfrac{\cos x}{x^{p+1}} \right| \leqslant \left|\dfrac{1}{x^{p+1}} \right|\), по \hyperlink{priz}{признаку сравнения} при \(p > 0\) из сходимости второго следует сходимость первого. Значит, рассматриваемый интеграл сходится, но об абсолютной сходимости говорить нельзя, так как его мы рассматривали не по модулю.
 	
-	Теперь покажем, что при \(p \leqslant 0\) интеграл расходится. Воспользуемся \hyperlink{Критерий Больцано -- Коши сходимости несобственного интеграла}{\bfseries критерием Больцано -- Коши}: если мы предъявим такую последовательность чисел \(A_k, B_k \to +\infty\), что \(\displaystyle \int_{A_k}^{B_k} \frac{\sin x}{x^p} \not\to 0\) при \(k \to \infty\), то докажем, что интеграл расходится.
+	Теперь покажем, что при \(p \leqslant 0\) интеграл расходится. Воспользуемся \hyperlink{Критерий Больцано -- Коши сходимости несобственного интеграла}{критерием Больцано -- Коши}: если мы предъявим такую последовательность чисел \(A_k, B_k \to +\infty\), что \(\displaystyle \int_{A_k}^{B_k} \frac{\sin x}{x^p} \not\to 0\) при \(k \to \infty\), то докажем, что интеграл расходится.
 	
 	Такая последовательность есть: пусть \(A_k = 2\pi k, B_k = 2\pi k + \pi\), тогда \[
 	\int_{2\pi k}^{2\pi k + \pi} \frac{\sin x}{x^p} \, dx \geqslant \frac{1}{(2\pi k)^p} \int_{2\pi k}^{2\pi k + \pi} \sin x \, dx = \frac{2}{(2\pi k)^p} \not\to 0.
@@ -1662,7 +1647,7 @@
 \begin{proof}
 	Докажем признаки:
 	\begin{description}
-		\item[Признак Дирихле] Зафиксируем \(B\) и проинтегрируем \(\displaystyle \int_a^B f(x)g(x) \, dx\) по частям (напомним, что по \hyperlink{t8}{\bfseries теореме Барроу} \(F'(x) = f(x)\)):
+		\item[Признак Дирихле] Зафиксируем \(B\) и проинтегрируем \(\displaystyle \int_a^B f(x)g(x) \, dx\) по частям (напомним, что по \hyperlink{t8}{теореме Барроу} \(F'(x) = f(x)\)):
 		\begin{multline*}
 			\int_a^B f(x)g(x) \, dx = \int_a^B g(x) \, d(F) = F(x)g(x) \bigg|_a^B -\int_a^B F(x)g'(x) \, dx = \\
 			= F(B)g(B) - F(a)g(a) - \int_a^B F(x)g'(x) \, dx.
@@ -1723,21 +1708,11 @@
 
 \subsection{Две леммы об интегрировании асимптотических равенств}
 
-\begin{theorem}
-	ДОДЕЛАТЬ
-\end{theorem}
-\begin{proof}
-	ДОДЕЛАТЬ
-\end{proof}
+ДОДЕЛАТЬ
 
 \subsection{Иррациональность \(e^2\)}
 
-\begin{theorem}
-	ДОДЕЛАТЬ
-\end{theorem}
-\begin{proof}
-	ДОДЕЛАТЬ
-\end{proof}
+ДОДЕЛАТЬ
 
 \subsection{Свойства рядов: линейность, свойства остатка, необходимое условие сходимости, критерий Больцано~--~Коши}
 
@@ -1752,7 +1727,6 @@
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	Ну-с:
 	\begin{enumerate}
 		\item Очевидно, что для любого \(N\) \(S_N^c = S_N^a + S_N^b\). Делаем предельный переход при \(N \to \infty\) --- предел левой части существует, так как существует предел правой.
 		\item Опять-таки очевидно, что для любого \(N\) \(S_N^{\lambda a} = \lambda S_N^a\). Делаем предельный переход, и всё.
@@ -1859,7 +1833,7 @@
 	Доказательство:
 	\begin{enumerate}
 		\item Пусть  \(K_n \leqslant q\), то есть \(a_n \leqslant q^n\). Ряд \(\sum q^n\) сходится как эталонный, а значит, и ряд \((A)\) также сходится.
-		\item Пусть \(K_n \geqslant 1\) для бесконечного числа номеров \(n\). Это значит, что \(a_n \geqslant 1\) также для бесконечного числа номеров \(n\), а это означает, что \(a_n \not\to 0\), что противоречит \hyperlink{необходимое условие сходимости}{\bfseries необходимому условию сходимости}.
+		\item Пусть \(K_n \geqslant 1\) для бесконечного числа номеров \(n\). Это значит, что \(a_n \geqslant 1\) также для бесконечного числа номеров \(n\), а это означает, что \(a_n \not\to 0\), что противоречит \hyperlink{необходимое условие сходимости}{необходимому условию сходимости}.
 	\end{enumerate}
 \end{proof}
 
@@ -1875,10 +1849,10 @@
 \begin{proof}
 	Доказательство (pro):
 	\begin{enumerate}
-		\item Воспользуемся \hyperlink{техническое описание верхнего предела}{\bfseries техническим описанием верхнего предела}: имеем \[
+		\item Воспользуемся \hyperlink{техническое описание верхнего предела}{техническим описанием верхнего предела}: имеем \[
 		\forall \varepsilon > 0 \quad \exists N \quad \forall n > N \quad K_n < K + \varepsilon.
 		\]
-		Возьмём какое-нибудь \(q \in (K, 1)\) и назначим \(\varepsilon = q - K\). Тогда, НСНМ, \(K_n < K + \varepsilon\), то есть \(K_n < q\). Согласно пункту~1 \hyperlink{Коши-нуб}{\bfseries версии признака Коши для нубов} ряд \((A)\) сходится.
+		Возьмём какое-нибудь \(q \in (K, 1)\) и назначим \(\varepsilon = q - K\). Тогда, НСНМ, \(K_n < K + \varepsilon\), то есть \(K_n < q\). Согласно пункту~1 \hyperlink{Коши-нуб}{версии признака Коши для нубов} ряд \((A)\) сходится.
 		\item Опять воспользуемся техническим описанием верхнего предела: имеем \[
 		\forall \varepsilon > 0 \quad \exists \textit{бесконечно много} \ n \quad K - \varepsilon < K_n.
 		\]
@@ -1919,7 +1893,7 @@
 		a_{N+k} < q^k a_N.
 		\]
 		Ряд \(\sum q^k a_N\) сходится как эталонный: \(q < 1\), \(a_N\) --- просто константа. Значит, и остаток \(\sum a_{N+k}\), а значит, и ряд \((A)\), тоже сходятся.
-		\item Имеем, что, НСНМ, \(a_{n+1} \geqslant a_n\). Отсюда \(a_n \not\to 0\), что противоречит \hyperlink{необходимое условие сходимости}{\bfseries необходимому условию сходимости}.
+		\item Имеем, что, НСНМ, \(a_{n+1} \geqslant a_n\). Отсюда \(a_n \not\to 0\), что противоречит \hyperlink{необходимое условие сходимости}{необходимому условию сходимости}.
 	\end{enumerate}
 \end{proof}
 
@@ -1945,7 +1919,7 @@
 \end{proof}
 
 \begin{remark}
-	Аналогично признаку Коши, если оказалось, что \(D = 1\), то признак не работает, так как можно привести примеры и сходящегося, и расходящегося рядов, для которых \(K = 1\): это, например, всё те же ряды \(\sum \frac{1}{n^2}\) и \(\sum \frac{1}{n}\) соответственно.
+	Аналогично признаку Коши, если оказалось, что \(D = 1\), то признак не работает, так как можно привести примеры и сходящегося, и расходящегося рядов, для которых \(D = 1\): это, например, всё те же ряды \(\sum 1/n^2\) и \(\sum 1/n\) соответственно.
 \end{remark}
 
 \subsection{Признак Раабе сходимости положительных рядов}
@@ -2015,11 +1989,11 @@
 	\end{enumerate}
 \end{corollary}
 \begin{proof}
-	Упражнение... (МОЖЕТ БЫТЬ,  ДОДЕЛАТЬ)
+	Упражнение от КПК.
 \end{proof}
 
 \begin{remark}
-	Аналогично двум предыдущим признакам, если оказалось, что \(R = 1\), то признак не работает, так как можно привести примеры и сходящегося, и расходящегося рядов, для которых \(R = 1\): это, например, ряды \(\sum \frac{1}{n \ln^2 n}\) и \(\sum \frac{1}{n \ln n}\) соответственно (сходимость первого и расходимость второго доказываются с помощью \hyperlink{интегральный признак Коши}{\bfseries интегрального признака Коши}).
+	Аналогично двум предыдущим признакам, если оказалось, что \(R = 1\), то признак не работает, так как можно привести примеры и сходящегося, и расходящегося рядов, для которых \(R = 1\): это, например, ряды \(\sum (n \ln^2 n)^{-1}\) и \(\sum (n \ln n)^{-1}\) соответственно (сходимость первого и расходимость второго доказываются с помощью \hyperlink{интегральный признак Коши}{ интегрального признака Коши}).
 \end{remark}
 
 \subsection{Интегральный признак Коши сходимости числовых рядов}
@@ -2143,7 +2117,7 @@
 \subsection{\itshape Неравенство Йенсена для сумм, формулировка для рядов}
 
 \begin{theorem} \hypertarget{Йенсен-суммы}{}
-	Пусть функция \(f\) выпукла на \(\langle a, b \rangle\). Тогда для любых \(x_1, \ldots, x_n\) из \(\langle a, b \rangle\) и любых неотрицательных \(\alpha_1, \ldots, \alpha_2\), таких, что \(\sum \alpha_i = 1\) выполняется \[
+	Пусть функция \(f\) выпукла на \(\langle a, b \rangle\). Тогда для любых \(x_1, \ldots, x_n\) из \(\langle a, b \rangle\) и любых неотрицательных \(\alpha_1, \ldots, \alpha_n\), таких, что \(\sum \alpha_i = 1\) выполняется \[
 	f \left(\sum_{k=1}^n \alpha_k x_k \right) \leqslant \sum_{k=1}^n \alpha_k f(x_k). 
 	\]
 \end{theorem}
@@ -2192,10 +2166,10 @@
 	\]
 \end{ntheorem}
 \begin{proof}
-	Запишем \hyperlink{Йенсен-суммы}{\bfseries неравенство Йенсена} для выпуклой вверх (знак неравенства изменится на противоположный) функции \(\ln x\) и \(\alpha_k = \frac{1}{n}\) для всех \(k\): \[
+	Запишем \hyperlink{Йенсен-суммы}{неравенство Йенсена} для выпуклой вверх (знак неравенства изменится на противоположный) функции \(\ln x\) и коэффициентов \(\alpha_k = 1/n\) для всех \(k\): \[
 	\ln \left(\frac{1}{n} \sum_{k=1}^n a_k \right) \geqslant \frac{1}{n} \sum_{k=1}^n \ln a_k = \frac{1}{n} \, \ln (a_1 \cdot \ldots \cdot a_n) = \ln \sqrt[n]{a_1 \cdot \ldots \cdot a_n}.
 	\]
-	Возьмём экспоненту (внимание, \textcolor{cyan}{потенциируем}) от левой и правой частей и получим требуемый результат.
+	Возьмём экспоненту (\textit{потенциируем}) от левой и правой частей и получим требуемый результат.
 \end{proof}
 
 \begin{ntheorem}
@@ -2204,13 +2178,11 @@
 	\]
 \end{ntheorem}
 \begin{proof}
-	Запишем \hyperlink{Йенсен-интегралы}{\bfseries интегральное неравенство Йенсена} (знак неравенства изменится на противоположный) для выпуклой вверх функции \(\ln x\) и \(\alpha(t) \equiv \dfrac{1}{b - a}\): \[
+	Запишем \hyperlink{Йенсен-интегралы}{ интегральное неравенство Йенсена} (знак неравенства изменится на противоположный) для выпуклой вверх функции \(\ln x\) и \(\alpha(t) \equiv \dfrac{1}{b - a}\): \[
 	\ln \left(\frac{1}{b - a} \int_a^b f(t) \, dt \right) \geqslant \frac{1}{b - a} \int_a^b \ln f(t) \, dt.
 	\]
 	Возьмём экспоненту от левой и правой частей и получим требуемый результат. 
 \end{proof}
-
-МБ ДОДЕЛАТЬ ЧЕРЕЗ ПРЕДЕЛЬНЫЙ ПЕРЕХОД
 
 \subsection{Неравенство Гёльдера для сумм}
 
@@ -2220,7 +2192,7 @@
 	\]
 \end{theorem}
 \begin{proof}
-	Запишем \hyperlink{Йенсен-суммы}{\bfseries неравенство Йенсена} для функции \(x^p\) (выпуклой при \(p > 1\)):
+	Запишем \hyperlink{Йенсен-суммы}{неравенство Йенсена} для функции \(x^p\) (выпуклой при \(p > 1\)):
 	\begin{equation} \label{ЙенГёль}
 		\left(\sum_{k=1}^n \alpha_k x_k \right)^{p} \leqslant \sum_{k=1}^n \alpha_k x_k^{p}.
 	\end{equation}
@@ -2304,10 +2276,8 @@
 	\]
 \end{ntheorem}
 \begin{proof}
-	Упражнение...
+	Упражнение от КПК.
 \end{proof}
-
-МБ ДОДЕЛАТЬ ИНТЕГРАЛЬНУЮ ВЕРСИЮ
 
 \subsection{Теорема об условиях сходимости бесконечного произведения}
 
@@ -2345,8 +2315,8 @@
 \subsection{Лемма о представлении синуса в виде конечного произведения}
 
 \begin{lemma} \hypertarget{sinlem}{}
-	Для всех \(x \in \mathbb{R}\) и для всех \(n \in \mathbb{N}\) \[
-	\sin x = (2n + 1) \sin \frac{x}{2n + 1} \cdot \prod_{k=1}^{n} \left(1 - \frac{\sin^2 \frac{x}{2n + 1}}{\sin^2 \frac{\pi k}{2n + 1}} \right).
+	\[
+		\forall x \in \mathbb{R} \quad \forall n \in \mathbb{N} \quad \sin x = (2n + 1) \sin \frac{x}{2n + 1} \cdot \prod_{k=1}^{n} \left(1 - \cfrac{\sin^2 \frac{x}{2n + 1}}{\sin^2 \frac{\pi k}{2n + 1}} \right).
 	\]
 \end{lemma}
 \begin{proof}
@@ -2365,11 +2335,11 @@
 	\end{equation}
 	где \(P\) --- многочлен степени \(n\), зависящий от \(\sin^2 x\).
 	
-	Теперь выберем \(z = \frac{\pi}{m}\), потом \(z = \frac{2 \pi}{m}\) и так до \(z = \frac{n \pi}{m}\) \big(заметим, что все эти числа лежат в \(\left(0, \frac{\pi}{2} \right)\)\big). Во всех этих случаях \(\sin mz = 0\), а \(\sin z \neq 0\). Значит, для всех выбранных \(z\) \(\sin^2 z\) --- корень многочлена \(P\). Так как многочлен имеет степень \(n\), мы можем его разложить: \[
-	P(u) = C \cdot \left(u - \sin^2 \frac{\pi}{m} \right) \cdot \left(u - \sin^2 \frac{2 \pi}{m} \right) \cdot \ldots \cdot \left(u - \sin^2 \frac{n \pi}{m} \right),
+	Теперь выберем \(z = \pi/m\), потом \(z = 2\pi/m\) и так до \(z = n\pi/m\) (заметим, что все эти числа лежат в \((0, \pi/2)\)). Во всех этих случаях \(\sin mz = 0\), а \(\sin z \neq 0\). Значит, для всех выбранных \(z\) \(\sin^2 z\) --- корень многочлена \(P\). Так как многочлен имеет степень \(n\), мы можем его разложить: \[
+	P(u) = C \bigg(u - \sin^2 \frac{\pi}{m} \bigg) \left(u - \sin^2 \frac{2 \pi}{m} \right) \ldots \bigg(u - \sin^2 \frac{n \pi}{m} \bigg),
 	\]
 	где \(C\) --- какая-то константа. Или мы можем записать это так: \[
-	P(u) = C \cdot \left(1 - \frac{u}{\sin^2 \frac{\pi}{m}} \right) \cdot \left(1 - \frac{u}{\sin^2 \frac{2 \pi}{m}} \right) \cdot \ldots \cdot \left(1 - \frac{u}{\sin^2 \frac{n \pi}{m}} \right).
+	P(u) = C \left(1 - \frac{u}{\sin^2 \frac{\pi}{m}} \right) \left(1 - \frac{u}{\sin^2 \frac{2 \pi}{m}} \right) \ldots  \left(1 - \frac{u}{\sin^2 \frac{n \pi}{m}} \right).
 	\]
 	Теперь, если мы подставим вместо \(u\) ноль, поймём, что \(C = P(0)\), что, в свою очередь, равно \(\lim\limits_{z \to 0} \frac{\sin mz}{\sin z} = m\) (заменим синус на эквивалентную). Обозначим \(x = mz = (2n + 1) z\) и из~\eqref{sinkon} сразу получим требуемую формулу.
 \end{proof}
@@ -2377,8 +2347,8 @@
 \subsection{Разложение синуса в бесконечное произведение}
 
 \begin{theorem}
-	Для любого \(x \in \mathbb{R}\) \[
-	\sin x = x \cdot \prod_{k=1}^{\infty} \left(1 - \frac{x^2}{\pi^2 k^2} \right).
+	\[
+		\forall x \in \mathbb{R} \quad \sin x = x \cdot \prod_{k=1}^{\infty} \left(1 - \frac{x^2}{\pi^2 k^2} \right).
 	\]
 \end{theorem}
 \begin{proof}
@@ -2422,12 +2392,28 @@
 ДОДЕЛАТЬ
 
 \subsection{Лемма о дифференцируемости отображения и его координатных функций}
-
+\hypertarget{t75}{}
 ДОДЕЛАТЬ
 
 \subsection{Необходимое условие дифференцируемости}
 
-ДОДЕЛАТЬ
+\begin{theorem}
+	Пусть функция \(F \colon E \subset \mathbb{R}^m \to \mathbb{R}^n\) дифференцируема в точке~\(a \in \interior E\). Тогда существуют все частные производные её координатных функций~\(f_1, \ldots, f_n\) и \[
+		F'(a) = \begin{pmatrix}
+			\dfrac{\partial f_1}{\partial x_1}(a) & \dots & \dfrac{\partial f_1}{\partial x_m}(a)\\
+			\vdots & \ddots & \vdots \\
+			\dfrac{\partial f_n}{\partial x_1}(a) & \dots & \dfrac{\partial f_n}{\partial x_m}(a)
+		\end{pmatrix}.
+	\]
+\end{theorem}
+\begin{proof}
+	Зафиксируем \(i\) и \(j\) и рассмотрим \(\dfrac{\partial f_i}{\partial x_j}\) (она существует по \hyperlink{t75}{лемме}):
+	\begin{multline*}
+		\frac{\partial f_i}{\partial x_j}(a) = \lim_{t \to 0} \frac{f_i (a_1, \ldots, a_j + t, \ldots, a_m) - f_i (a_1, \ldots, a_m)}{t} = \\
+		= \lim_{t \to 0} \frac{F'(a)[i,j] \cdot t + o(t)}{t} = F'(a)[i,j].
+	\end{multline*}
+	Здесь мы просто записали определение дифференцирования для \(f_i\) (её матрица Якоби это строка, а так как приращение происходит только по \(j\)-му аргументу, в нашей формуле останется только \(j\)-я её компонента) и привели подобные.
+\end{proof}
 
 \subsection{\itshape Достаточное условие дифференцируемости}
 

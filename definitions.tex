@@ -613,24 +613,50 @@
 
 \subsection{\itshape Отображение, бесконечно малое в точке}
 
-ДОДЕЛАТЬ
+\begin{definition}
+	Отображение \(\varphi \colon E \subset \mathbb{R}^m \to \mathbb{R}^n\) называется \textit{бесконечно малым} в точке \(x_0 \in E\) (считаем, что \(x_0\) --- предельная точка \(E\)), если~\(\varphi(x) \xrightarrow[x \to x_0]{} 0\).
+\end{definition}
 
 \subsection{\(o(h)\) при \(h \to 0\)}
 
-ДОДЕЛАТЬ
+\begin{definition}
+	Пусть \(\varphi \colon \mathbb{R}^m \to \mathbb{R}^n\). Запись \(\varphi (h) = o(h)\) при \(h \to \mathbb{0}_m\) означает, что \[
+		\frac{\varphi(h)}{h} \xrightarrow[h \to \mathbb{0}_m]{} \mathbb{0}_n
+	\]
+	или, что равносильно, \[
+		\varphi(h) = \alpha(h) |h|, \ \text{где} \ \alpha(h) \xrightarrow[h \to \mathbb{0}_m]{} \mathbb{0}_n.
+	\]
+	Запись \(\varphi(h) = o(|h|)\) при \(h \to \mathbb{0}_m\) означает то же самое.
+\end{definition}
 
 \subsection{\itshape Отображение, дифференцируемое в точке}
-
-ДОДЕЛАТЬ
+\hypertarget{d43}{}
+\begin{definition}
+	Пусть \(F \colon E \colon \mathbb{R}^m \to \mathbb{R}^n\), \(a \in \interior E\). Если существует такой линейный оператор \(L\), что \[
+		F(a + h) = F(a)	+ L h + o(h), \quad h \to 0,
+ 	\]
+	то отображение называется \textit{дифференцируемым в точке} \(a\).
+\end{definition}
 
 \subsection{\itshape Производный оператор, матрица Якоби, дифференциал}
 
-ДОДЕЛАТЬ
+\begin{definition}
+	В обозначениях \hyperlink{d43}{определения выше} \(L\) называют \textit{производным оператором} \(F\) в точке~\(a\) и обозначают \(F'(a)\). Матрица~\(F'(a)\) называется \textit{матрицей Якоби} отображения~\(F\) в точке~\(a\), а величина~\(L h\) (в новых обозначениях \(F'(a) h\)) --- \textit{дифференциалом} отображения \(F\) в точке~\(a\), соответствующим приращению \(h\), и обозначается \(dF(a, h)\).
+\end{definition}
 
 \subsection{\itshape Частные производные}
 
-ДОДЕЛАТЬ
+\begin{definition}
+	Пусть \(f \colon E \subset \mathbb{R}^m \to \mathbb{R}\), точка \(a \in \interior E\). Зафиксируем~\(k \in 1 \colon m\) и рассмотрим функцию \(\varphi_k (t) = f(a_1, \ldots, a_{k-1}, t, a_{k+1}, \ldots, a_m)\), где \(t \in U(a_k)\). Тогда если существует предел \[
+		\lim_{s \to 0} \frac{\varphi_k(a_k + s) - \varphi(a_k)}{s} = \varphi'_k (a_k),	
+	\]
+	то он называется \textit{частной производной} функции \(f\) по \(k\)-й переменной в точке \(a = (a_1, \ldots, a_n)\) и обозначается \(\dfrac{\partial f}{\partial x_k} (a)\).
+\end{definition}
 
 \subsection{Формула дополнения для \(\Gamma\)-функции}
 
-ДОДЕЛАТЬ
+\begin{theorem}
+	\[
+		\Gamma(p) \Gamma(1 - p) = \frac{\pi}{\sin \pi p}, \quad p \in \mathbb{R} \setminus \mathbb{Z}.	
+	\]
+\end{theorem}
