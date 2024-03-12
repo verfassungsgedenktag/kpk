@@ -30,11 +30,15 @@
 
 % настройка
 \graphicspath{{noiseimages/}}
-\graphicspath{{Pictures/}}
+\graphicspath{{pictures/}}
 
 \frenchspacing
-\binoppenalty=10000
-\relpenalty=10000
+\binoppenalty=100000
+\relpenalty=100000
+\oddsidemargin=-0.5in
+\textwidth=7.3in
+\topmargin=-0.5in
+\textheight=9.7in
 
 % окружения
 \theoremstyle{plain}
@@ -51,6 +55,13 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{Замечание}
 \newtheorem{nremark}{Замечание}[subsection]
+\newtheorem*{remarks}{Замечания}
+
+%\newtheoremstyle{break}%
+%  {}{}%
+%  {\itshape}{}%
+%  {\bfseries}{}%  % Note that final punctuation is omitted.
+%  {\newline}{}
 
 % (ре)ньюкомманд
 \newcommand{\anonsection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
@@ -61,4 +72,6 @@
 \renewcommand{\thendefinition}{\arabic{ndefinition}}
 \renewcommand{\thentheorem}{\arabic{ntheorem}}
 
+% новые математические операторы
 \DeclareMathOperator{\interior}{Int}
+\DeclareMathOperator{\sector}{Sector}

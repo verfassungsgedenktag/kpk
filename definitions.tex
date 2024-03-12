@@ -14,9 +14,8 @@
 	\textit{Неопределённым интегралом} функции $f$ на $\langle a, b \rangle$
 	(обозначается как $\int f$ или $\int f(x) \, dx$) называется множество её первообразных,
 	то есть \[
-	\int f = \{ \, F + C \mid C \in \mathbb{R} \, \},
+	\int f = \{ \, F + C \mid C \in \mathbb{R} \, \}, \ \text{где} \ F \ \text{--- первообразная} \ f \ \text{на} \ \langle a, b \rangle.
 	\]
-	где $F$ --- первообразная $f$ на $\langle a, b \rangle$.
 \end{ndefinition}
 
 \subsection{Теорема о существовании первообразной}
@@ -256,13 +255,12 @@
 \subsection{Функция промежутка, аддитивная функция промежутка}
 
 \begin{definition}
-	Пусть \(a, b \in \overline{\mathbb{R}}\), \(a < b\). Обозначим как \(Segm \langle a, b \rangle\) множество вида \(\{[p, q] \mid [p, q] \subset \langle a, b \rangle\}\). Тогда:
+	Пусть \(a, b \in \overline{\mathbb{R}}\), \(a < b\). Обозначим как \(Segm \langle a, b \rangle\) множество \(\{\, [p, q] : [p, q] \subset \langle a, b \rangle \,\}\). Тогда:
 	\begin{enumerate}
 		\item Функция \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) называется \textit{функцией промежутка},
-		\item Функция \(\Phi \colon Segm \langle a, b \rangle \to \mathbb{R}\) такая, что \[
-		\forall [p, q] \in Segm \langle a, b \rangle \quad \forall \in (p, q) \quad \Phi([p, q]) = \Phi([p, c]) + \Phi([c, q]),
+		\item Функция промежутка \(\Phi\) называется \textit{аддитивной функцией промежутка} (а.ф.п.), если \[
+			\forall [p, q] \in Segm \langle a, b \rangle \quad \forall c \in (p, q) \quad \Phi([p, q]) = \Phi([p, c]) + \Phi([c, q]),
 		\]
-		называется \textit{аддитивной функцией промежутка}.
 	\end{enumerate}
 \end{definition}
 
@@ -286,7 +284,12 @@
 \subsection{\itshape Верхний и нижний пределы последовательности}
 
 \begin{ndefinition}
-	Пусть \((x_n)\) --- вещественная последовательность. Тогда последовательность \((y_n)\), где \(y_n = \sup (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), называется \textit{верхней огибающей} \((x_n)\), а \((z_n)\), где \(z_n = \inf (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), --- \textit{нижней огибающей} \((x_n)\).
+	Пусть \((x_n)\) --- вещественная последовательность. Тогда 
+	\begin{description}
+		\item[Верхней огибающей] \((x_n)\) называется последовательность \((y_n)\) 
+	\end{description}
+	
+	последовательность \((y_n)\), где \(y_n = \sup (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), называется \textit{верхней огибающей} \((x_n)\), а \((z_n)\), где \(z_n = \inf (x_n, x_{n + 1}, x_{n + 2}, \ldots)\), --- \textit{нижней огибающей} \((x_n)\).
 \end{ndefinition}
 
 \begin{remark}
@@ -493,7 +496,7 @@
 \subsection{Бесконечное произведение}
 
 \begin{definition}
-	Выражение \(\prod\limits_{k=1}^{+\infty} a_k\) называется \textit{бесконечным произведением}. Обозначим \(P_n = \prod\limits_{k=1}^{n} a_k\). Если существует конечный предел \(\lim\limits_{n \to \infty} P_n\), то говорят, что произведение \textit{сходится}; если \(\lim\limits_{n \to \infty} P_n = 0\), говорят, что оно расходится к нулю. Во всех остальных случаях (предел равен бесконечности или не существует) говорят, что произведение расходится.
+	Выражение \(\prod\limits_{k=1}^{+\infty} a_k\) называется \textit{бесконечным произведением}. Обозначим \(P_n = \prod\limits_{k=1}^{n} a_k\). Если существует конечный предел \(\lim\limits_{n \to \infty} P_n\), говорят, что произведение \textit{сходится}; если \(\lim\limits_{n \to \infty} P_n = 0\), говорят, что оно расходится к нулю. Во всех остальных случаях (предел равен бесконечности или не существует) говорят, что произведение расходится.
 \end{definition}
 
 \begin{remark} \hypertarget{besk}{}
@@ -524,10 +527,10 @@
 \subsection{Скалярное произведение, евклидова норма и метрика в \(\mathbb{R}^m\)}
 
 \begin{definition}
-	Напомним, что \(\mathbb{R}^m\) --- линейное пространтсво вида \linebreak \(\{(x_1, \ldots, x_m) \mid x_i \in \mathbb{R}\}\). Также напомним некоторые понятия:
+	Напомним, что \(\mathbb{R}^m\) --- линейное пространтсво вида \(\{\, (x_1, \ldots, x_m) \mid x_i \in \mathbb{R} \,\}\). Также напомним некоторые понятия:
 	\begin{description}
 		\item[Скалярным произведением] \(\langle x, y \rangle\) векторов \(x, y \in \mathbb{R}^m\) называется выражение вида \( \sum\limits_{i=1}^n x_i y_i\).
-		\item[Евклидовой нормой] \(||x||\) вектора \(x \in \mathbb{R}^m\) называется выражение вида \linebreak \(\sqrt{\langle x, x \rangle} = \sqrt{x_1^2 + \ldots + x_m^2}\).
+		\item[Евклидовой нормой] \(||x||\) вектора \(x \in \mathbb{R}^m\) называется выражение \(\sqrt{\langle x, x \rangle} = \sqrt{x_1^2 + \ldots + x_m^2}\).
 		\item[Метрикой] \(\rho\) в \(\mathbb{R}^m\) будем называть отображение вида \(\rho(x, y) = || x - y||\). 
 	\end{description}
 \end{definition}

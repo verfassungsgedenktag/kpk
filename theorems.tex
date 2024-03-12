@@ -296,19 +296,17 @@
 	Пусть $f$ непрерывна на $[a, b]$, $F$ --- первообразная $f$ на $[a, b]$. Тогда \(\int\limits_a^b f = F(b) - F(a)\).
 \end{theorem}
 \begin{proof}
-	Введём интеграл с переменным верхним пределом $\Phi$. По \hyperlink{t8}{теореме Барроу} $\Phi'(x) = f(x)$ для любого $x$ из $[a, b]$.
-	Заметим, что $\Phi(x) = F(x) + C$, где $C \in \mathbb{R}$, а также что $\Phi(a) = 0$. Тогда имеем: \[
+	Введём интеграл с переменным верхним пределом \(\Phi\). Согласно \hyperlink{t8}{теореме Барроу}~$\Phi'(x) = f(x)$ для любого $x$ из $[a, b]$. Заметим, что $\Phi(x) = F(x) + C$, где $C \in \mathbb{R}$, а также что~$\Phi(a) = 0$. Тогда имеем \[
 	\int\limits_a^b f = \Phi(b) = \Phi(b) - \Phi(a) = (F(b) + C) - (F(a) + C) = F(b) - F(a). 
 	\]
 \end{proof}
 
-\begin{nremark}
-	Выходит, что определённый интеграл не зависит от выбора ослабленной площади $\sigma$.
-\end{nremark}
-
-\begin{nremark}
-	Приращение $F(b) - F(a)$ первообразной обычно записывают в виде $F(x) \bigg|_{x = a}^{x = b}$ или в краткой форме $F(x \bigg|_a^b$.
-\end{nremark}
+\begin{remarks}
+	\begin{enumerate}
+		\item Выходит, определённый интеграл не зависит от выбора ослабленной площади~$\sigma$,
+		\item Приращение $F(b) - F(a)$ первообразной обычно записывают в виде $F(x) |_{x = a}^{x = b}$ или в краткой форме $F(x) |_a^b$.
+	\end{enumerate}
+\end{remarks}
 
 \subsection{Свойства определённого интеграла}
 
@@ -316,37 +314,27 @@
 \begin{theorem}
 	Пусть $f, g$ непрерывны на $[a, b]$, $\alpha, \beta \in \mathbb{R}$. Тогда:
 	\begin{enumerate}
-		\item \(\displaystyle \int_a^b \alpha f + \beta g = \alpha \int_a^b f + \beta \int_a^b g\),
-		\item Если к тому же $f, g$ дифференцируемы на $[a, b]$, то \[
-		\int_a^b fg' = fg \bigg|_a^b - \int_a^b f'g,
-		\]
-		\item Пусть $\varphi: \langle \alpha, \beta \rangle \to \langle a, b \rangle$ дифференцируема на $\langle \alpha, \beta \rangle$,
-		пусть также $[p, q] \subset \langle \alpha, \beta \rangle$. Тогда \[
-		\int\limits_p^q f(\varphi(t))\varphi'(t) dt = \int\limits_{\varphi(p)}^{\varphi(q)} f(x) dx.
+		\item \(\int_a^b \alpha f + \beta g = \alpha \int_a^b f + \beta \int_a^b g\),
+		\item Если к тому же $f, g$ дифференцируемы на $[a, b]$, то \(\int_a^b fg' = fg|_a^b - \int_a^b f'g\),
+		\item Если $\varphi: \langle \alpha, \beta \rangle \to \langle a, b \rangle$ дифференцируема на $\langle \alpha, \beta \rangle$,
+		а также $[p, q] \subset \langle \alpha, \beta \rangle$, то \[
+		\int\limits_p^q f(\varphi) \, \varphi'(t) \, dt = \int\limits_{\varphi(p)}^{\varphi(q)} f(x) \, dx.
 		\]
 	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-	Докажем свойства по отдельности:
 	\begin{enumerate}
-		\item Следует из того, что если $F, G$ --- первообразные $f, g$ соответственно,
-		то $\alpha F + \beta G$ --- первообразная $\alpha f + \beta g$.
-		\item Имеем:
-		\begin{align*}
-			\int_a^b fg' &= fg \bigg|_a^b - \int_a^b f'g \\
-			\int_a^b fg' + \int_a^b f'g &= fg \bigg|_a^b \\
-			\int_a^b (fg' + f'g) &= fg \bigg|_a^b		   \\
-		\end{align*}
+		\item Следует из того факта, что если $F, G$ --- первообразные $f, g$ соответственно, то $\alpha F + \beta G$ --- первообразная $\alpha f + \beta g$.
+		\item Имеем \[
+			\int_a^b fg' = fg \bigg|_a^b - \int_a^b f'g \iff \int_a^b fg' + \int_a^b f'g = fg \bigg|_a^b \iff \int_a^b (fg' + f'g) = fg \bigg|_a^b.
+		\]
 		Последнее равенство очевидно.
-		\item Пусть $F$ --- первообразная функции $f$ на $[a, b]$. Так как \\ 
-		\hbox{$(F(\varphi(t)))' = F'(\varphi(t)) \varphi(t) = f(\varphi(t)) \varphi(t)$}, то
-		$F(\varphi(t))$ --- первообразная $f(\varphi(t)) \varphi'(t)$ на $\langle \alpha, \beta \rangle$.
-		Дважды использую \hyperlink{t9}{формулу Ньютона -- Лейбница}, получим нужное равенство:
-		\begin{multline*}
-			\int_p^q f(\varphi(t))\varphi'(t) dt = F(\varphi(t)) \bigg|_p^q = F(\varphi(q)) - F(\varphi(t)) = \\
-			= F(x) \bigg|_{\varphi(p)}^{\varphi(q)} = \int_{\varphi(p)}^{\varphi(q)} f(x) dx.
-		\end{multline*}
+		\item Пусть $F$ --- первообразная функции $f$ на $[a, b]$. Так как \((F(\varphi))' = F'(\varphi) \, \varphi'(t) = f(\varphi) \, \varphi'(t)\), то
+		$F(\varphi(t))$ --- первообразная $f(\varphi) \, \varphi'(t)$ на $\langle \alpha, \beta \rangle$.
+		Дважды использую \hyperlink{t9}{формулу Ньютона -- Лейбница}, получим нужное равенство: \[
+			\int_p^q f(\varphi) \, \varphi'(t) \, dt = F(\varphi(t)) \bigg|_p^q = F(\varphi(q)) - F(\varphi(p)) = F(x) \bigg|_{\varphi(p)}^{\varphi(q)} = \int_{\varphi(p)}^{\varphi(q)} f(x) \, dx.
+		\]
 	\end{enumerate}
 \end{proof}
 
@@ -354,7 +342,7 @@
 
 % неравенство Чебышёва
 \begin{theorem}
-	Пусть \(f, g\) непрерывны на \([a, b]\) и монотонны, причём одинаково монотонны. Пусть \(I_f\) --- \hyperlink{average}{\bfseries среднее значение} функции \(f\). Тогда \[
+	Пусть \(f, g\) непрерывны на \([a, b]\) и монотонны (причём одинаково). Пусть~\(I_f\)~--- \hyperlink{average}{среднее значение} функции \(f\). Тогда \[
 	I_f \cdot I_g \leqslant I_{fg}.
 	\]
 \end{theorem}
@@ -364,13 +352,10 @@
 	\forall x, y \in [a, b] \quad (f(x) - f(y)) \cdot (g(x) - g(y)) \geqslant 0.
 	\]
 	Раскроем скобки: \[
-	f(x)g(x) - f(x)g(y) - f(y)g(x) + f(y)g(y) \geqslant 0.
+	f(x)\,g(x) - f(x)\,g(y) - f(y)\,g(x) + f(y)\,g(y) \geqslant 0.
 	\]
-	Проинтегрируем неравенство по \(x\) на \([a, b]\): \[
-	\int_a^b fg - \int_a^b f \cdot g(y) - f(y) \cdot \int_a^b g + (b - a) \cdot f(y)g(y) \geqslant 0
-	\]
-	и разделим на \(b - a\): \[
-	I_{fg} - I_f \cdot g(y) - f(y) \cdot I_g + f(y)g(y) \geqslant 0.
+	Проинтегрируем неравенство по \(x\) на \([a, b]\) и разделим результат на \(b - a\): \[
+	I_{fg} - I_f \cdot g(y) - f(y) \cdot I_g + f(y)\,g(y) \geqslant 0.
 	\]
 	Теперь проинтегрируем по \(y\) на том же промежутке и опять разделим на \(b - a\): \[
 	I_{fg} - I_f \cdot I_g - I_f \cdot I_g + I_{fg} \geqslant 0.
@@ -396,10 +381,8 @@
 	\end{multline*}
 	Ещё раз проинтегрируем \(H_n\) по частям:
 	\begin{multline*}
-		H_n = \frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} \sin t \, dt = \\
-		= \frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} (-\cos t)' \, dt = \\
-		= \frac{2}{(n-1)!} \left. t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} (-\cos t) \, \right|^{\pi/2}_{-\pi/2} - \\
-		- \frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} \left(t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} \right)' (-\cos t) \, dt.
+		H_n = \frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} \sin t \, dt = \frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} (-\cos t)' \, dt = \\
+		= \frac{2}{(n-1)!} \left. t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} (-\cos t) \, \right|^{\pi/2}_{-\pi/2} - \frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} \left(t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} \right)' (-\cos t) \, dt.
 	\end{multline*}
 	Разберёмся с производной:
 	\begin{multline*}
@@ -408,8 +391,7 @@
 		= \left(\frac{\pi^2}4 - t^2 \right)^{n-1} + 2\left(\left(\frac{\pi^2}4 - t^2 \right) - \frac{\pi^2}4 \right) (n - 1) \left(\frac{\pi^2}4 - t^2 \right)^{n-2} = \\
 		= (2n - 1) \left(\frac{\pi^2}4 - t^2 \right)^{n-1} - (n - 1) \frac{\pi^2}2 \left(\frac{\pi^2}4 - t^2 \right)^{n-2}.
 	\end{multline*}
-	Последнее равенство получено просто раскрытием скобок и приведением подобных.
-	Тогда окончательный результат второго интегрирования по частям выглядит следующим образом (подстановка там зануляется, её не пишем):
+	Последнее равенство получено просто раскрытием скобок и приведением подобных. Тогда окончательный результат второго интегрирования по частям выглядит следующим образом (подстановка там зануляется, её не пишем):
 	\begin{multline*}
 		H_n = -\frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} \left(t \left(\frac{\pi^2}{4} - t^2 \right)^{n-1} \right)' (-\cos t) \, dt = \\
 		= -\frac{2}{(n-1)!} \int_{-\pi/2}^{\pi/2} (2n - 1) \left(\frac{\pi^2}4 - t^2 \right)^{n-1} (-\cos t) \, dt \, + \\
@@ -502,10 +484,10 @@
 	\]
 	где \(t = \dfrac{x_3 - x_2}{x_3 - x_1}\), \(1 - t = \dfrac{x_2 - x_1}{x_3 - x_1}\).
 	Преобразуем неравенство двумя способами. С одной стороны, \[
-	f(x_2) \leqslant f(x_1) + (1 - t)(f(x_3) - f(x_1)) = f(x_1) + (x_2 - x_1) \frac{f(x_3) - f(x_1)}{x_3 - x_1},
+	f(x_2) \leqslant f(x_1) + (1 - t)(f(x_3) - f(x_1)) = f(x_1) + (x_2 - x_1) \, \frac{f(x_3) - f(x_1)}{x_3 - x_1},
 	\]
 	что равносильно левой части двойного неравенства. С другой стороны, \[
-	f(x_2) \leqslant f(x_3) - t (f(x_3) - f(x_1)) = f(x_3) - (x_3 - x_2) \frac{f(x_3) - f(x_1)}{x_3 - x_1},
+	f(x_2) \leqslant f(x_3) - t (f(x_3) - f(x_1)) = f(x_3) - (x_3 - x_2) \, \frac{f(x_3) - f(x_1)}{x_3 - x_1},
 	\] что равносильно правой части двойного неравенства.
 \end{proof}
 
@@ -519,7 +501,6 @@
 	Возьмём \(x \in (a, b)\) и положим \[
 	g(\xi) = \frac{f(\xi) - f(x)}{\xi - x}, \qquad \xi \in \langle a, b \rangle \setminus \{x\}.
 	\]
-	
 	По \hyperlink{trihordy}{лемме о трёх хордах} \(g\) возрастает на \(\langle a, b \rangle \setminus \{x\}\). Поэтому если \hbox{\(a < \xi < x < \eta < b\)}, то \[
 	\frac{f(\xi) - f(x)}{\xi - x} \leqslant \frac{f(\eta) - f(x)}{\eta - x}.
 	\]
@@ -550,7 +531,6 @@
 \end{theorem}
 
 \begin{proof}
-	Докажем необходимость и достаточность отдельно.
 	\begin{enumerate}
 		\item[\(\Rightarrow\)] Пусть \(f\) выпукла вниз, \(x, x_0 \in \langle a, b \rangle\). Если \(x > x_0\), то по \hyperlink{trihordy}{лемме о трёх хордах} для любого \(\eta \in (x_0, x)\) \[
 		\frac{f(\eta) - f(x_0)}{\eta - x_0} \leqslant \frac{f(x) - f(x_0)}{x - x_0}.
@@ -655,24 +635,24 @@
 
 \subsection{Свойства верхнего и нижнего пределов}
 
-\begin{theorem}
+\begin{theorem}\footnote{Все пределы здесь рассматриваются при \(n \to \infty\), что опускается ради читаемости текста.}
 	Пусть \((x_n)\) --- вещественная последовательность. Тогда:
 	\begin{enumerate}
-		\item \(\varliminf\limits_{n \to \infty} x_n \leqslant \varlimsup\limits_{n \to \infty} x_n\),
-		\item Если \((\widetilde{x}_n)\) --- вещественная последовательность, причём для всех \(n\) \(x_n \leqslant \widetilde{x}_n\), то \(\varlimsup\limits_{n \to \infty} x_n \leqslant \varlimsup\limits_{n \to \infty} \widetilde{x}_n\) и \(\varliminf\limits_{n \to \infty} x_n \leqslant \varliminf\limits_{n \to \infty} \widetilde{x}_n\),
-		\item Возьмём \(\lambda \geqslant 0\), тогда \(\varlimsup\limits_{n \to \infty} \lambda x_n = \lambda \varlimsup\limits_{n \to \infty} x_n\) и \(\varliminf\limits_{n \to \infty} \lambda x_n = \lambda \varliminf\limits_{n \to \infty} x_n\),\footnote{Заметим, что при этом выходит, что \(0 \cdot (\pm \infty) = 0\).}
-		\item \(\varlimsup\limits_{n \to \infty} -x_n = -\varliminf\limits_{n \to \infty} x_n\), \(\varliminf\limits_{n \to \infty} -x_n = -\varlimsup\limits_{n \to \infty} x_n\),
-		\item \(\varlimsup\limits_{n \to \infty} x_n + \widetilde{x}_n \leqslant \varlimsup\limits_{n \to \infty} x_n + \varlimsup\limits_{n \to \infty} \widetilde{x}_n\) и \(\varliminf\limits_{n \to \infty} x_n + \widetilde{x}_n \geqslant \varliminf\limits_{n \to \infty} x_n + \varliminf\limits_{n \to \infty} \widetilde{x}_n\), где \((\widetilde{x}_n)\) --- вещественная последовательность,
-		\item Если \((t_n)\) --- вещественная последовательность, стремящаяся к \(l \in \mathbb{R}\), то \(\varlimsup\limits_{n \to \infty} x_n + t_n = \varlimsup\limits_{n \to \infty} x_n + l\),
-		\item Если \((t_n)\) --- вещественная последовательность, стремящаяся к \(l \in (0, +\infty)\), то \(\varlimsup\limits_{n \to \infty} t_n \cdot x_n = l \cdot \varlimsup\limits_{n \to \infty} x_n\).
+		\item \(\varliminf x_n \leqslant \varlimsup x_n\),
+		\item Если \((\widetilde{x}_n)\) --- вещественная последовательность, причём \(\forall n \enskip x_n \leqslant \widetilde{x}_n\), то \(\varlimsup x_n \leqslant \varlimsup \widetilde{x}_n\) и \(\varliminf x_n \leqslant \varliminf \widetilde{x}_n\),
+		\item Возьмём \(\lambda \geqslant 0\), тогда \(\varlimsup \lambda x_n = \lambda \varlimsup x_n\) и \(\varliminf \lambda x_n = \lambda \varliminf x_n\),\footnote{Заметим, что при этом выходит, что \(0 \cdot (\pm \infty) = 0\).}
+		\item \(\varlimsup -x_n = -\varliminf x_n\), \(\varliminf -x_n = -\varlimsup x_n\),
+		\item \(\varlimsup x_n + \widetilde{x}_n \leqslant \varlimsup x_n + \varlimsup \widetilde{x}_n\) и \(\varliminf x_n + \widetilde{x}_n \geqslant \varliminf x_n + \varliminf \widetilde{x}_n\), где \((\widetilde{x}_n)\) --- вещественная последовательность,
+		\item Если \((t_n)\) --- вещественная последовательность и \(t_n \to l \in \mathbb{R}\), то \(\varlimsup\ x_n + t_n = \varlimsup x_n + l\),
+		\item Если \((t_n)\) --- вещественная последовательность и \(t_n \to l \in (0, +\infty)\), то \(\varlimsup t_n \cdot x_n = l \cdot \varlimsup x_n\).
 	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
 	Докажем эти свойства:
 	\begin{enumerate}
-		\item Следует из того, что для всех \(n\) \(z_n \leqslant y_n\),
-		\item В силу того, что для всех \(n\) \(y_n \leqslant \widetilde{y}_n\) и \(z_n \leqslant \widetilde{z}_n\),
+		\item Следует из того, что \(\forall n \enskip z_n \leqslant y_n\),
+		\item В силу того, что \(\forall n \enskip y_n \leqslant \widetilde{y}_n\) и \(z_n \leqslant \widetilde{z}_n\),
 		\item Так как для \((\lambda x_n)\) верхняя огибающая имеет вид \((\lambda y_n)\), а нижняя~--- \((\lambda z_n)\),
 		\item Обозначим как \((y_n^-)\) верхнюю огибающую \((-x_n)\) и как \((z_n^-)\) --- нижнюю. Тогда \[
 		y_n^- = \sup(-x_n, -x_{n + 1}, -x_{n + 2}, \ldots).
@@ -680,9 +660,10 @@
 		По определению супремума \[
 		\forall k \geqslant n \quad y_n^- \geqslant -x_k, \ \text{то есть} \ -y_n^- \leqslant x_k.
 		\]
-		Получается, что \(-y_n^- = \inf(x_n, x_{n + 1}, x_{n + 2}, \ldots)\), что равносильно \linebreak \(y_n^- = -\inf(x_n, x_{n + 1}, x_{n + 2}, \ldots) = -z_n\). Аналогично \(z_n^- = -y_n\).
-		
-		Перейдём к пределу и получим требуемый результат.
+		Получается, что \[
+			-y_n^- = \inf(x_n, x_{n + 1}, x_{n + 2}, \ldots), \ \text{то есть, иначе говоря,} \ y_n^- = -\inf(x_n, x_{n + 1}, x_{n + 2}, \ldots).
+		\]
+		Аналогично \(z_n^- = -y_n\). Теперь перейдём к пределу и получим требуемый результат.
 		\item ДОДЕЛАТЬ
 		\item По условию \(t_n \to l \in \mathbb{R}\), то есть \[
 		\forall \varepsilon > 0 \quad \exists N_0 \quad \forall n > N_0 \quad l - \varepsilon < t_n < l + \varepsilon.
@@ -694,7 +675,7 @@
 		y_N + l - \varepsilon < \sup(x_n + t_n, x_{n + 1} + t_{n + 1}, x_{n + 2} + t_{n + 2}, \ldots) < y_N + l + \varepsilon.
 		\]
 		Устремим \(N\), а значит, и \(n\) тоже в бесконечность, а \(\varepsilon\) --- к нулю, и получим нужный результат: \[
-		\varlimsup\limits_{n \to \infty} x_n + l \leqslant \varlimsup\limits_{n \to \infty} x_n + t_n \leqslant \varlimsup\limits_{n \to \infty} x_n + l.
+		\varlimsup x_n + l \leqslant \varlimsup x_n + t_n \leqslant \varlimsup x_n + l.
 		\]
 		\item Без доказательства.
 	\end{enumerate}
@@ -793,29 +774,24 @@
 \subsection{Площадь криволинейного сектора: в полярных координатах и для параметрической кривой}
 
 \begin{theorem}
-	Пусть функция \(f(\varphi) \colon [0, 2\pi] \to [0, +\infty]\) непрерывна. Назовём криволинейным сектором \([\alpha, \beta]\) (обозначать будем как Сектор(\(\alpha, \beta\))), где \(\alpha, \beta \in [0, 2\pi]\), множество вида \(\{(r, \varphi) \mid \alpha \leqslant \varphi \leqslant \beta, \ 0 \leqslant r \leqslant f(\varphi)\}\). Тогда
+	Пусть функция \(f(\varphi) \colon [0, 2\pi] \to [0, +\infty]\) непрерывна. Назовём криволинейным сектором~\([\alpha, \beta]\) , где \(\alpha, \beta \in [0, 2\pi]\), множество вида \(\{\, (r, \varphi) : \alpha \leqslant \varphi \leqslant \beta, \ 0 \leqslant r \leqslant f(\varphi) \,\}\). Обозначать будем как \(\sector(\alpha, \beta)\). Тогда
 	\begin{equation} \label{sigma_1}
-		\sigma(\text{Сектор}(\alpha, \beta)) = \frac{1}{2}\int\limits_\alpha^\beta f^2(\varphi) d\varphi.
+		\sigma(\sector(\alpha, \beta)) = \frac{1}{2}\int\limits_\alpha^\beta f^2(\varphi) d\varphi.
 	\end{equation}
 \end{theorem}
 
 \begin{proof}
-	Проверим, что \(\dfrac{1}{2}f^2\) --- плотность аддитивной функции промежутка \(\Phi \colon Segm [0, 2\pi] \to [0, +\infty]\), где \(\Phi([\alpha, \beta]) = \sigma(\text{Сектор}(\alpha, \beta))\). Тогда по \hyperlink{afp}{теореме о вычислении аддитивной функции промежутка по плотности} мы могли бы сразу получить нужный результат.
+	Проверим, что \(f^2 /2\) --- плотность а.ф.п. \(\Phi \colon [\alpha, \beta] \mapsto \sigma(\sector(\alpha, \beta))\). Тогда по \hyperlink{afp}{теореме о вычислении а.ф.п. по плотности} мы могли бы сразу получить нужный результат.
 	
-	Возьмём промежуток \(\Delta \in Segm [0, 2\pi]\). Заметим, что криволинейный сектор \(\Delta\) можно поместить в круговой сектор \(\Delta\) с радиусом \(\max\limits_\Delta f(\varphi)\) (обозначим его как Сектор\(_{\max}\)(\(\Delta\))). А в сам криволинейный сектор, в свою очередь, можно поместить круговой сектор с радиусом \(\min\limits_\Delta f(\varphi)\) (обозначим его как Сектор\(_{\min}\)(\(\Delta\))). Минимум и максимум \(f\) достигаются по теореме Вейерштрасса, ведь мы рассматриваем непрерывную функцию на отрезке. Так как ослабленная площадь \(\sigma\) монотонна, выполняется неравенство \[
-	\sigma(\text{Сектор}_{\min}(\Delta)) \leqslant \sigma(\text{Сектор}(\Delta)) \leqslant \sigma(\text{Сектор}_{\max}(\Delta)),
+	Возьмём промежуток \(\Delta \in Segm [0, 2\pi]\). Заметим, что криволинейный сектор \(\Delta\) можно поместить в круговой сектор \(\Delta\) с радиусом \(\max_\Delta f(\varphi)\) (обозначим его как \(\sector_{\max} \Delta\)). А в сам криволинейный сектор, в свою очередь, можно поместить круговой сектор с радиусом \(\min_\Delta f(\varphi)\) (обозначим его как \(\sector_{\min} \Delta\)). Минимум и максимум \(f\) достигаются по теореме Вейерштрасса, ведь мы рассматриваем непрерывную функцию на отрезке. Так как ослабленная площадь \(\sigma\) монотонна, выполняется неравенство \[
+		\sigma(\sector_{\min} \Delta) \leqslant \sigma(\sector \Delta) \leqslant \sigma(\sector_{\max} \Delta) \iff \sigma(\sector_{\min} \Delta) \leqslant \Phi(\Delta) \leqslant \sigma(\sector_{\max} \Delta),
 	\]
-	то есть \[
-	\sigma(\text{Сектор}_{\min}(\Delta)) \leqslant \Phi(\Delta) \leqslant \sigma(\text{Сектор}_{\max}(\Delta)),
-	\]
-	
-	Из школьной программы (!) знаем, что площадь кругового сектора \([\alpha, \beta]\) с радиусом \(r\) равна \(\dfrac{1}{2} (\beta - \alpha) r^2\). Наше неравенство принимает следующий вид: \[
+	Из школьной программы (!) знаем, что площадь кругового сектора \([\alpha, \beta]\) с радиусом \(r\) равна \((\beta - \alpha) \, r^2 /2\). Наше неравенство принимает следующий вид: \[
 	\frac{1}{2} \cdot |\Delta| \cdot (\min_\Delta f(\varphi))^2 \leqslant \Phi(\Delta) \leqslant \frac{1}{2} \cdot |\Delta| \cdot (\max_\Delta f(\varphi))^2.
 	\]
-	Так как \(f\) неотрицательна, квадрат максимума/минимума можно заменить максимумом/минимумом квадрата: \[
-	|\Delta| \cdot \min_\Delta \frac{1}{2} f^2(\varphi) \leqslant \Phi(\Delta) \leqslant |\Delta| \cdot \max_\Delta \frac{1}{2} f^2(\varphi).
+	Так как \(f\) неотрицательна, квадрат максимума (минимума) можно заменить максимумом (минимумом) квадрата: \[
+	|\Delta| \cdot \min_\Delta \frac{1}{2} \, f^2(\varphi) \leqslant \Phi(\Delta) \leqslant |\Delta| \cdot \max_\Delta \frac{1}{2} \, f^2(\varphi) \ \text{--- определение плотности.}
 	\]
-	Получили определение плотности.
 \end{proof}
 
 \begin{remark}
@@ -823,13 +799,13 @@
 	
 	Прежде заметим, что точка, которая в полярных координатах записывалась как \((r, \varphi)\), в декартовых будет выглядеть как \((r \cdot \cos \varphi, r \cdot \sin \varphi)\), то есть \(x = r \cdot \cos \varphi\), \(y = r \cdot \sin \varphi\). Также ясно, что \(r = \sqrt{x^2 + y^2}\), а \(\varphi = \arctg \dfrac{y}{x}\).
 	
-	Пусть теперь мы имеем функции \(x(t)\) и \(y(t)\), задающие кривую. Тогда имеем \(r(t) = \sqrt{x^2(t) + y^2(t)}\) и \(\varphi(t) = \arctg \dfrac{y(t)}{x(t)}\). То есть, зная, как параметрически задаётся кривая в декартовых координатах, мы можем задать её параметрически уже в полярных координатах.
+	Пусть теперь мы имеем функции \(x(t)\) и \(y(t)\), задающие кривую. Тогда \(r(t) = \sqrt{x^2(t) + y^2(t)}\), а~\(\varphi(t) = \arctg \dfrac{y(t)}{x(t)}\). То есть, зная, как параметрически задаётся кривая в декартовых координатах, мы можем задать её параметрически уже в полярных координатах.
 	
 	Возьмём имеющуюся формулу~\eqref{sigma_1} и подставим туда \(r(t)\) в качестве \(f\) и \(\varphi(t)\) в качестве \(\varphi\).  Получим \[
 	\frac{1}{2}\int\limits_{\varphi^{-1}(\alpha)}^{\varphi^{-1}(\beta)} \left(x^2 + y^2 \right) \left(\arctg \frac{y}{x}\right)' dt
 	= \frac{1}{2}\int\limits_{\varphi^{-1}(\alpha)}^{\varphi^{-1}(\beta)} \left(x^2 + y^2 \right) \cdot \frac{1}{1 + \cfrac{y^2}{x^2}} \cdot \frac{y'x - x'y}{x^2} dt.
 	\]
-	После всех сокращений получим следующую формулу: \[
+	После всех формула примет следующий вид: \[
 	\frac{1}{2}\int\limits_{\varphi^{-1}(\alpha)}^{\varphi^{-1}(\beta)} y'(t)x(t) - x'(t)y(t) dt.
 	\]
 \end{remark}
@@ -837,7 +813,7 @@
 \subsection{Изопериметрическое неравенство}
 
 \begin{example}
-	Пусть \(G \subset \mathbb{R}^2\) --- замкнутая, ограниченная, выпуклая фигура. Пусть также её диаметр \(diam \ G = \sup \left(\rho(x, y) \mid x, y \in G \right)\)\footnote{Супремум достигается, так как \(G\) --- компакт, а \(\rho\) непрерывна.} не превосходит единицы. Тогда \(\sigma(G) \leqslant \dfrac{\pi}{4}\).
+	Пусть \(G \subset \mathbb{R}^2\) --- замкнутая, ограниченная, выпуклая фигура. Пусть также её диаметр \(diam \ G = \sup \left(\rho(x, y) : x, y \in G \right)\)\footnote{Супремум достигается, так как \(G\) --- компакт, а \(\rho\) непрерывна.} не превосходит единицы. Тогда \(\sigma(G) \leqslant \dfrac{\pi}{4}\).
 \end{example}
 
 \begin{proof}
@@ -887,17 +863,15 @@
 	\begin{enumerate}
 		\item \label{plotn_1} \(m_\Delta |\Delta| \leqslant \Phi(\Delta) \leqslant M_\Delta |\Delta|\),
 		\item \label{plotn_2} \(\forall x \in \Delta \quad m_\Delta \leqslant f(x) \leqslant M_\Delta\),
-		\item \label{plotn_3} \(\forall \Delta \mid |\Delta| \to 0 \quad M_\Delta - m_\Delta \to 0\)\footnote{То есть в контексте теоремы \(m_\Delta\) --- это слегка заниженный инфимум \(f\), а \(M_\Delta\) --- слегка завышенный супремум \(f\).},
+		\item \label{plotn_3} \(\forall \Delta : |\Delta| \to 0 \quad M_\Delta - m_\Delta \to 0\)\footnote{То есть в контексте теоремы \(m_\Delta\) --- это слегка заниженный инфимум \(f\), а \(M_\Delta\) --- слегка завышенный супремум \(f\).},
 	\end{enumerate}
 	то \(f\) --- плотность функции \(\Phi\), то есть \[
-	\forall [p, q] \in Segm \langle a, b \rangle \qquad \Phi([p, q]) = \int\limits_p^q f.
+		\forall [p, q] \in Segm \langle a, b \rangle \qquad \Phi([p, q]) = \int\limits_p^q f.
 	\]
 \end{theorem}
 
 \begin{proof}
-	Доказательство (как и теорема) очень-очень похоже на доказательство \hyperlink{afp}{теоремы о вычислении аддитивной функции промежутка по плотности}.
-	
-	Зафиксируем \([p, q] \in Segm \langle a, b \rangle\). Рассмотрим функцию \(F\): \[
+	Доказательство (как и теорема) очень-очень похоже на доказательство \hyperlink{afp}{теоремы о вычислении а.ф.п. по плотности}. Зафиксируем \([p, q] \in Segm \langle a, b \rangle\) и рассмотрим функцию \(F\): \[
 	F(x) =
 	\begin{cases}
 		\Phi([p, x]), & p < x \leqslant q \\
@@ -911,7 +885,7 @@
 	\begin{equation} \label{plotn_e}
 		m_{[x, x + h]} \leqslant \frac{\Phi([x, x + h])}{h} \leqslant M_{[x, x + h]}.
 	\end{equation}
-	Согласно пункту~\ref{plotn_2}, для всех \(x \) из \(\Delta\) справедливо \(m_\Delta \leqslant f(x) \leqslant M_\Delta\), то есть \(m_{[x, x + h]} \leqslant f(x) \leqslant M_{[x, x + h]}\), или \(-M_{[x, x + h]} \leqslant -f(x) \leqslant -m_{[x, x + h]}\). Сложим это неравенство с неравенством~\eqref{plotn_e}: \[
+	Согласно пункту~\ref{plotn_2}, \(\forall x \in \Delta\) из справедливо \(m_\Delta \leqslant f(x) \leqslant M_\Delta\), то есть \(m_{[x, x + h]} \leqslant f(x) \leqslant M_{[x, x + h]}\), или \(-M_{[x, x + h]} \leqslant -f(x) \leqslant -m_{[x, x + h]}\). Сложим это неравенство с неравенством~\eqref{plotn_e}: \[
 	m_{[x, x + h]} - M_{[x, x + h]} \leqslant \frac{\Phi([x, x + h])}{h} - f(x) \leqslant M_{[x, x + h]} - m_{[x, x + h]},
 	\]
 	Наконец, согласно пункту~\ref{plotn_3}, для любого \(\Delta \to [x, x]\) справедливо, что \(M_\Delta - m_\Delta \to 0\), то есть мы можем перейти к пределу: \[
@@ -937,7 +911,7 @@
 \end{theorem}
 
 \begin{proof}
-	Зафиксируем \(\Delta \in Segm [a, b]\) и рассмотрим функцию \(\Phi\), такую, что \(\Phi(\Delta) = l(\gamma |_\Delta)\). Заметим, что согласно аксиоме~\ref{way2} \(\Phi\) --- аддитивная функция промежутка. Тогда если мы докажем, что функция \(||\gamma'||\) --- плотность \(\Phi\), то, применив \hyperlink{plotn}{обобщённую теорему о плотности}, мы докажем нашу теорему.
+	Зафиксируем \(\Delta \in Segm [a, b]\) и рассмотрим функцию \(\Phi \colon \Delta \mapsto l(\gamma |_\Delta)\). Заметим, что согласно аксиоме~\ref{way2} \(\Phi\) --- аддитивная функция промежутка. Тогда если мы докажем, что функция \(||\gamma'||\) --- плотность \(\Phi\), то, применив \hyperlink{plotn}{обобщённую теорему о плотности}, мы докажем нашу теорему.
 	
 	Для этого мы должны проверить три условия из \hyperlink{plotn}{теоремы}. Сделаем это: для начала нужно предъявить слегка заниженный инфимум (минимум) \(m_\Delta\) и слегка завышенный супремум (максимум) \(M_\Delta\). Введём следующие обозначения:
 	\begin{align*}
@@ -1047,7 +1021,10 @@
 		= f(x) (x - \xi_i) \bigg|_{x_{i - 1}}^{x_i} - \int_{x_{i - 1}}^{x_i} f'(x) (x - \xi_i) \, dx = \\
 		= \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \int_{x_{i - 1}}^{x_i} f'(x) (x - \xi_i) dx = \ldots
 	\end{multline*}
-	Введём функцию \(\psi(x) = (x_i - x) (x - x_{i - 1})\) и рассмотрим её производную~\(\psi'(x) = -(x - x_{i - 1}) + (x_i - x) = -2x + x_{i - 1} + x_i\). Прежде, чем продолжить, заметим, что \((-1/2) \cdot \psi'(x) = x - \xi_i\). Запишем наше равенство в новых обозначениях и опять проинтегрируем по частям (подстановка занулится из-за \(\psi(x)\), так что её писать не будем):
+	Введём функцию \(\psi(x) = (x_i - x) (x - x_{i - 1})\) и рассмотрим её производную: \[
+		\psi'(x) = -(x - x_{i - 1}) + (x_i - x) = -2x + x_{i - 1} + x_i.
+		\]
+		Прежде, чем продолжить, заметим, что \((-1/2) \cdot \psi'(x) = x - \xi_i\). Запишем наше равенство в новых обозначениях и опять проинтегрируем по частям (подстановка занулится из-за \(\psi(x)\), так что её писать не будем):
 	\begin{multline*}
 		\ldots = \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) + \frac{1}{2} \int_{x_{i - 1}}^{x_i} f'(x) \cdot \psi'(x) \, dx = \\
 		= \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) - \frac{1}{2}\int_{x_{i - 1}}^{x_i} f''(x) \cdot \psi(x) \, dx.
@@ -1066,9 +1043,7 @@
 	Теперь оценим \(\psi(x)\). Рассмотрим \(\psi(\xi_i) = (x_i - \xi_i) (\xi_i - x_{i - 1})\): \[
 	\psi(\xi_i) = \left(x_i - \frac{x_i + x_{i - 1}}{2} \right) \left(\frac{x_i + x_{i - 1}}{2} - x_{i - 1}\right) = \left(\frac{x_i - x_{i - 1}}{2} \right)^2.
 	\]
-	Так как ранг дробления \(\tau\) равен \(\delta\), справедливо: \[
-	\psi(\xi_i) \leqslant \frac{\delta^2}{4}.
-	\]
+	Так как ранг дробления \(\tau\) равен \(\delta\), то \(\psi(\xi_i) \leqslant \delta^2 /4\).
 	Тогда \[
 	\frac{1}{2} \int_a^b \left|f''(x) \cdot \psi(x) \right| \, dx \leqslant \frac{\delta^2}{8} \int_a^b \left|f''(x) \right| \, dx.
 	\]
@@ -1079,21 +1054,21 @@
 \hypertarget{eumak}{}
 \begin{theorem}
 	Пусть \(f \in C^2 [m, n]\), где \(m, n \in \mathbb{Z}\). Тогда \[
-	\int\limits_m^n f(x) dx = \sum\limits_{i = m}^n f(i) - \frac{1}{2} \int\limits_m^n f''(x) \{x\} (1 - \{x\}) dx,
+	\int\limits_m^n f(x) dx = \sum\limits_{i = m}^n f(i) - \frac{1}{2} \int\limits_m^n f''(x) \{x\} (1 - \{x\}) \, dx,
 	\]
-	\textbf{причём} первое и последнее слагаемые в сумме \(\sum\limits_{i = m}^n f(i)\) входят в неё с весом $\dfrac{1}{2}$.
+	\textcolor{cyan}{причём} первое и последнее слагаемые в сумме \(\sum\limits_{i = m}^n f(i)\) входят в неё с весом $\dfrac{1}{2}$.
 \end{theorem}
 
 \begin{proof}
 	В процессе доказательства \hyperlink{trap}{формулы трапеций} мы установили (сразу перед итоговой оценкой через \(\delta\)), что \[
-	\int\limits_a^b f(x) dx - \sum_{i = 1}^n \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) = -\frac{1}{2} \int_a^b f''(x) \cdot \psi(x) dx
+	\int\limits_a^b f(x) dx - \sum_{i = 1}^n \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) = -\frac{1}{2} \int_a^b f''(x) \cdot \psi(x) \, dx
 	\]
 	(у правой части здесь опять появляется минус, который в прошлой теореме был съеден модулем). Выберем дробление на отрезки вида \([i - 1, i]\), где \(i \in (m + 1) : n\). Тогда
-	\begin{gather*}
-		\sum_{i = 1}^n \frac{f(x_i) + f(x_{i - 1})}{2} (x_i - x_{i - 1}) = \sum_{i = m + 1}^n \frac{f(i - 1) + f(i)}{2} = \ldots \\
-		\ldots = \frac{f(m)}{2} + \frac{f(m + 1)}{2} + \frac{f(m + 1)}{2} + \ldots + \frac{f(n - 1)}{2} + \frac{f(n)}{2} = \sum\limits_{i = m}^n f(i),
-	\end{gather*}
-	причём первое и последнее слагаемые входят в сумму с весом \(\dfrac{1}{2}\), как нам и нужно.
+	\begin{multline*}
+		\sum_{i = 1}^n \frac{f(x_i) + f(x_{i - 1})}{2} \, (x_i - x_{i - 1}) = \sum_{i = m + 1}^n \frac{f(i - 1) + f(i)}{2} = \\
+		= \frac{f(m)}{2} + \frac{f(m + 1)}{2} + \frac{f(m + 1)}{2} + \ldots + \frac{f(n - 1)}{2} + \frac{f(n)}{2} = \sum\limits_{i = m}^n f(i),
+	\end{multline*}
+	причём первое и последнее слагаемые входят в сумму с весом \(1/2\), как нам и нужно.
 	
 	Теперь вспомним, что \(\psi(x) = (x_i - x) (x - x_{i - 1})\). Так как в нашем случае \(x_i\) и \(x_{i - 1}\) --- это соседние целые числа, получаем как раз \(\psi(x) = \{x\} (1 - \{x\})\). Теорема доказана, осталось только всё красиво записать.
 \end{proof}
@@ -1114,7 +1089,7 @@
 	и оценим второй интеграл: \[
 	0 \leqslant \int_1^n x^{p - 2} \{x\} (1 - \{x\}) dx \leqslant \frac{1}{4} \cdot \left(\frac{n^{p - 1} - 1}{p - 1} \right).
 	\]
-	Справедливость нижней границы очевидна, так как мы рассматриваем положительные \(x\), а справедливость верхней следует из того, что максимум функции \(\{x\} (1 - \{x\})\) достигается в точке \(x = \dfrac{1}{2}\), так как это, как говорилось выше, лишь частный случай функции \(\psi(x) = (x_i - x) (x - x_{i - 1})\), где \(x_i\) и \(x_{i - 1}\) --- соседние целые числа.
+	Справедливость нижней границы очевидна, так как мы рассматриваем положительные \(x\), а справедливость верхней следует из того, что максимум функции \(\{x\} (1 - \{x\})\) достигается в точке~\(x = 1/2\), так как это, как было сказано, лишь частный случай функции \(\psi(x) = (x_i - x) (x - x_{i - 1})\), где \(x_i\) и \(x_{i - 1}\) --- соседние целые числа.
 	
 	Понятно, что при при \(p > 1\) правая часть превращается в \(O(n^{p - 1})\), а при \(-1 < p < 1\) --- в \(O(1)\), тогда наш интеграл --- \(O(\max(1, n^{p - 1}))\). Отметим, что при \(p = 1\), рассуждения заканчиваются в самом начале, так как  \(\dfrac{p (p - 1)}{2} = 0\). Закинем под \(O\) все имеющиеся константы и получим, что нужно.
 \end{proof}
@@ -1166,14 +1141,13 @@
 		I_n = \int_0^{\frac{\pi}{2}} \sin^n x \, dx = \int_0^{\frac{\pi}{2}} \sin^{n - 1} x \, d(-\cos x) = -\sin^{n - 1} x \, \cos x \bigg|_0^{\frac{\pi}{2}} + \\ 
 		+ (n - 1) \int_0^\frac{\pi}{2} \sin^{n - 2} x \, \cos^2 x \, dx.
 	\end{multline*}
-	Учтём, что двойная подстановка обнуляется, и применим формулу \linebreak \(\cos^2 x = 1 - \sin^2 x\)):
-	\begin{multline*}
+	Учтём, что двойная подстановка обнуляется, и применим формулу \(\cos^2 x = 1 - \sin^2 x\): \[
 		I_n = (n - 1) \left(\int_0^\frac{\pi}{2} \sin^{n - 2} x \, dx - \int_0^\frac{\pi}{2} \sin^n x \, dx \right) = (n - 1) (I_{n - 2} - I_n).
-	\end{multline*}
-	Выражая \(I_n\), получим рекуррентное соотношение \[
-	I_n = \frac{n - 1}{n} I_{n - 2}.
 	\]
-	Теперь, применив его несколько раз, мы можем выразить \(I_n\) через \(I_0\), если \(n\) чётно, или через \(I_1\), если \(n\) нечётно. Чётность/нечётность числителя и знаменателя будет сохраняться.
+	Выражая \(I_n\), получим рекуррентное соотношение \[
+	I_n = \frac{n - 1}{n} \, I_{n - 2}.
+	\]
+	Теперь, применив его несколько раз, мы можем выразить \(I_n\) через \(I_0\), если \(n\) чётно, или через \(I_1\), если \(n\) нечётно. Чётность (нечётность) числителя и знаменателя будет сохраняться.
 \end{proof}
 
 \hypertarget{wall}{}
@@ -1183,17 +1157,11 @@
 	\]
 \end{theorem}
 \begin{proof}
-	При всех \(x \in \left(0, \dfrac{\pi}{2} \right)\) выполняется неравенство \linebreak \(0 < \sin x < 1\), поэтому для любого \(n \in \mathbb{N}\) \[
-	\sin^{2n + 1} x < \sin^{2n} x < \sin^{2n - 1} x,
-	\]
-	а тогда и \[
-	I_{2n + 1} < I_{2n} < I_{2n - 1}.
+	При всех \(x \in \left(0, \dfrac{\pi}{2} \right)\) выполняется неравенство \(0 < \sin x < 1\), поэтому для любого натурального \(n\) \[
+	\sin^{2n + 1} x < \sin^{2n} x < \sin^{2n - 1} x, \ \text{а тогда и} \ I_{2n + 1} < I_{2n} < I_{2n - 1}.
 	\]
 	Применяя \hyperlink{vallem}{лемму}, получаем двойное неравенство \[
-	\frac{(2n)!!}{(2n + 1)!!} < \frac{(2n - 1)!!}{(2n)!!} \cdot \frac{\pi}{2} < \frac{(2n - 2)!!}{(2n - 1)!!},
-	\]
-	что равносильно \[
-	\frac{1}{2n + 1} \left(\frac{(2n)!!}{(2n - 1)!!} \right)^2 < \frac{\pi}{2} < \frac{1}{2n} \left(\frac{(2n)!!}{(2n - 1)!!} \right)^2.
+	\frac{(2n)!!}{(2n + 1)!!} < \frac{(2n - 1)!!}{(2n)!!} \cdot \frac{\pi}{2} < \frac{(2n - 2)!!}{(2n - 1)!!} \iff \frac{1}{2n + 1} \left(\frac{(2n)!!}{(2n - 1)!!} \right)^2 < \frac{\pi}{2} < \frac{1}{2n} \left(\frac{(2n)!!}{(2n - 1)!!} \right)^2.
 	\]
 	Обозначим \(x_n = \dfrac{1}{n} \left(\dfrac{(2n)!!}{(2n - 1)!!} \right)^2\). Двойное неравенство принимает вид \[
 	\frac{n}{2n + 1} x_n < \frac{\pi}{2} < \frac{1}{2} x_n.
@@ -1219,9 +1187,7 @@
 	Получаем \[
 	\ln 1 + \ln 2 + \ldots + \ln n = n \ln n - n + \frac{\ln n}{2} + C + o(1).
 	\]
-	В константу \(C + o(1)\) мы записали \(1\) и значение интеграла, \(o(1)\) отражает погрешность.
-	
-	Так как \(\ln 1 + \ln 2 + \ldots + \ln n = \ln(n!)\), возьмём от этого всего экспоненту и получим \[
+	В константу \(C + o(1)\) мы записали \(1\) и значение интеграла, \(o(1)\) отражает погрешность. Так как \(\ln 1 + \ln 2 + \ldots + \ln n = \ln(n!)\), возьмём от этого всего экспоненту и получим \[
 	n! = n^n e^{-n} \sqrt{n} \, e^{C + o(1)}.
 	\]
 	Выражение \(e^{C + o(1)}\) стремится к какой-то константе, которую мы обозначим за \(C'\). Выясним, чему она равна. Из \hyperlink{wall}{формулы Валлиса} имеем \[
@@ -1249,7 +1215,7 @@
 	Построим множество \(E_X = \{x_0, x_1,\ldots, x_n\} \subset X\) --- конечную \(\dfrac{\varepsilon}{2}\)-сеть для \(D\). То есть имеем: \[
 	\forall y \in D \quad \exists x_i \in E_X \quad \rho(x, y) < \frac{\varepsilon}{2}.
 	\]
-	В кажом шаре \(B_{\frac{\varepsilon}{2}} (x_i)\) выберем какое-нибудь \(y_i\). Тогда множество \linebreak \(E_Y = \{y_0, y_1,\ldots, y_m\} \subset D\), где \(m \leqslant n\), --- \(\varepsilon\)-сеть для \(D\), так как \[
+	В кажом шаре \(B_{\varepsilon/2} (x_i)\) выберем какое-нибудь \(y_i\). Тогда множество \(E_Y = \{y_0, y_1,\ldots, y_m\} \subset D\), где \(m \leqslant n\), --- \(\varepsilon\)-сеть для \(D\), так как \[
 	\forall y \in D \quad \exists y_i \in E_Y \quad \rho(y, y_i) \leqslant \rho(y_i, x_i) + \rho(x_i, y) < \varepsilon.
 	\]
 \end{proof}
@@ -1367,7 +1333,7 @@
 
 \hypertarget{srshlem}{}
 \begin{lemma}
-	Пусть функция \(f\) допустима на \([a, b)\), \(f \geqslant 0\). Обозначим \linebreak \(\Phi(A) = \displaystyle\int_a^A f(x) \, dx\), где \(A \in [a, b)\). Тогда следующие утверждения равносильны:
+	Пусть функция \(f\) допустима на \([a, b)\), \(f \geqslant 0\). Пусть \(\Phi(A) = \displaystyle\int_a^A f(x) \, dx\), где \(A \in [a, b)\). Тогда следующие утверждения равносильны:
 	\begin{enumerate}
 		\item \(\displaystyle\int_a^b f(x) \, dx\) сходится,
 		\item \(\Phi(A)\) ограничена.
@@ -1433,7 +1399,7 @@
 		\item Пусть \(\alpha > 1\). Запишем \(\alpha = 1 + 2a\), где \(a > 0\). Тогда \[
 		\frac{1}{x^\alpha (\ln x)^\beta} = \frac{1}{x^{1+a}} \cdot \frac{1}{x^a (\ln x)^\beta}.
 		\]
-		Ясно, что \(\dfrac{1}{x^a (\ln x)^\beta} \to 0\) при \(x \to \infty\). Почему? При положительном \(a\) выражение \(x^a \to \infty\) при \(x \to \infty\), а логарифм не сможет этому помешать: при \(\beta \geqslant 0\) он тоже стремится к бесконечности, а при \(\beta < 0\) логарифм просто недостаточно быстро растёт --- проверить это можно, вычислив по \hyperlink{t3}{правилу Лопиталя} \(\lim\limits_{x \to \infty} \dfrac{(\ln x)^{-\beta}}{x^a} = \lim\limits_{x \to \infty} \left(\dfrac{\ln x}{x^{-\frac{a}{\beta}}} \right)^{-\beta}\).
+		Ясно, что \(\dfrac{1}{x^a (\ln x)^\beta} \to 0\) при \(x \to \infty\). Почему? При положительном \(a\) выражение \(x^a \to \infty\) при \(x \to \infty\), а логарифм не сможет этому помешать: при \(\beta \geqslant 0\) он тоже стремится к бесконечности, а при \(\beta < 0\) логарифм просто недостаточно быстро растёт --- проверить это можно, вычислив по \hyperlink{t3}{правилу Лопиталя} \(\lim\limits_{x \to \infty} \dfrac{(\ln x)^{-\beta}}{x^a} = \lim\limits_{x \to \infty} \left(\dfrac{\ln x}{x^{-a/\beta}} \right)^{-\beta}\).
 		Тогда, НСНМ, \[
 		\frac{1}{x^{1 + a}} \cdot \frac{1}{x^a (\ln x)^\beta} \leqslant 	\frac{1}{x^{1 + a}}.
 		\]
@@ -1516,7 +1482,6 @@
 \subsection{\itshape Гамма-функция Эйлера, простейшие свойства}
 
 \begin{theorem} \hypertarget{t41}{}
-	Изучим \(\Gamma(t)\) на предмет наличия всяких замечательных \linebreak свойств:
 	\begin{enumerate}
 		\item \(\Gamma(t)\) сходится при \(t > 0\) и расходится в противном случае,
 		\item \(\Gamma(t)\) выпукла,
@@ -1554,9 +1519,11 @@
 		\Gamma(t + 1) = t \cdot \int_{0}^{+\infty} x^{t - 1} e^{-x} \, dx = t \cdot \Gamma(t).
 		\]
 		\begin{remark}
-			Легко проверить, что \(\Gamma(1) = 1\). Отсюда получаем, что \(\Gamma(n + 1) = n \cdot \Gamma(n) = n \cdot (n - 1) \cdot \Gamma(n - 1) = \ldots = n!\).
+			Легко проверить, что \(\Gamma(1) = 1\). Отсюда получаем \[
+				\Gamma(n + 1) = n \, \Gamma(n) = n \, (n - 1) \, \Gamma(n - 1) = \ldots = n!.
+		\]
 		\end{remark}
-		\item Пользуясь соображениями из предыдущего замечания, а также тем фактом, что \(\Gamma(t) = \dfrac{\Gamma(t + 1)}{t}\) ведёт себя как \(\dfrac{1}{t}\) при \(t \to 0\), построим график.
+		\item Пользуясь соображениями из замечания, а также тем фактом, что \(\Gamma(t) = \dfrac{\Gamma(t + 1)}{t}\) ведёт себя как \(1/t\) при \(t \to 0\), построим график.
 		
 		ДОДЕЛАТЬ ГРАФИК
 		\item Запишем \[
@@ -1867,7 +1834,7 @@
 \subsection{Признак Даламбера сходимости положительных рядов}
 
 \begin{theorem}[noob] \hypertarget{Даламбер-нуб}{}
-	Пусть \((A)\) --- положительный ряд. Обозначим \linebreak \(D_n = \frac{a_{n+1}}{a_n}\). Тогда:
+	Пусть \((A)\) --- положительный ряд. Обозначим \(D_n = \frac{a_{n+1}}{a_n}\). Тогда:
 	\begin{enumerate}
 		\item Если существует \(q < 1\), такое, что, НСНМ, \(D_n < q\), то ряд \((A)\) сходится,
 		\item Если, НСНМ, \(D_n \geqslant 1\), то ряд \((A)\) расходится. 
@@ -1898,7 +1865,7 @@
 \end{proof}
 
 \begin{theorem}[pro]
-	Пусть \((A)\) --- положительный ряд. Обозначим \linebreak \(D_n = \frac{a_{n+1}}{a_n}\). Пусть также существует предел \(\lim\limits_{n \to \infty} D_n = D\). Тогда:
+	Пусть \((A)\) --- положительный ряд. Обозначим \(D_n = \frac{a_{n+1}}{a_n}\). Пусть также существует предел \(\lim\limits_{n \to \infty} D_n = D\). Тогда:
 	\begin{enumerate}
 		\item Если \(D < 1\), то ряд \((A)\) сходится.
 		\item Если \(D > 1\), то ряд \((A)\) расходится.
@@ -1925,7 +1892,7 @@
 \subsection{Признак Раабе сходимости положительных рядов}
 
 \begin{lemma}
-	Пусть \((A), (B)\) --- строго положительные ряды, причём, \linebreak НСНМ, \(\dfrac{a_{n+1}}{a_n} < \dfrac{b_{n+1}}{b_n}\). Тогда:
+	Пусть \((A), (B)\) --- строго положительные ряды, причём, НСНМ, \(\dfrac{a_{n+1}}{a_n} < \dfrac{b_{n+1}}{b_n}\). Тогда:
 	\begin{enumerate}
 		\item \((B)\) сходится \(\Rightarrow\) \((A)\) сходится,
 		\item \((A)\) расходится \(\Rightarrow\) \((B)\) расходится.
@@ -2034,8 +2001,8 @@
 \begin{theorem}
 	Рассмотрим ряд вида \(\sum a_k b_k\). Обозначим \(A_n = a_1 + a_2 + \ldots + a_n\). Тогда справедливы утверждения:
 	\begin{description}
-		\item[Признак Дирихле.] Если последовательность \((A_n)\) ограничена, то есть \(\exists C_A > 0 \enskip \forall n \enskip |A_n| \leqslant C_A\), а последовательность \((b_k)\) монотонно стремится к нулю, то ряд \(\sum a_k b_k\) сходится.
-		\item[Признак Абеля.] Если ряд \(\sum a_k\) сходится, а последовательность \((b_k)\) монотонна и ограничена, то есть  \(\exists C_b > 0 \enskip \forall k \enskip |b_k| \leqslant C_b\), то ряд \(\sum a_k b_k\) сходится.
+		\item[Признак Дирихле.] Если последовательность \((A_n)\) ограничена, т. е. \(\exists C_A > 0 \enskip \forall n \enskip |A_n| \leqslant C_A\), а последовательность \((b_k)\) монотонно стремится к нулю, то ряд \(\sum a_k b_k\) сходится.
+		\item[Признак Абеля.] Если ряд \(\sum a_k\) сходится, а последовательность \((b_k)\) монотонна и ограничена, т. е.  \(\exists C_b > 0 \enskip \forall k \enskip |b_k| \leqslant C_b\), то ряд \(\sum a_k b_k\) сходится.
 	\end{description}
 \end{theorem}
 \begin{proof}
@@ -2065,7 +2032,7 @@
 \subsection{Теорема о группировке слагаемых}
 
 \begin{theorem}
-	Рассмотрим ряд \((A) = (a_1 + \ldots + a_{n_1}) + (a_{n_1+1} + \ldots + a_{n_2}) + \ldots\) Обозначим \(b_k = a_{n_{k-1}+1} + \ldots + a_{n_k}\).  Тогда справедливы утверждения:
+	Рассмотрим ряд \((A) = (a_1 + \ldots + a_{n_1}) + (a_{n_1+1} + \ldots + a_{n_2}) + \ldots\) Пусть \(b_k = a_{n_{k-1}+1} + \ldots + a_{n_k}\).  Тогда справедливы утверждения:
 	\begin{enumerate}
 		\item Если ряд \((A)\) сходится, то ряд \((B)\) сходится и имеет ту же сумму,
 		\item Если \((A)\) --- положительный ряд, то \(S^a = S^b\) (или суммы рядов равны бесконечности).
@@ -2075,7 +2042,24 @@
 	Тривиально: из того, что \(S_m^b = S_{n_m}^a\), в первом случае получаем, что \(S_m^b\) стремится к сумме ряда \((A)\), а во втором --- что они сходятся к одному конечному значению или к бесконечности одновременно (ситуация, в которой предела не существует, исключена, так как наши ряды положительны).
 \end{proof}
 
-МБ ДОДЕЛАТЬ ЗАМЕЧАНИЯ
+\begin{remarks}
+	\begin{enumerate}
+		\item Из сходимости ряда \((B)\) не следует сходимость \((A)\),
+		\item Если \(a_n \to 0\), а ряд \((B)\) сходится, причём скобки в нём ограниченного размера, то есть \[
+			\exists M : \forall k \enskip n_k - n_{k-1} \leqslant M,
+		\]
+		то ряд \((A)\) тоже сходится.
+	\end{enumerate}
+\end{remarks}
+\begin{proof}
+	\begin{enumerate}
+		\item Контрпример: ряд \(1 - 1 + 1 - 1 + \ldots\) расходится, но стоит нам расставить скобки, например, так: \((1 - 1) + (1 - 1) + \ldots, \) как ряд получается сходящимся,
+		\item Рассмотрим частичную сумму \(S_N^a\), где \(n_k \leqslant N \leqslant n_{k+1}\). Её можно записать как \(S_k^b + \Delta_k\), где \(\Delta_k\) --- <<неполная скобка>>, то есть \(\Delta_k = a_{n_k + 1} + \ldots + a_N\). Тогда \[
+			|\Delta_k| \leqslant |a_{n_k + 1}| + \ldots + |a_N| \leqslant |a_{n_k + 1}| + \ldots + |a_{n_k + M}| \xrightarrow[k \to \infty]{} 0,
+		\]
+		так как, НСНМ, \(a_{n_k + i} \leqslant \varepsilon / M\).
+	\end{enumerate}
+\end{proof}
 
 \subsection{Теорема о перестановке слагаемых}
 
@@ -2083,12 +2067,11 @@
 	Рассмотрим ряд \(\sum a_k\) и его перестановку \(\sum b_k\). Тогда если ряд \(\sum a_k\) абсолютно сходится, то ряд \(\sum b_k\) абсолютно сходится к той же сумме.
 \end{theorem}
 \begin{proof}
-	Рассмотрим разные случаи:
 	\begin{enumerate}
 		\item Пусть \(\sum a_k\) --- положительный ряд. По определению частичная сумма \(S_k^b = a_{\omega(1)} + \ldots + a_{\omega(k)} \leqslant S_M^a\), где \(M = \max (\omega(1), \ldots, \omega(k))\). Так как \(M \to \infty\) при \(k \to \infty\), а пределы частичных сумм существуют (так как \(a_k \geqslant 0\)), получаем, что \(S^b \leqslant S^a\). А из того, что существует обратное отображение \(\omega^{-1}\), путём аналогичных рассуждений получаем, что \(S^a \leqslant S^b\). Отсюдо следует равенство.
-		\item Уберём условие положительности ряда \(\sum a_k\). Рассмотрим ряды \linebreak \(\sum a_k^+, \sum b_k^+\), где \(a_k^+ = \max (a_k, 0)\), \(b_k^+ = \max (b_k, 0)\). Тогда ряд \(\sum b_k^+\) --- перестановка \(\sum a_k^+\), которая задаётся той же биекцией \(\omega\), и по пункту~1 они сходятся к одному значению. 
+		\item Уберём условие положительности ряда. Рассмотрим ряды \(\sum a_k^+, \sum b_k^+\), где \(a_k^+ = \max (a_k, 0)\), \(b_k^+ = \max (b_k, 0)\). Тогда ряд \(\sum b_k^+\) --- перестановка \(\sum a_k^+\), которая задаётся той же биекцией \(\omega\), и по пункту~1 они сходятся к одному значению. 
 		
-		Аналогично определим \(a_k^- = \max (-a_k, 0)\), \(b_k^- = \max (-b_k, 0)\). Эти ряды тоже являются перестановками друг друга и тоже сходятся к одному значению. А из того, что \(\sum a_k = \sum a_k^+ +\sum a_k^-\) (аналогичное, очевидно, справедливо и для \(\sum b_k\)), следует утверждение теоремы.
+		Аналогично определим \(a_k^- = \max (-a_k, 0)\), \(b_k^- = \max (-b_k, 0)\). Эти ряды тоже являются перестановками друг друга и тоже сходятся к одному значению. Утверждение теоремы следует из того факта, что \(\sum a_k = \sum a_k^+ +\sum a_k^-\) (аналогичное, очевидно, справедливо и для \(\sum b_k\)).
 	\end{enumerate}
 \end{proof}
 
@@ -2105,9 +2088,13 @@
 	
 	Но ведь мы можем взять вместо \(\gamma\) какую-нибудь другую биекцию \(\widetilde{\gamma}\). Очевидно, что полученное с её помощью произведение \(\sum a_{\widetilde{\varphi}(k)} b_{\widetilde{\psi}(k)}\) --- перестановка произведения \(\sum a_{\varphi(k)} b_{\psi(k)}\). А значит, оба этих произведения сходятся к той же сумме.
 	
-	Возьмём в качестве \(\gamma\) <<нумерацию по квадратам>>.
+	Возьмём в качестве \(\gamma\) <<нумерацию по квадратам>> (рис. 3).
 	
-	ДОДЕЛАТЬ РИСУНОК
+	\begin{figure}[h!]
+		\label{qnum}
+		\centering{\includegraphics[width=0.5 \linewidth]{qnum.eps}}
+		\caption{Нумерация по квадратам}
+	\end{figure}
 	
 	Тогда получим \[
 	\sum_{k=1}^{n^2} a_{\varphi(k)} b_{\psi(k)} = \left(\sum_{k=1}^n a_k \right) \left(\sum_{k=1}^n b_k \right) \xrightarrow[n \to \infty]{} S^a \cdot S^b.
@@ -2219,7 +2206,7 @@
 	\]
 \end{theorem}
 \begin{proof}
-	Возьмём дробление \(\{x_k\}_{k=0}^n\) отрезка  \([a, b]\) и оснащение с точками вида \(\xi_k = x_k = a + \frac{b - a}{n} \, k\), тогда \(\Delta_k = x_{k} - x_{k-1} = \frac{b - a}{n}\), то есть мы разбили \([a, b]\) на \(n\) равных отрезков и взяли за \(\xi_k\) их левый конец.
+	Возьмём дробление \(\{x_k\}_{k=0}^n\) отрезка  \([a, b]\) и оснащение с точками \(\xi_k = x_k = a + hk\), где \(h = (b-a)/n\). Тогда \(\Delta_k = x_{k} - x_{k-1} = h\), то есть мы разбили \([a, b]\) на \(n\) равных отрезков и взяли за \(\xi_k\) их левый конец.
 	
 	Запишем неравенство для сумм:
 	\begin{equation} \label{ГёльГёль}
@@ -2245,21 +2232,15 @@
 \begin{proof}
 	Заметим, что при \(p = 1\) утверждение очевидно, так как превращается в самое обычное неравенство треугольника для самой обычной нормы \(|x|\). Рассмотрим \(p > 1\).
 	
-	Рассмотрим выражение \(\sum |a_k| \cdot |a_k + b_k|^{p-1}\) и запишем для него \hyperlink{Гёльдер-суммы}{неравенство Гёльдера}:
-	\begin{multline*}
-		\sum_{k=1}^n |a_k| \cdot |a_k + b_k|^{p-1} \leqslant \left(\sum_{k=1}^n |a_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^{(p - 1) \cdot \frac{p}{p-1}} \right)^{\frac{p-1}{p}} = \\
-		= \left(\sum_{k=1}^n |a_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^p \right)^{\frac{p-1}{p}}.
-	\end{multline*}
-	Аналогично
-	\begin{multline*}
-		\sum_{k=1}^n |b_k| \cdot |a_k + b_k|^{p-1} \leqslant \left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^{(p - 1) \cdot \frac{p}{p-1}} \right)^{\frac{p-1}{p}} = \\
-		= \left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^p \right)^{\frac{p-1}{p}}.
-	\end{multline*}
-	Сложим получившиеся неравенства:
-	\begin{multline*}
-		\sum_{k=1}^n (|a_k| + |b_k|) \cdot |a_k + b_k|^{p-1} \leqslant \\
-		\leqslant \left(\left(\sum_{k=1}^n |a_k|^p \right)^{1/p} + \left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \right) \left(\sum_{k=1}^n |a_k + b_k|^p \right)^{\frac{p-1}{p}}.
-	\end{multline*}
+	Рассмотрим выражение \(\sum |a_k| \cdot |a_k + b_k|^{p-1}\) и запишем для него \hyperlink{Гёльдер-суммы}{неравенство Гёльдера}: \[
+		\sum_{k=1}^n |a_k| \cdot |a_k + b_k|^{p-1} \leqslant \left(\sum_{k=1}^n |a_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^{(p - 1) \cdot \frac{p}{p-1}} \right)^{\frac{p-1}{p}} = \left(\sum_{k=1}^n |a_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^p \right)^{\frac{p-1}{p}}.
+	\]
+	Аналогично \[
+		\sum_{k=1}^n |b_k| \cdot |a_k + b_k|^{p-1} \leqslant \left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^{(p - 1) \cdot \frac{p}{p-1}} \right)^{\frac{p-1}{p}} = \left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \left(\sum_{k=1}^n |a_k + b_k|^p \right)^{\frac{p-1}{p}}.
+	\]
+	Сложим получившиеся неравенства: \[
+		\sum_{k=1}^n (|a_k| + |b_k|) \cdot |a_k + b_k|^{p-1} \leqslant \left(\left(\sum_{k=1}^n |a_k|^p \right)^{1/p} + \left(\sum_{k=1}^n |b_k|^p \right)^{1/p} \right) \left(\sum_{k=1}^n |a_k + b_k|^p \right)^{\frac{p-1}{p}}.
+	\]
 	В силу неравенства треугольника для \(|x|\) справедливо 
 	\begin{multline*}
 		\sum_{k=1}^n |a_k + b_k|^p \leqslant \sum_{k=1}^n (|a_k| + |b_k|) \cdot |a_k + b_k|^{p-1} \leqslant \\
@@ -2407,11 +2388,9 @@
 	\]
 \end{theorem}
 \begin{proof}
-	Зафиксируем \(i\) и \(j\) и рассмотрим \(\dfrac{\partial f_i}{\partial x_j}\) (она существует по \hyperlink{t75}{лемме}):
-	\begin{multline*}
-		\frac{\partial f_i}{\partial x_j}(a) = \lim_{t \to 0} \frac{f_i (a_1, \ldots, a_j + t, \ldots, a_m) - f_i (a_1, \ldots, a_m)}{t} = \\
-		= \lim_{t \to 0} \frac{F'(a)[i,j] \cdot t + o(t)}{t} = F'(a)[i,j].
-	\end{multline*}
+	Зафиксируем \(i\) и \(j\) и рассмотрим \(\dfrac{\partial f_i}{\partial x_j}\) (она существует по \hyperlink{t75}{лемме}): \[
+		\frac{\partial f_i}{\partial x_j}(a) = \lim_{t \to 0} \frac{f_i (a_1, \ldots, a_j + t, \ldots, a_m) - f_i (a_1, \ldots, a_m)}{t} = \lim_{t \to 0} \frac{F'(a)[i,j] \cdot t + o(t)}{t} = F'(a)[i,j].
+	\]
 	Здесь мы просто записали определение дифференцирования для \(f_i\) (её матрица Якоби это строка, а так как приращение происходит только по \(j\)-му аргументу, в нашей формуле останется только \(j\)-я её компонента) и привели подобные.
 \end{proof}
 
