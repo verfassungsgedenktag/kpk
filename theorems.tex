@@ -55,10 +55,9 @@
 	\begin{equation} \label{uskor}
 		\lim_{x \to a} f(x) = 0, ~\lim_{x \to a} g(x) = 0.
 	\end{equation}
-	Тогда
-	\begin{multline*}
-		\forall (x_n) : \parbox[t]{1,5cm}{$x_n \to a, \\ x_n \in D, \\ x_n \neq a$} \quad \exists (y_n) : \parbox[t]{1,5cm}{$y_n \to a, \\ y_n \in D, \\ y_n \neq a$} \quad \\ \text{такая, что} \ \lim_{n \to \infty} \frac{g(y_n)}{g(x_n)} = 0, \ \lim_{n \to \infty} \frac{f(y_n)}{g(x_n)} = 0.
-	\end{multline*}
+	Тогда \[
+		\forall (x_n) : \parbox[t]{1,5cm}{$x_n \to a, \\ x_n \in D, \\ x_n \neq a$} \quad \exists (y_n) : \parbox[t]{1,5cm}{$y_n \to a, \\ y_n \in D, \\ y_n \neq a$} \enskip \text{такая, что} \ \lim_{n \to \infty} \frac{g(y_n)}{g(x_n)} = 0, \ \lim_{n \to \infty} \frac{f(y_n)}{g(x_n)} = 0.
+	\]
 \end{lemma}
 \begin{proof}
 	Будем искать $(y_n)$ как подпоследовательность $(x_n)$: зафиксируем $n$ и выберем в качестве $y_n$ такое $x_k$, что \[
@@ -2200,6 +2199,10 @@
 
 \subsection{\itshape Неравенство Гёльдера для интегралов}
 
+\begin{remark}
+	Это версия, которую Кохась рассказывал в ИТМО, в нашей версии вместо ограничения \(f, g \geqslant 0\) он записал неравенство для \(|f|, |g|\).
+\end{remark}
+
 \begin{theorem}
 	Пусть функции \(f, g\) непрерывны на  \([a, b]\), причём \(f, g \geqslant 0\). Возьмём \(p > 1\) и подберём число \(q\) такое, что \(\dfrac{1}{p} + \dfrac{1}{q} = 1\), то есть \(q = \dfrac{p}{p - 1}\). Тогда \[
 	\int_a^b fg \leqslant \left(\int_{a}^{b} f^p \right)^{1/p} \left(\int_{a}^{b} g^q \right)^{1/q}.
@@ -2273,17 +2276,49 @@
 	Докажем, опираясь на \hyperlink{besk}{свойства бесконечного произведения}:
 	\begin{enumerate}
 		\item Так как \(a_k > 0\), сходимость \(\prod (1 + a_k)\) равносильна сходимости \(\sum \ln (1 + a_k)\). А это, в свою очередь, равносильно сходимости ряда \(\sum a_k\) (просто заменили на эквивалентную, ведь при сходимости \(a_k \to 0\)).
-		\item Рассмотрим ряд \(\sum \ln (1 + a_k)\) на сходимость. Разложим логарифм в ряд Маклорена: \(\sum \ln (1 + a_k) = \sum a_k - \dfrac{a_k^2}{2} + o(a_k^2)\). Тогда если ряды \(\sum a_k\) и \(\sum a_k^2\) сходятся, то сходится и ряд \(\sum \ln (1 + a_k)\), а значит, и соответствующее произведение.
+		\item Рассмотрим ряд \(\sum \ln (1 + a_k)\) на сходимость. Разложим логарифм в ряд Маклорена: \[
+			\sum \ln (1 + a_k) = \sum a_k - \dfrac{a_k^2}{2} + o(a_k^2).
+		\]
+		Тогда если ряды \(\sum a_k\) и \(\sum a_k^2\) сходятся, то сходится и ряд \(\sum \ln (1 + a_k)\), а значит, и соответствующее произведение.
 	\end{enumerate}
 \end{proof}
 
 \subsection{Лемма об оценке приближения экспоненты ее замечательным пределом}
 
-ДОДЕЛАТЬ
+\begin{lemma}
+	При \(0 \leqslant t \leqslant n\) справедливо \[
+		0 \leqslant e^{-t} - \left(1 - \frac{1}{n} \right)^n \leqslant \frac{1}{n} \, t^2 \, e^{-t}.
+	\]
+\end{lemma}
+\begin{proof}
+	Воспользуемся неравенством, которое уже появлялось в доказательстве \hyperlink{puas}{теоремы про интеграл Эйлера--Пуассона} (нам интересно рассмотреть его на полуинтервале \([0, 1)\)): \[
+		1 + y \leqslant e^y \leqslant (1 - y)^{-1}, \ \text{где} \ y \in [0, 1).
+	\]
+	Подставим в него \(y = t/n\) и возведём в степень \(-n\), тогда неравенство сменит знак и примет вид \[
+		\left(1 + \frac{t}{n} \right)^{-n} \geqslant e^{-t} \geqslant \left(1 - \frac{t}{n} \right)^n.
+	\]
+	Из правой части неравенства следует \[
+		0 \leqslant e^{-t} - \left(1 - \frac{t}{n} \right)^n = e^{-t} \, \left(1 - e^t \, \left(1 - \frac{t}{n} \right)^n \right).
+	\]
+	К этому уже можно применить левую часть неравенства, из которой следует, что \(e^t \geqslant (1 + t/n)^n\). Применим: \[
+		0 \leqslant e^{-t} \, \left(1 - e^t \, \left(1 - \frac{t}{n} \right)^n \right) \leqslant e^{-t} \, \left(1 - \left(1 + \frac{t}{n} \right)^n \left(1 - \frac{t}{n} \right)^n \right) = e^{-t} \, \left(1 - \left(1 - \frac{t^2}{n^2} \right)^n \right).
+	\]
+	Из неравенства Бернулли следует \[
+		\left(1 - \frac{t^2}{n^2} \right)^n \geqslant 1 - \frac{t^2}{n}, \ \text{то есть} \ 1 - \left(1 - \frac{t^2}{n^2} \right)^n \leqslant \frac{1}{n} \, t^2.
+	\]
+	Применяем этот результат и получаем требуемое неравенство.
+\end{proof}
 
 \subsection{Формула Эйлера для \(\Gamma\)-функции}
 
-ДОДЕЛАТЬ
+\begin{theorem}
+	Пусть \(x > 0\), тогда \[
+		\lim_{n \to \infty} = \frac{1 \cdot 2 \cdot \ldots \cdot n}{x \, (x+1) \ldots (x+n)} \cdot n^x = \Gamma(x).
+	\]
+\end{theorem}
+\begin{proof}
+	ДОДЕЛАТЬ
+\end{proof}
 
 \subsection{Формула Вейерштрасса для \(\Gamma\)-функции}
 
@@ -2374,7 +2409,52 @@
 
 \subsection{Лемма о дифференцируемости отображения и его координатных функций}
 \hypertarget{t75}{}
-ДОДЕЛАТЬ
+\begin{theorem}
+	Пусть \(F \colon E \in \mathbb{R}^m \to \mathbb{R}^n\), \(f_1, \ldots, f_n\) --- его координатные функции, \(a \in \interior E\). Тогда
+	\begin{enumerate}
+		\item Отображение \(F\) дифференцируемо \(\iff\) \(f_1, \ldots, f_n\) дифференцирумы,
+		\item Строки матрицы оператора \(F'(a)\) --- это матрицы операторов \(f'_1(a), \ldots, f'_n(a)\). 
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item \begin{enumerate}
+			\item[\(\Rightarrow\)] Запишем определение дифференцируемости \(F\) в точке \(a\): \[
+				F(a + h) = F(a) + Lh + \alpha(h) |h|, \ \text{где} \ \alpha(h) \xrightarrow[h \to 0]{} 0.
+			\]
+			Иначе говоря, \[
+				\begin{pmatrix}
+					f_1(a + h) \\
+					\vdots	   \\
+					f_n(a + h)
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					f_1(a) \\
+					\vdots \\
+					f_n(a)
+				\end{pmatrix}
+				+
+				\begin{pmatrix}
+					L_1 h  \\
+					\vdots \\
+					L_n h
+				\end{pmatrix}
+				+
+				\begin{pmatrix}
+					\alpha_1(h) |h| \\
+					\vdots			\\
+					\alpha_n(h) |h|
+				\end{pmatrix},
+			\]
+			где \(L_1, \ldots, L_n\) --- строки матрицы производного оператора \(L\).
+
+			Это равенство можно представить как \(n\) равенств, соответствующих каждое своей строке. Каждое из них представляет собой определение дифференцируемости соответствующей координатной функции в точке \(a\).
+			\item[\(\Leftarrow\)] Достаточно двигаться как в прошлом пункте, только в противоположном направлении: запишем определение дифференцируемости для каждой координатной функции. Тогда из них непосредственно следует определение дифференцируемости \(f\), которое было записано в доказательстве необходимости.
+		\end{enumerate}
+		\item Непосредственно следует из доказательства предыдущего пункта, так как \(L_i\) это матрица оператора \(f'_i(a)\).
+	\end{enumerate}
+\end{proof}
 
 \subsection{Необходимое условие дифференцируемости}
 
@@ -2396,4 +2476,26 @@
 
 \subsection{\itshape Достаточное условие дифференцируемости}
 
-ДОДЕЛАТЬ
+\begin{theorem}
+	Пусть \(f \colon E \subset \mathbb{R}^m \to \mathbb{R}\). Пусть также \(\exists r > 0 : B_r(a) \subset E\) и в этом шаре существуют и непрерывны все частные производные \(\dfrac{\partial f}{\partial x_1}, \ldots, \dfrac{\partial f}{\partial x_m}\). Тогда функция \(f\) дифференцируема в точке~\(a = (a_1, a_2)\).
+\end{theorem}
+\begin{proof}
+	Докажем для случая \(m = 2\), который легко обобщить. Рассмотрим выражение \[
+		f(x_1, x_2) - f(a_1, a_2) = (f(x_1, x_2) - f(x_1, a_2)) + (f(x_1, a_2) - f(a_1, a_2)) = \ldots
+	\]
+	Зафиксируем \(x_1\) и введём функцию \(g(x_2) = f(x_1, x_2)\). Тогда по теореме Лагранжа \[
+		g(x_2) - g(a_2) = g'(\bar{x}_2) \, (x_2 - a_2), \ \text{где} \ \bar{x} \in (a_2, x_2).
+	\]
+	Можно заметить, что в силу определения функции \(g(x_2)\) её производная \(g'(x_2)\) равна \(\dfrac{\partial f}{\partial x_2} (x_1, x_2)\). Проведём аналогичные рассуждения, зафиксировав \(x_2\) и рассматривая функцию \(h(x_1) = f(x_1, x_2)\). Учитывая всё это, наше равенство можно продолжить:
+	\begin{multline*}
+		\ldots = \frac{\partial f}{\partial x_2} (x_1, \bar{x}_2) \, (x_2 - a_2) + \frac{\partial f}{\partial x_1} (\bar{x}_1, a_2) \, (x_1 - a_1)  
+		= \frac{\partial f}{\partial x_1} (a_1, a_2) \, (x_1 - a_1) + \frac{\partial f}{\partial x_2} (a_1, a_2) \, (x_2 - a_2) + \\
+		+ \left(\frac{\partial f}{\partial x_1} (\bar{x}_1, a_2) - \frac{\partial f}{\partial x_1} (a_1, a_2) \right) (x_1 - a_1) 
+		+ \left(\frac{\partial f}{\partial x_2} (x_1, \bar{x}_2) - \frac{\partial f}{\partial x_2} (a_1, a_2) \right) (x_2 - a_2).
+	\end{multline*}
+	В последней строке записано \(o(x - a)\), так как в силу непрерывности частных производных каждое слагаемое представляет собой б. м. при \((x_1, x_2) \to (a_1, a_2)\), умноженное на \(x_i - a_i \leqslant |x - a|\). Таким образом, мы собрали определение дифференцируемости функции \(f\) в точке \(a\).
+\end{proof}
+
+\begin{remark}
+	В теореме мы рассматриваем \(f \colon \mathbb{R}^m \to \mathbb{R}\), а не \(f \colon \mathbb{R}^m \to \mathbb{R}^n\), так как до этого мы уже \hyperlink{t75}{показали}, что дифференцируемость функции равносильна дифференцируемости её координатных функций.
+\end{remark}
