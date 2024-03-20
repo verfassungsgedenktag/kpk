@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[a4paper, 12pt]{extarticle}
 
 % кодировка и языки
 \usepackage[T2A]{fontenc}
@@ -25,6 +25,7 @@
 \usepackage[dvips]{graphicx}
 \usepackage[usenames]{color}
 \usepackage[bb=boondox]{mathalfa}
+\usepackage{moresize}
 
 \usepackage{tocloft}
 
@@ -45,6 +46,7 @@
 \newtheorem*{theorem}{Теорема}
 \newtheorem{ntheorem}{Теорема}[subsection]
 \newtheorem*{lemma}{Лемма}
+\newtheorem{nlemma}{Лемма}[subsection]
 \newtheorem*{corollary}{Следствие}
 
 \theoremstyle{definition}
@@ -57,12 +59,6 @@
 \newtheorem{nremark}{Замечание}[subsection]
 \newtheorem*{remarks}{Замечания}
 
-%\newtheoremstyle{break}%
-%  {}{}%
-%  {\itshape}{}%
-%  {\bfseries}{}%  % Note that final punctuation is omitted.
-%  {\newline}{}
-
 % (ре)ньюкомманд
 \newcommand{\anonsection}[1]{\section*{#1} \addcontentsline{toc}{section}{#1}}
 %\newcommand{\anonchapter}[1]{\chapter*{#1} \addcontentsline{toc}{chapter}{#1}}
@@ -71,7 +67,25 @@
 \renewcommand{\thenremark}{\arabic{nremark}}
 \renewcommand{\thendefinition}{\arabic{ndefinition}}
 \renewcommand{\thentheorem}{\arabic{ntheorem}}
+\renewcommand{\thenlemma}{\arabic{nlemma}}
 
 % новые математические операторы
 \DeclareMathOperator{\interior}{Int}
 \DeclareMathOperator{\sector}{Sector}
+
+% лого
+\makeatletter
+\def\logosmaller#1{%
+  \hbox{\sbox\z@ A%
+    \vbox to\ht\z@{\hbox{\check@mathfonts
+      \fontsize\sf@size\z@
+      \math@fontsfalse\selectfont #1}\vss}}}
+
+\newcommand{\logo}{%
+  M\kern-.2em%
+  \logosmaller{A}\kern-.1em%
+  T\kern-.2em%
+  \lower0.5ex\hbox{A}\kern-.23em%
+  \hbox{H}\kern-.1em%
+  }
+  \makeatother
